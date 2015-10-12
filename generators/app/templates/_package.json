@@ -1,0 +1,21 @@
+{
+  "name": "<%= appName %>",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.9.10",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-awspublish" : "^3.0.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-confirm": "^1.0.4",
+    "gulp-ignore": "^2.0.1",
+    "gulp-nodemon": "^2.0.4",
+    "gulp-nunjucks-render": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.0.4",
+    "gulp-zip": "^3.0.2",
+    "wiredep": "^3.0.0-beta"
+  }
+}
