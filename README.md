@@ -1,8 +1,8 @@
-# generator-dmnapps 
+# generator-dmninteractives
 
 A [Yeoman](http://yeoman.io) generator for DMN-flavored "interactive" pages with easy publishing.
 
-## Using 
+## Starting
 
 First, install Yoeman and the dmninteractives generator, globally:
 
@@ -34,6 +34,9 @@ You can also start your server from scratch in your app's root directory:
 gulp
 ```
 
+## Developing
+
+Develop your project in the app's `build` directory. As you make changes to or add new files, your project will be automatically compiled in the `public` directory. This is the directory node serves files from in the browser.
 
 ## Publishing
 
@@ -43,7 +46,7 @@ First, add the appropriate credentials to `aws.json`, and then:
 gulp publish
 ```
 
-The publish command will upload your project to a directory in the designated AWS S3 bucket. It will also zip up your working directory (excluding `aws.json`, of course) and deposit a compressed file at the root of the new project directory.
+The publish command will upload your project from the `public` directory to a directory in the designated AWS S3 bucket. It will also zip up your working directory (excluding `aws.json`, of course) and deposit a compressed file at the root of the new project directory.
 
 You can download the zip file to reconsistute the published project wherever you need, just add a new `aws.json`.
 
