@@ -19,6 +19,15 @@ Translation: A simple app that helps speed up developing a custom "interactive" 
 
 ## Quickstart
 
+Install global dependencies, including Yeoman and the generator.
+
+```bash
+$ npm install -g nodemon
+$ npm install -g gulp
+$ npm install -g yo
+$ npm install -g generator-dmninteractives
+```
+
 Create a clean directory for your project in your terminal.
 
 ```bash
