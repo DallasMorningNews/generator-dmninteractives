@@ -4,27 +4,27 @@
 
 	<!-- Add Custom Meta Data -->
 	{%block custom_meta%}
-	<meta content="dallas, dallas fort worth, dallas news, dallas fort worth news, dfw news, dallas local news, dallas fort worth local news, dallas breaking news, dallas fort worth breaking news, dallas weather, dallas fort worth weather, dallas traffic, dallas fort worth traffic, dallas sports, dallas fort worth sports, dallas entertainment, dallas fort worth entertainment, dallas newspaper, dallas morning news, dallas morning news newspaper" name="keywords" />
+	<meta content="{{keywords|join(',')}}" name="keywords" />
 
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-	<meta content="Description goes here" name="description" />
-	<title>Title goes here</title>
-	<meta property="og:url" content="URL goes here" />
-	<meta property="og:title" content="Title goes here"/>
-	<meta property="og:description" content="Description goes here" name="description"/>
-	<meta property="og:image" content="share image url goes here"/>
-	<meta property="og:image:height" content="400"/>
-	<meta property="og:image:width" content="600"/>	
+	<meta content="{{description}}" name="description" />
+	<title>{{name}}</title>
+	<meta property="og:url" content="{{url}}" />
+	<meta property="og:title" content="{{name}}"/>
+	<meta property="og:description" content="{{description}}" name="description"/>
+	<meta property="og:image" content="{{imgURL}}"/>
+	<meta property="og:image:height" content="{{imgHeight}}"/>
+	<meta property="og:image:width" content="{{imgWidth}}"/>	
 	<meta name="twitter:card" content="summary_large_image">
 
-	<meta name='parsely-page' id='parsely-page' content='{"title": "Title goes here", "link": "URL goes here", "image_url": "Share image url goes here", "type": "post", "post_id": "########### <- UNIQUE POST ID HERE", "pub_date": "YEAR-MM-DD", "section": "SECTION GOES HERE", "author": ["AUTHOR GOES HERE"], tags": ["dallas", "dallas fort worth", "dallas news", "dallas fort worth news", "dfw news", "dallas local news", "dallas fort worth local news", "dallas breaking news", "dallas fort worth breaking news", "dallas weather", "dallas fort worth weather", "dallas traffic", "dallas fort worth traffic", "dallas sports", "dallas fort worth sports", "dallas entertainment", "dallas fort worth entertainment", "dallas newspaper", "dallas morning news", "dallas morning news newspaper"]}'/>
+	<meta name='parsely-page' id='parsely-page' content='{"title": "{{name}}", "link": "{{url}}", "image_url": "{{imgURL}}", "type": "post", "post_id": "{{id}}", "pub_date": "{{publishDate}}", "section": "{{section}}", "author": ["{{authors}}"], tags": ["{{keywords|join('","')}}"]}'/>
 
-	<meta property="og:keywords" content="dallas, dallas fort worth, dallas news, dallas fort worth news, dfw news, dallas local news, dallas fort worth local news, dallas breaking news, dallas fort worth breaking news, dallas weather, dallas fort worth weather, dallas traffic, dallas fort worth traffic, dallas sports, dallas fort worth sports, dallas entertainment, dallas fort worth entertainment, dallas newspaper, dallas morning news, dallas morning news newspaper"/>
+	<meta property="og:keywords" content="{{keywords|join(',')}}"/>
 
-	<meta name='news_keywords' content='dallas, dallas fort worth, dallas news, dallas fort worth news, dfw news, dallas local news, dallas fort worth local news, dallas breaking news, dallas fort worth breaking news, dallas weather, dallas fort worth weather, dallas traffic, dallas fort worth traffic, dallas sports, dallas fort worth sports, dallas entertainment, dallas fort worth entertainment, dallas newspaper, dallas morning news, dallas morning news newspaper'/>
+	<meta name='news_keywords' content="{{keywords|join(',')}}"/>
 	{%endblock%}
 	<!-- End Custom Meta Data -->
 	
@@ -35,10 +35,6 @@
 	<link rel="shortcut icon" type="image/x-icon" href="http://www.dallasnews.com/favicon-premium.ico"/>
 	
 
-	<!-- bower:css -->
-  	<!-- endbower -->
-
-	<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="http://interactives.templates.statics.s3.amazonaws.com/v1.0/css/print.css" media="print"/>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,700italic%7CMerriweather:400,400italic' rel='stylesheet' type='text/css'>
 	
@@ -54,23 +50,16 @@
 	</script> 
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+	<!-- Bundled dependencies -->
+	<link rel="stylesheet" type="text/css" href="static/css/dependency-bundle.css" />
+	
+	<!-- -->
+
 	<link rel="stylesheet" type="text/css" href="static/css/styles.css" />
 	{%block custom_head%}
 	{%endblock%}
 
-	<!-- Un-note the following line to use bowser.js (for browser type and version detection) -->
-	<!-- <script src="http://interactives.templates.statics.s3.amazonaws.com/v1.0/js/bowser.min.js"></script> -->
-
-	<!-- Un-note the following line to use jquery.swipe for for swipe events -->
-	<!-- <script src="http://interactives.templates.statics.s3.amazonaws.com/v1.0/js/jquery.swipe.min.js"></script> -->
-
-	<!-- Un-note the following line to use modernizr.touch for touch device detection -->
-	<!-- <script src="http://interactives.templates.statics.s3.amazonaws.com/v1.0/js/modernizr.touch.js"></script> -->	
-
- 	<!-- Un-note the following line to use NDN video -->
-	<!-- <script type="text/javascript" async src="http://launch.newsinc.com/js/embed.js" id="_nw2e-js"></script >-->
-
-	<!--[if lt IE 9]><script type="text/javascript" src="http://res.dallasnews.com/interactives/template/common/respond.min.js"></script><![endif]-->
+	
 
 	<!--
 	================================
@@ -220,11 +209,10 @@
 
 	</article>
 
-	<!-- bower:js -->
-  	<!-- endbower -->
-
 	<script type="text/javascript" src="http://res.dallasnews.com/interactives/template/common/js/responsive-footer.js"></script>
+  	<script src="static/js/dependency-bundle.js"></script>
 	<script type="text/javascript" src="static/js/scripts.js"></script>
+
 
 	{%block custom_foot%}
 	{%endblock%}
@@ -295,16 +283,16 @@
 
 	{%block custom_social_meta%}
 	<script type="text/javascript">
-	var storyTitle = "TITLE HERE",
-		storyURL = "URL Here",
-		leadText = "DESCRIPTION HERE",
-		storyIMG = "SHARE IMAGE URL HERE",
-		storyAuthor = "AUTHOR NAME HERE",
-		twitterTag = "dallasnews"
+	var storyTitle = "{{name}}",
+		storyURL = "{{url}}",
+		leadText = "{{description}}",
+		storyIMG = "{{imgURL}}",
+		storyAuthor = "{{authors}}",
+		twitterTag = "{{twitter}}",
 		comments = true,
 		share = true;
 	</script>
-	<script type="text/javascript">OAS_sitepage = 'SECTION URL HERE';</script>
+	<script type="text/javascript">OAS_sitepage = 'www.dallasnews.com/{{desk}}/{{section}}/';</script>
 	{%endblock%}
 
 	<script type="text/javascript" src="http://res.dallasnews.com/interactives/template/common/js/common.js"></script>

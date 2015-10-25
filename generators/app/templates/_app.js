@@ -5,6 +5,7 @@ var express = require('express'),
 
 var app = express();
 var server = http.createServer(app);
+var meta = require('./meta.json');
 
 app.use('/static',express.static(__dirname + '/public/static'));
 
@@ -15,7 +16,7 @@ app.use('/static',express.static(__dirname + '/public/static'));
 -------------------------------------------------------*/
 
 app.get("/", function (req, res) {   
-    res.sendFile("public/index.html", {root: __dirname});
+	res.sendFile("public/index.html", {root: __dirname});
 });
 
 /*-------------------------------------------------------

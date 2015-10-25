@@ -6,6 +6,9 @@ var mkdirp = require('mkdirp');
 var wiredep = require('wiredep');
 var camelCase = require('camel-case');
 
+// Dependency opts cdn ref
+var cdn = require('./cdn.json');
+
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -17,20 +20,42 @@ module.exports = yeoman.generators.Base.extend({
       name:'appName',
       message: 'What\'s your project\'s name?'
     },{
+      name:'awsAccessKey',
+      message: 'What\'s your AWS access key?'
+    },{
+      name:'awsSecretKey',
+      message: 'What\'s your AWS secret key?'
+    },{
       type: 'checkbox',
       name: 'features',
       message: 'What more would you like?',
       choices: [{
-        name: 'D3',
+        name: 'JQuery UI',
+        value: 'includeJQUI',
+        checked: false
+      },{
+        name: 'JQuery Swipe',
+        value: 'includeJQSwipe',
+        checked: false
+      },{
+        name: 'Bowser',
+        value: 'includeBowser',
+        checked: false
+      },{
+        name: 'Modernizr',
+        value: 'includeModernizr',
+        checked: false
+      },{
+        name: 'D3.js',
         value: 'includeD3',
         checked: false
       },{
-        name: 'Leaflet',
+        name: 'Leaflet.js',
         value: 'includeLeaflet',
         checked: false
       },{
         name: 'FontAwesome',
-        value: 'includeFA',
+        value: 'includeFontAwesome',
         checked: false
       },{
         name: 'Bootstrap',
@@ -47,11 +72,19 @@ module.exports = yeoman.generators.Base.extend({
         return features && features.indexOf(feat) !== -1;
       };
 
+      this.projectName = props.appName;
       this.appName = camelCase(props.appName);
-      this.includeD3 = hasFeature('includeD3');
-      this.includeLeaflet = hasFeature('includeLeaflet');
-      this.includeFA = hasFeature('includeFA');
-      this.includeBootstrap = hasFeature('includeBootstrap');
+      this.awsAccessKey = props.awsAccessKey;
+      this.awsSecretKey = props.awsSecretKey;
+      this.dependencies = {};
+      this.dependencies.includeJQUI = hasFeature('includeJQUI');
+      this.dependencies.includeJQSwipe = hasFeature('includeJQSwipe');
+      this.dependencies.includeBowser = hasFeature('includeBowser');
+      this.dependencies.includeModernizr = hasFeature('includeModernizr');
+      this.dependencies.includeD3 = hasFeature('includeD3');
+      this.dependencies.includeLeaflet = hasFeature('includeLeaflet');
+      this.dependencies.includeFontAwesome = hasFeature('includeFontAwesome');
+      this.dependencies.includeBootstrap = hasFeature('includeBootstrap');
 
       done();
     }.bind(this));
@@ -86,10 +119,6 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('./build/static/sass/custom.scss')
       );
       this.fs.copy(
-        this.templatePath('_custom.sass'),
-        this.destinationPath('./build/static/sass/custom.sass')
-      );
-      this.fs.copy(
         this.templatePath('_custom.js'),
         this.destinationPath('./build/static/js/custom.js')
       );
@@ -105,50 +134,55 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_index.html'),
         this.destinationPath('./build/templates/index.html')
       );
+      mkdirp('./build/static/img');
       mkdirp('./public');
     },
 
-    bower: function () {
-      var bowerJson = {
-        name: this.appName,
-        private: true,
-        dependencies: {}
-      };
+    dependencies: function(){
 
-      if (this.includeD3) {
-        bowerJson.dependencies['d3'] = '~3.5.6';
-      }
-      if (this.includeLeaflet) {
-        bowerJson.dependencies['leaflet'] = '~1.0.0';
-      }
-      if (this.includeFA) {
-        bowerJson.dependencies['fontawesome'] = '~4.4.0';
-      }
-      if (this.includeBootstrap) {
-          bowerJson.dependencies['bootstrap'] = '~3.3.5';
-          bowerJson.overrides = {
-            'bootstrap': {
-              'main': [
-                'less/bootstrap.less',
-                'dist/css/bootstrap.css',
-                'dist/js/bootstrap.js',
-                'dist/fonts/*'
-              ]
+      // Pass a single url or an array to yeoman's fetch.
+      var dependencyFetch = function(generator, dependency){
+            var dest = './build/static/vendor';
+            if(Array.isArray(dependency)){
+              for(var i in dependency){
+                generator.fetch(dependency[i], dest, function(err){});
+              };
+            }else{
+              generator.fetch(dependency, dest, function(err){});
             }
           };
-      }
 
-      this.fs.writeJSON('bower.json', bowerJson);
-      this.fs.copy(
-        this.templatePath('bowerrc'),
-        this.destinationPath('.bowerrc')
-      );
+      if(this.dependencies.includeJQUI){
+        dependencyFetch(this, cdn.JQUI);
+      }
+      if(this.dependencies.includeJQSwipe){
+        dependencyFetch(this, cdn.JQSwipe);
+      }
+      if(this.dependencies.includeBowser){
+        dependencyFetch(this, cdn.Bowser);
+      }
+      if(this.dependencies.includeModernizr){
+        dependencyFetch(this, cdn.Modernizr);
+      }
+      if(this.dependencies.includeD3){
+        dependencyFetch(this, cdn.D3);
+      }
+      if(this.dependencies.includeLeaflet){
+        dependencyFetch(this, cdn.Leaflet);
+      }
+      if(this.dependencies.includeFontAwesome){
+        dependencyFetch(this, cdn.FontAwesome);
+      }
+      if(this.dependencies.includeBootstrap){
+        dependencyFetch(this, cdn.Bootstrap);
+      }    
     },
+
 
     aws: function(){
       var awsJson = {
-        accessKeyId: '<ACCESS KEY>',
-        secretAccessKey: '<SECRET KEY>',
+        accessKeyId: this.awsAccessKey,
+        secretAccessKey: this.awsSecretKey,
         params:{
             Bucket: 'interactives.dallasnews.com'
           }
@@ -157,9 +191,23 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     meta: function(){
+      var timestamp = new Date();
       var metaJson = {
-        name: this.appName,
-        publishYear: new Date().getFullYear()
+        name: this.projectName,
+        publishYear: timestamp.getFullYear(),
+        publishDate: timestamp.getFullYear() +"-"+(timestamp.getMonth()+1)+"-"+timestamp.getDate()+"T00:00:00Z",
+        description: '<Project description>',
+        url: 'interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+"/",
+        id: (Math.floor(Math.random() * 100000000000) + 1).toString() ,
+        authors: '<Project authors>',
+        authorsFbook: '<Project authors\' facebook links>',
+        desk: '<e.g., entertainment>',
+        section: '<e.g., books>',
+        keywords: ["interactives","dallas","dallas news","dfw news","dallas newspaper","dallas morning news","dallas morning news newspaper"],
+        imgURL: '<Preview image url>',
+        imgWidth: '<Preview image width>',
+        imgHeight: '<Preview image height>',
+        twitter: 'dallasnews',
       }
       this.fs.writeJSON('meta.json', metaJson);
     },
@@ -168,7 +216,6 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('gitignore'),
         this.destinationPath('./.gitignore'));
-
     },
   },
 
@@ -180,21 +227,10 @@ module.exports = yeoman.generators.Base.extend({
             }.bind(this)
     });
 
-
-
     this.on('dependenciesInstalled', function() {
-      //inject dependencies
-      var bowerJson = this.fs.readJSON(this.destinationPath('bower.json'));
-        wiredep({
-          bowerJson: bowerJson,
-          directory: 'public/static/vendor',
-          ignorePath: /.+public/,
-          src: 'build/templates/base.html',
-          exclude: [ /jquery/,]
-        });
-
         this.spawnCommand('gulp');
     });
+
   },
 
 });

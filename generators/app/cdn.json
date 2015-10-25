@@ -1,0 +1,22 @@
+{
+  "JQuery": "https://code.jquery.com/jquery-1.11.3.min.js",
+  "Bowser": "https://raw.githubusercontent.com/ded/bowser/master/bowser.min.js",
+  "JQUI": [
+        "https://code.jquery.com/ui/1.11.4/jquery-ui.min.js",
+        "https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"
+        ],
+  "JQSwipe": "https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.12/jquery.touchSwipe.min.js",
+  "Modernizr": "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js",
+  "D3": "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js",
+  "Leaflet": [
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css"
+        ],
+  "FontAwesome": "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css",
+  "Bootstrap": [
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js",
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+        ]
+}
