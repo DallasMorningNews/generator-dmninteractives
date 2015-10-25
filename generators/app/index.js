@@ -127,6 +127,10 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('./build/static/js/data.json')
       );
       this.fs.copy(
+        this.templatePath('_img.html'),
+        this.destinationPath('./build/templates/partials/img.html')
+      );
+      this.fs.copy(
         this.templatePath('_base.html'),
         this.destinationPath('./build/templates/base.html')
       );

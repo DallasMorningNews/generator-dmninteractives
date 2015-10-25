@@ -4,7 +4,7 @@
   "description": "Yeoman generator for interactive pages at The Dallas Morning News",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "hobbes7878/generator-dmninteractives",
+  "repository": "DallasMorningNews/generator-dmninteractives",
   "author": {
     "name": "Jon McClure",
     "email": "jmcclure@dallasnews.com",
