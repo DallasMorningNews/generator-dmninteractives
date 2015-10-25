@@ -38,33 +38,34 @@ gulp.task('nodemon', function (cb) {
     });
 });
 
+
 gulp.task('dependencies', function () {
-  // Bundle JS
+
   gulp.src('./build/static/vendor/**/*.js')
-    .pipe(concat('dependency-bundle.js'))
+    .pipe(concat('dependency-bundle.js')) // Bundle JS
     .pipe(uglify())
     .pipe(gulp.dest('./public/static/js'));
-  // Bundle CSS
+
   gulp.src('./build/static/vendor/**/*.css')
-    .pipe(concat('dependency-bundle.css'))
-    .pipe(minifyCss({keepSpecialComments : 0}))
+    .pipe(concat('dependency-bundle.css')) // Bundle CSS
+    .pipe(minifyCss({ keepSpecialComments : 0, processImport: false })) // Don't keep CSS comments or process import statements like google fonts
     .pipe(gulp.dest('./public/static/css'));
 });
 
 gulp.task('js', function () {
-  //Copy data assets
+  //Copy data assets as they are
   gulp.src('./build/static/js/**/*.json')
     .pipe(gulp.dest('./public/static/js'));
-  //Copy and concat all js assets
+  // Bundle and copy scripts
   gulp.src('./build/static/js/**/*.js')
-    .pipe(concat('scripts.js'))
-    .pipe(uglify())
+    .pipe(concat('scripts.js')) // Bundle JS
+    .pipe(uglify()) // Minify JS
     .pipe(gulp.dest('./public/static/js'));
 
 });
 
 gulp.task('scss', function () {
-  //Compile scss
+  //Compile SCSS and copy to CSS build directory
   gulp.src('./build/static/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(rename({extname: ".scss.css", prefix: "_"}))
@@ -74,14 +75,15 @@ gulp.task('scss', function () {
 gulp.task('css', function () {
   gulp.src('./build/static/css/**/*.css')
     .pipe(concat('styles.css'))
-    .pipe(minifyCss({keepSpecialComments : 0}))
+    .pipe(minifyCss({ keepSpecialComments : 0, processImport: false }))
     .pipe(gulp.dest('./public/static/css'));
 });
 
 gulp.task('img',function () {
+
   function resize(size){
     gulp.src('./build/static/img/**/*.{png,jpg}')
-      .pipe(changed('./public/static/img'))
+      .pipe(changed('./public/static/img')) // Only process changed images for speed.
       .pipe(imageResize({ width : size, upscale : true }))
       .pipe(rename(function (path) { path.basename += ("-" + size.toString()); }))
       .pipe(gulp.dest('./public/static/img'));
@@ -121,7 +123,7 @@ gulp.task('templates', function () {
 
 gulp.task('zip', function () {
   var meta = require('./meta.json');
-  return gulp.src(['./*','!aws.json']) //exclude aws credentials
+  return gulp.src(['./*','!aws.json']) // Zip everything except aws credentials
       .pipe(zip(meta.name.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g,'-').toLowerCase() + '.zip'))
       .pipe(gulp.dest('public'));
 });
@@ -141,16 +143,16 @@ gulp.task('aws', ['zip'],function() {
       .pipe(rename(function (path) {
           path.dirname = '/'+year+'/'+appName + '/' + path.dirname.replace('.\\','');
       }))
-      .pipe(publisher.publish())
+      .pipe(publisher.publish({},{force:true}))
       .pipe(awspublish.reporter());
 });
 
+// Watch for new images added and run img task
 gulp.task('watch', function () {
     watch('./build/static/img/**/*.{png,jpg}', batch(function (events, done) {
         gulp.start('img', done);
     }));
 });
-
 
 gulp.task('default', ['templates','img','scss','css','js','dependencies','watch','browser-sync'], function () {
   gulp.watch('build/static/sass/**/*.scss', ['scss','css']);

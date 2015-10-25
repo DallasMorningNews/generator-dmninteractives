@@ -122,8 +122,12 @@ All CSS and JS files put in the `build/static/vendor/` directory will be bundled
 Images put in the build directory `build/static/img/` are automatically resized into responsive copies at 4 widths: 2400px, 1280px, 640px and 320px. To use the smaller-sized images on smaller screens, use the following `srcset` syntax in your image tags:
 
 ```html
-<img src="static/img/cat.jpg" alt="A black cat" 
-  srcset="static/img/cat-320.jpg 320w, static/img/cat-640.jpg 640w, static/img/cat-1280.jpg 1280w, static/img/cat-2400.jpg 2400w">
+<img 
+    src="static/img/cat.jpg"
+    alt="A black cat"
+    sizes="(min-width: 1px) 100vw, 100vw"
+    srcset="static/img/cat-320.jpg 320w, static/img/cat-640.jpg 640w, static/img/cat-1280.jpg 1280w, static/img/cat-2400.jpg 2400w"
+/>
 ```
 
 
