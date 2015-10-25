@@ -2,7 +2,7 @@
 
 A [Yeoman](http://yeoman.io) generator for DMN-flavored "interactive" pages with easy publishing. 
 
-Translation: A simple app that helps speed up developing a custom "interactive" page using our DMN house template, packages your files for optimum pageload speed, quickly publishes to our Amazon service and archives your working directory for 
+Translation: A simple app that helps speed up developing a custom "interactive" page using our DMN house template, packages your files for optimum pageload speed, quickly publishes to our Amazon service and archives your working directory. 
 
 ### What it does:
 
@@ -17,19 +17,17 @@ Translation: A simple app that helps speed up developing a custom "interactive" 
 
 ## Setting up your computer
 
-
-
 First, you need [node.js](https://nodejs.org/en/download/).
 
-(Total noobs, you'll want to checkout [console basics](https://www.youtube.com/watch?v=-Vl4rpZVA6I) before you go on.)
+(Total noobs, you'll want to checkout [console basics](https://www.youtube.com/watch?v=-Vl4rpZVA6I) before you go on here.)
 
 Install prerequisites nodemon, gulp, Yoeman and the dmninteractives generator, globally, using npm:
 
 ```bash
-npm install -g nodemon
-npm install -g gulp
-npm install -g yo
-npm install -g generator-dmninteractives
+$ npm install -g nodemon
+$ npm install -g gulp
+$ npm install -g yo
+$ npm install -g generator-dmninteractives
 ```
 
 You'll also need to make sure you have installed [GraphicsMagick](http://www.graphicsmagick.org/README.html) in order to create responsive image sets.
@@ -40,14 +38,14 @@ You'll also need to make sure you have installed [GraphicsMagick](http://www.gra
 Create a clean directory for your project in your terminal.
 
 ```bash
-mkdir your-app-directory
-cd your-app-directory
+$ mkdir your-app-directory
+$ cd your-app-directory
 ```
 
 Run the generator in your new project directory.
 
 ```bash
-yo dmninteractives
+$ yo dmninteractives
 ```
 
 Prompts will ask you to name your project, add AWS credentials (ask the data team) and select dependencies.
@@ -65,7 +63,7 @@ The generator uses [gulp](http://gulpjs.com/), a node-based task runner, to watc
 To work on your project, launch gulp in your app's root directory:
 
 ```bash
-gulp
+$ gulp
 ```
 
 ### Build vs. Public directories
@@ -134,13 +132,9 @@ Images put in the build directory `build/static/img/` are automatically resized 
 Simply run:
 
 ```bash
-gulp publish
+$ gulp publish
 ```
 
 A prompt will confirm what directory to upload the `public` directory to in our `interactives.dallasnews.com` S3 bucket. It will also zip up your working directory (excluding `aws.json`, for security) and deposit a compressed file at the root of the new project directory.
 
 You can download the zip file to reconstitute the published project wherever you need, just add a new `aws.json`.
-
-## License
-
-MIT
