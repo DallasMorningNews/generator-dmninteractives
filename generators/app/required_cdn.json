@@ -1,0 +1,9 @@
+{
+  "print": "http://interactives.templates.statics.s3.amazonaws.com/v1.0/css/print.css",
+  "responsive-styles": "http://res.dallasnews.com/interactives/template/common/js/responsive-styles.js",
+  "gpt": "http://www.googletagservices.com/tag/js/gpt.js",
+  "parsely": "http://res.dallasnews.com/resources/cobrand/js/blogs/parselyDynamicTracking.js",
+  "common": "http://res.dallasnews.com/interactives/template/common/js/common.js",
+  "biomniture": "http://res.dallasnews.com/resrsc/js/biomniture.js",
+  "actions": "http://res.dallasnews.com/interactives/template/common/js/actions.js"
+}

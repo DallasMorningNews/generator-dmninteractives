@@ -57,38 +57,20 @@ To work on your project, launch gulp in your app's root directory:
 $ gulp
 ```
 
-### Build vs. Public directories
+### Build, Preview, Publish
 
-Your project is separated into two main directories: a `build` and a `public` folder.
-
-
-The `build` directory is the development directory. You'll write all your code and place all necessary static assets in this directory.
-
-
-The `public` directory contains the final, rendered webpage and minified static assets that will be published.
-
-As you make changes in your `build` directory, your project will be automatically compiled in the `public` directory. 
+Your project is separated into three main directories: 
+- `build`
+- `preview` 
+- `publish`
 
 
-### Static files
+The `build` directory is your working directory. You'll write all your code and place all necessary static assets in this directory.
 
-All CSS and JS files in `build/static/css` and `build/static/js` are combined into single, minified files. Both files are **already included** in the base template:
+The `preview` directory includes rendered SCSS and responsive images. The live preview of your page which gulp starts is serving from this folder. As you make changes in your `build` directory, your project will be automatically compiled in this directory. 
 
-Multiple CSS files are combined in alphabetical sort order, preceeded by any dependency stylesheets and the template theme stylesheet.
-
-
-### Vendor assets
-
-All CSS and JS files put in the `build/static/vendor/` directory will be bundled into a single JS and CSS file called `dependency-bundle`. Both are already added to the template.
-
-## Publishing your project
-
-Simply run:
+The `publish` directory contains the final, rendered webpage and minified static assets that will be published. Assets are moved into this folder when you run:
 
 ```bash
 $ gulp publish
 ```
-
-A prompt will confirm what directory to upload the `public` directory to in our `interactives.dallasnews.com` S3 bucket. It will also zip up your working directory (excluding `aws.json`, for security) and deposit a compressed file at the root of the new project directory.
-
-You can download the zip file to reconstitute the published project wherever you need. Just add a new `aws.json`.

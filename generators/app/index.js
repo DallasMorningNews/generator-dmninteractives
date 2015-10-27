@@ -5,9 +5,11 @@ var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var wiredep = require('wiredep');
 var camelCase = require('camel-case');
+var fs = require('fs');
 
-// Dependency opts cdn ref
-var cdn = require('./cdn.json');
+// Dependency CDN files
+var optional_cdn = require('./optional_cdn.json');
+var required_cdn = require('./required_cdn.json');
 
 
 module.exports = yeoman.generators.Base.extend({
@@ -110,17 +112,21 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     projectfiles: function () {
-      this.fs.copy(
-        this.templatePath('_theme.css'),
-        this.destinationPath('./build/static/css/_base.css')
-      );
+
+      //Fetch template files from https://github.com/DallasMorningNews/interactives_starterkit
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/base.html','./build/templates/',function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/index.html','./build/templates/',function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/theme.css','./build/static/css/common/',function(err){
+        fs.rename('./build/static/css/common/theme.css','./build/static/css/common/+base.css');
+      });
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/customJS.js','./build/static/js/',function(err){
+        fs.rename('./build/static/js/customJS.js','./build/static/js/+custom.js');
+      });
+
+
       this.fs.copy(
         this.templatePath('_custom.scss'),
-        this.destinationPath('./build/static/sass/custom.scss')
-      );
-      this.fs.copy(
-        this.templatePath('_custom.js'),
-        this.destinationPath('./build/static/js/custom.js')
+        this.destinationPath('./build/static/sass/+custom.scss')
       );
       this.fs.copy(
         this.templatePath('_data.json'),
@@ -131,19 +137,23 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('./build/templates/partials/img.html')
       );
       this.fs.copy(
-        this.templatePath('_base.html'),
-        this.destinationPath('./build/templates/base.html')
+        this.templatePath('_dmnapps.png'),
+        this.destinationPath('./build/static/img/_dmnapps.png')
       );
-      this.fs.copy(
-        this.templatePath('_index.html'),
-        this.destinationPath('./build/templates/index.html')
-      );
-      mkdirp('./build/static/img');
-      mkdirp('./public');
+      mkdirp('./preview');
+      mkdirp('./publish');
     },
 
-    dependencies: function(){
+    /*
+    // Working on this... 
+    required_dependencies: function(){
+      var dest = './build/static/vendor';
+      for(var dependency in required_cdn){
+        this.fetch(required_cdn[dependency], dest, function(err){});
+      };
+    },*/
 
+    optional_dependencies: function(){
       // Pass a single url or an array to yeoman's fetch.
       var dependencyFetch = function(generator, dependency){
             var dest = './build/static/vendor';
@@ -157,28 +167,28 @@ module.exports = yeoman.generators.Base.extend({
           };
 
       if(this.dependencies.includeJQUI){
-        dependencyFetch(this, cdn.JQUI);
+        dependencyFetch(this, optional_cdn.JQUI);
       }
       if(this.dependencies.includeJQSwipe){
-        dependencyFetch(this, cdn.JQSwipe);
+        dependencyFetch(this, optional_cdn.JQSwipe);
       }
       if(this.dependencies.includeBowser){
-        dependencyFetch(this, cdn.Bowser);
+        dependencyFetch(this, optional_cdn.Bowser);
       }
       if(this.dependencies.includeModernizr){
-        dependencyFetch(this, cdn.Modernizr);
+        dependencyFetch(this, optional_cdn.Modernizr);
       }
       if(this.dependencies.includeD3){
-        dependencyFetch(this, cdn.D3);
+        dependencyFetch(this, optional_cdn.D3);
       }
       if(this.dependencies.includeLeaflet){
-        dependencyFetch(this, cdn.Leaflet);
+        dependencyFetch(this, optional_cdn.Leaflet);
       }
       if(this.dependencies.includeFontAwesome){
-        dependencyFetch(this, cdn.FontAwesome);
+        dependencyFetch(this, optional_cdn.FontAwesome);
       }
       if(this.dependencies.includeBootstrap){
-        dependencyFetch(this, cdn.Bootstrap);
+        dependencyFetch(this, optional_cdn.Bootstrap);
       }    
     },
 

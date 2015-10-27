@@ -2,23 +2,23 @@
 
 {% macro jpg(filename, alt, class='', id='', sizes='(min-width: 1px) 100vw, 100vw') %}
 <img 
-    src="static/img/{{filename}}.jpg"
+    srcset="static/img/{{filename}}-600.jpg 600w, static/img/{{filename}}-1200.jpg 1200w, static/img/{{filename}}-1800.jpg 1800w, static/img/{{filename}}-2400.jpg 2400w, static/img/{{filename}}-3000.jpg 3000w"
+    sizes="{{sizes}}"
+    src="static/img/{{filename}}-1800.jpg"
     alt="{{alt}}"
     class="{{class}}"
     id="{{id}}"
-    sizes="{{sizes}}"
-    srcset="static/img/{{filename}}-320.jpg 320w, static/img/{{filename}}-640.jpg 640w, static/img/{{filename}}-1280.jpg 1280w, static/img/{{filename}}-2400.jpg 2400w"
 />
 {% endmacro %}
 
 
 {% macro png(filename, alt, class='', id='', sizes='(min-width: 1px) 100vw, 100vw') %}
 <img 
-    src="static/img/{{filename}}.png"
+    srcset="static/img/{{filename}}-600.png 600w, static/img/{{filename}}-1200.png 1200w, static/img/{{filename}}-1800.png 1800w, static/img/{{filename}}-2400.png 2400w, static/img/{{filename}}-3000.png 3000w"
+    sizes="{{sizes}}"
+    src="static/img/{{filename}}-1800.png"
     alt="{{alt}}"
     class="{{class}}"
     id="{{id}}"
-    sizes="{{sizes}}"
-    srcset="static/img/{{filename}}-320.png 320w, static/img/{{filename}}-640.png 640w, static/img/{{filename}}-1280.png 1280w, static/img/{{filename}}-2400.png 2400w"
 />
 {% endmacro %}
