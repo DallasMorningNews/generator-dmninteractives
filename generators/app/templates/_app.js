@@ -7,7 +7,7 @@ var app = express();
 var server = http.createServer(app);
 var meta = require('./meta.json');
 
-app.use('/static',express.static(__dirname + '/preview/static'));
+app.use(express.static(__dirname + '/preview/static'));
 
 
 

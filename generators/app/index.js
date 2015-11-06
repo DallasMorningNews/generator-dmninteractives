@@ -138,7 +138,19 @@ module.exports = yeoman.generators.Base.extend({
       );
       this.fs.copy(
         this.templatePath('_dmnapps.png'),
-        this.destinationPath('./build/static/img/_dmnapps.png')
+        this.destinationPath('./build/static/images/_dmnapps.png')
+      );
+      this.fs.copy(
+        this.templatePath('defaultImage.jpg'),
+        this.destinationPath('./build/static/images/defaultImage.jpg')
+      );
+      this.fs.copy(
+        this.templatePath('buttonLeft.svg'),
+        this.destinationPath('./build/static/images/buttonLeft.svg')
+      );
+      this.fs.copy(
+        this.templatePath('buttonRight.svg'),
+        this.destinationPath('./build/static/images/buttonRight.svg')
       );
       mkdirp('./preview');
       mkdirp('./publish');

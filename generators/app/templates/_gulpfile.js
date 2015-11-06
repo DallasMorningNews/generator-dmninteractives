@@ -18,7 +18,7 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     batch = require('gulp-batch'),
     merge = require('merge-stream'),
-    open = require("open");
+    open = require('open');
 
 
 ////////////////////////////
@@ -117,9 +117,9 @@ gulp.task('css', ['scss'] ,function () {
 
 gulp.task('img',function () {
   function resize(size){
-    return gulp.src(['./build/static/img/**/*.{png,jpg,JPG}','!./build/static/img/**/_*.{png,jpg,JPG}'])
-      .pipe(changed('./preview/static/img')) // Only process changed images for speed.
-      .pipe(imageResize({ width : size, upscale : false }))
+    return gulp.src(['./build/static/images/**/*.{png,jpg,JPG}','!./build/static/images/**/_*.{png,jpg,JPG}'])
+      .pipe(changed('./preview/static/images')) // Only process changed images for speed.
+      .pipe(imageResize({ width : size, upscale : false, imageMagick : true }))
       .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
@@ -129,17 +129,17 @@ gulp.task('img',function () {
                                       path.extname = path.extname.toLowerCase(); 
                                       return path; 
                                     }))
-      .pipe(gulp.dest('./preview/static/img'));
+      .pipe(gulp.dest('./preview/static/images'));
   }
 
   // Copies over SVGs or other image files
-  var other = gulp.src(['./build/static/img/**/*','!./build/static/img/**/*.{png,jpg,JPG}'])
-    .pipe(changed('./preview/static/img'))
-    .pipe(gulp.dest('./preview/static/img'));
+  var other = gulp.src(['./build/static/images/**/*','!./build/static/images/**/*.{png,jpg,JPG}'])
+    .pipe(changed('./preview/static/images'))
+    .pipe(gulp.dest('./preview/static/images'));
   // Copy explicitly non-altered imgs
-  var copied = gulp.src('./build/static/img/**/_*.{png,jpg,JPG}')
-    .pipe(changed('./preview/static/img'))
-    .pipe(gulp.dest('./preview/static/img'));
+  var copied = gulp.src('./build/static/images/**/_*.{png,jpg,JPG}')
+    .pipe(changed('./preview/static/images'))
+    .pipe(gulp.dest('./preview/static/images'));
 
   // Create and copy resized imgs
   var s1 = resize(3000);
@@ -153,7 +153,7 @@ gulp.task('img',function () {
 
 // Watch for new images added and run img task
 gulp.task('watch', function () {
-    watch('./build/static/img/**/*', batch(function (events, done) {
+    watch('./build/static/images/**/*', batch(function (events, done) {
         gulp.start('img', done);
     }));
 });
@@ -174,23 +174,33 @@ gulp.task('docs', ['browser-sync'], function(){
 /// Publish Tasks
 
 gulp.task('mover', function(){
-  return gulp.src(['./preview/**/*','!./preview/static/js/**/*.js','!./preview/static/css/**/*.css'])
+  return gulp.src(['./preview/**/*','!./preview/static/**/*'])
     .pipe(gulp.dest('./publish'));
 });
 
-gulp.task('minJS', function(){
+gulp.task('pubStatic', function(){
+  return gulp.src(['./preview/static/**/*','!./preview/static/js/**/*.js','!./preview/static/css/**/*.css','!./preview/static/images/**/*.{png,jpg,JPG}'])
+    .pipe(gulp.dest('./publish'));
+})
+
+gulp.task('pubImg',function(){
+  return gulp.src('./preview/static/images/**/*.{png,jpg,JPG}')
+    .pipe(gulp.dest('./publish/images'));
+})
+
+gulp.task('pubJS', function(){
   return gulp.src('./preview/static/js/**/*.js')
     .pipe(uglify())
-    .pipe(gulp.dest('./publish/static/js'));
+    .pipe(gulp.dest('./publish/js'));
 });
 
-gulp.task('minCSS',function(){
+gulp.task('pubCSS',function(){
   return gulp.src('./preview/static/css/**/*.css')
     .pipe(minifyCss({ keepSpecialComments : 0, processImport: false }))
-    .pipe(gulp.dest('./publish/static/css'));
+    .pipe(gulp.dest('./publish/css'));
 });
 
-gulp.task('zip', ['mover','minJS','minCSS'], function () {
+gulp.task('zip', ['mover','pubStatic','pubImg','pubJS','pubCSS'], function () {
   var meta = require('./meta.json');
   return gulp.src(['./*','!aws.json']) // Zip everything except aws credentials
       .pipe(zip(meta.name.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g,'-').toLowerCase() + '.zip'))
@@ -230,4 +240,4 @@ gulp.task('default', ['img','scss','css','js','templates','dependencies','watch'
   gulp.watch('build/templates/**/*.html', ['templates']);
 });
 
-gulp.task('publish',['mover','minJS','minCSS','zip','aws']);
+gulp.task('publish',['mover','pubStatic','pubImg','pubJS','pubCSS','zip','aws']);
