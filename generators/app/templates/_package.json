@@ -4,6 +4,7 @@
   "main": "app.js",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.2.17",
     "browser-sync": "^2.9.10",
     "express": "^4.13.3",
     "gulp": "^3.9.0",

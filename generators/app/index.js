@@ -121,15 +121,11 @@ module.exports = yeoman.generators.Base.extend({
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/base.html','./build/templates/',function(err){});
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/index.html','./build/templates/',function(err){});
       // CSS & SCSS
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/theme.css','./build/static/css/common/',function(err){
-        fs.rename('./build/static/css/common/theme.css','./build/static/css/common/+base.css');
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/theme.scss','./build/static/sass/',function(err){
+        fs.rename('./build/static/sass/theme.scss','./build/static/sass/+base.scss');
       });
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/mixins.scss','./build/static/sass/',function(err){
-        fs.rename('./build/static/sass/mixins.scss','./build/static/sass/_mixins.scss');
-      });
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/variables.scss','./build/static/sass/',function(err){
-        fs.rename('./build/static/sass/variables.scss','./build/static/sass/_variables.scss');
-      });
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_mixins.scss','./build/static/sass/',function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_variables.scss','./build/static/sass/',function(err){});
       // JS
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/customJS.js','./build/static/js/',function(err){
         fs.rename('./build/static/js/customJS.js','./build/static/js/+custom.js');
@@ -149,10 +145,6 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('_img.html'),
         this.destinationPath('./build/templates/partials/img.html')
-      );
-      this.fs.copy(
-        this.templatePath('_dmnapps.png'),
-        this.destinationPath('./build/static/images/_dmnapps.png')
       );
       this.fs.copy(
         this.templatePath('defaultImage.jpg'),

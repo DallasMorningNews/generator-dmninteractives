@@ -18,8 +18,13 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     batch = require('gulp-batch'),
     merge = require('merge-stream'),
-    open = require('open');
+    open = require('open'),
+    aws = require('aws-sdk');
 
+
+var awsJson = require('./aws.json'),
+    meta = require('./meta.json'),
+    appName = meta.name.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g,'-').toLowerCase();
 
 ////////////////////////////
 /// Server Tasks
@@ -201,24 +206,19 @@ gulp.task('pubCSS',function(){
 });
 
 gulp.task('zip', ['mover','pubStatic','pubImg','pubJS','pubCSS'], function () {
-  var meta = require('./meta.json');
   return gulp.src(['./*','!aws.json']) // Zip everything except aws credentials
-      .pipe(zip(meta.name.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g,'-').toLowerCase() + '.zip'))
+      .pipe(zip(appName + '.zip'))
       .pipe(gulp.dest('publish'));
 });
 
 
-
 gulp.task('aws', ['zip'], function() {
-  var awsJson = require('./aws.json'),
-      meta = require('./meta.json'),
-      appName = meta.name.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g,'-').toLowerCase(),
-      year = meta.publishYear,
+  var year = meta.publishYear,
       publisher = awspublish.create(awsJson);
 
   return gulp.src('./publish/**/*')
       .pipe(confirm({
-        question: 'You\'re about to publish this project to AWS under directory \''+year+'/'+appName+'\'. Are you sure?',
+        question: 'You\'re about to publish this project to AWS under directory \''+year+'/'+appName+'\'. In the process, we\'ll also wipe out any uploads to the test directory. Are you sure you want to do this?',
         input: '_key:y'
       }))
       .pipe(rename(function (path) {
@@ -228,6 +228,54 @@ gulp.task('aws', ['zip'], function() {
       .pipe(awspublish.reporter());
 });
 
+// Publish to a test directory.
+gulp.task('test', ['zip'], function() {
+  var publisher = awspublish.create(awsJson);
+  return gulp.src('./publish/**/*')
+      .pipe(confirm({
+        question: 'You\'re about to publish this project to AWS under directory test/\''+appName+'\'. Are you sure?',
+        input: '_key:y'
+      }))
+      .pipe(rename(function (path) {
+          path.dirname = '/test/'+appName + '/' + path.dirname.replace('.\\','');
+      }))
+      .pipe(publisher.publish({},{force:true}))
+      .pipe(awspublish.reporter());
+});
+
+
+// Clears the files uploaded to a test directory
+gulp.task('clear-test', ['aws'],function() {
+
+  aws.config.update({
+        accessKeyId: awsJson.accessKeyId, 
+        secretAccessKey: awsJson.secretAccessKey,
+        region: 'us-east-1'
+      });
+
+  var s3 = new aws.S3(),
+      params = {
+        Bucket: awsJson.params.Bucket,
+        // Do not change this!
+        Prefix: 'test/' + appName
+      };
+
+  s3.listObjects(params, function(err, data) {
+    if (err) return console.log(err);
+
+    params = {Bucket: awsJson.params.Bucket};
+    params.Delete = {};
+    params.Delete.Objects = [];
+
+    data.Contents.forEach(function(content) {
+      params.Delete.Objects.push({Key: content.Key});
+    });
+
+    s3.deleteObjects(params, function(err, data) {
+      return console.log(data.Deleted.length);
+    });
+  });
+});
 
 ////////////////////////////
 /// Task runs
@@ -240,4 +288,10 @@ gulp.task('default', ['img','scss','css','js','templates','dependencies','watch'
   gulp.watch('build/templates/**/*.html', ['templates']);
 });
 
-gulp.task('publish',['mover','pubStatic','pubImg','pubJS','pubCSS','zip','aws']);
+gulp.task('publish',['mover','pubStatic','pubImg','pubJS','pubCSS','zip','aws','clear-test'], function(){
+  console.log('Published at: http://interactives.dallasnews.com/'+meta.publishYear+ '/' + appName);
+});
+
+gulp.task('publish-test',['mover','pubStatic','pubImg','pubJS','pubCSS','zip','test'],function(){
+  console.log('Preview at: http://interactives.dallasnews.com/test/' + appName);
+});
