@@ -206,7 +206,7 @@ gulp.task('pubCSS',function(){
 });
 
 gulp.task('zip', ['mover','pubStatic','pubImg','pubJS','pubCSS'], function () {
-  return gulp.src(['./**/*','!aws.json']) // Zip everything except aws credentials
+  return gulp.src(['./**/*','!aws.json','!node_modules/**/*','!.git/*','!./**/*.zip']) // Zip everything except aws credentials, node modules, git files and zip files
       .pipe(zip(appName + '.zip'))
       .pipe(gulp.dest('publish'));
 });
@@ -271,16 +271,19 @@ gulp.task('clear-test', ['aws'],function() {
       params.Delete.Objects.push({Key: content.Key});
     });
 
-    s3.deleteObjects(params, function(err, data) {
-      return console.log(data.Deleted.length);
-    });
+    if(params.Delete.Objects.length > 0){
+      s3.deleteObjects(params, function(err, data) {
+        return console.log(data.Deleted.length);
+      });
+    }
+    
   });
 });
 
 ////////////////////////////
 /// Task runs
 
-gulp.task('default', ['img','scss','css','js','templates','dependencies','watch','browser-sync','docs'], function () {
+gulp.task('default', ['scss','css','js','templates','dependencies','watch','browser-sync','docs'], function () {
   gulp.watch('build/static/sass/**/*.scss', ['scss','css']);
   gulp.watch('build/static/js/**/*.js*', ['js']);
   gulp.watch('build/static/css/**/*.css', ['css']);

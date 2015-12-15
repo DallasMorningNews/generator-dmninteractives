@@ -1,9 +1,6 @@
 'use strict';
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
 var mkdirp = require('mkdirp');
-var wiredep = require('wiredep');
 var camelCase = require('camel-case');
 var fs = require('fs');
 
