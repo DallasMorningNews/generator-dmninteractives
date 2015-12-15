@@ -243,7 +243,8 @@ module.exports = yeoman.generators.Base.extend({
         imgURL: '<Preview image url>',
         imgWidth: '<Preview image width>',
         imgHeight: '<Preview image height>',
-        twitter: 'dallasnews',
+        twitter: '<@siteHandle e.g. @dallasnews>',
+        authorTwitter: '<@twitterHandle e.g. @AlanPeppard>'
       }
       this.fs.writeJSON('meta.json', metaJson);
     },
