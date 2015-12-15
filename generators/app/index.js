@@ -262,6 +262,7 @@ module.exports = yeoman.generators.Base.extend({
     });
 
     this.on('dependenciesInstalled', function() {
+        this.spawnCommand('gulp', ['img']);
         this.spawnCommand('gulp');
     });
 
