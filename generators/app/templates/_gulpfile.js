@@ -206,7 +206,7 @@ gulp.task('pubCSS',function(){
 });
 
 gulp.task('zip', ['mover','pubStatic','pubImg','pubJS','pubCSS'], function () {
-  return gulp.src(['./*','!aws.json']) // Zip everything except aws credentials
+  return gulp.src(['./**/*','!aws.json']) // Zip everything except aws credentials
       .pipe(zip(appName + '.zip'))
       .pipe(gulp.dest('publish'));
 });

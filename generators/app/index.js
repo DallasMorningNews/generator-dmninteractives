@@ -55,11 +55,11 @@ module.exports = yeoman.generators.Base.extend({
         name: 'Leaflet.js',
         value: 'includeLeaflet',
         checked: false
-      },{
+      }/*,{
         name: 'FontAwesome',
         value: 'includeFontAwesome',
         checked: false
-      },{
+      }*/,{
         name: 'Bootstrap',
         value: 'includeBootstrap',
         checked: false
@@ -85,7 +85,7 @@ module.exports = yeoman.generators.Base.extend({
       this.dependencies.includeModernizr = hasFeature('includeModernizr');
       this.dependencies.includeD3 = hasFeature('includeD3');
       this.dependencies.includeLeaflet = hasFeature('includeLeaflet');
-      this.dependencies.includeFontAwesome = hasFeature('includeFontAwesome');
+      /*this.dependencies.includeFontAwesome = hasFeature('includeFontAwesome');*/
       this.dependencies.includeBootstrap = hasFeature('includeBootstrap');
 
       done();
@@ -206,9 +206,9 @@ module.exports = yeoman.generators.Base.extend({
       if(this.dependencies.includeLeaflet){
         dependencyFetch(this, optional_cdn.Leaflet);
       }
-      if(this.dependencies.includeFontAwesome){
+/*      if(this.dependencies.includeFontAwesome){
         dependencyFetch(this, optional_cdn.FontAwesome);
-      }
+      }*/
       if(this.dependencies.includeBootstrap){
         dependencyFetch(this, optional_cdn.Bootstrap);
       }    
