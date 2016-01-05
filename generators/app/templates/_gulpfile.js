@@ -126,6 +126,7 @@ gulp.task('img',function () {
       .pipe(changed('./preview/static/images')) // Only process changed images for speed.
       .pipe(imageResize({ width : size, upscale : false, imageMagick : true }))
       .pipe(imagemin({
+            optimizationLevel: 4, 
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
         }))
