@@ -17,7 +17,7 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       name:'appName',
-      message: 'What\'s your project\'s name?'
+      message: 'What\'s your directory name?'
     },{
       name:'awsAccessKey',
       message: 'What\'s your AWS access key?'
@@ -227,13 +227,13 @@ module.exports = yeoman.generators.Base.extend({
       var timestamp = new Date();
       var metaJson = {
         name: this.projectName,
+        title: '<Title of Interactive>',
         publishYear: timestamp.getFullYear(),
         publishDate: timestamp.getFullYear() +"-"+(timestamp.getMonth()+1)+"-"+timestamp.getDate()+"T00:00:00Z",
         description: '<Project description>',
         url: 'interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+"/",
         id: (Math.floor(Math.random() * 100000000000) + 1).toString() ,
         authors: '<Project authors>',
-        authorsFbook: '<Project authors\' facebook links>',
         desk: '<e.g., entertainment>',
         section: '<e.g., books>',
         keywords: ["interactives","dallas","dallas news","dfw news","dallas newspaper","dallas morning news","dallas morning news newspaper"],
