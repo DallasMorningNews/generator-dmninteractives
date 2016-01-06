@@ -41,7 +41,7 @@ module.exports = yeoman.generators.Base.extend({
       message: '(Metadata) What desk does this interactive belong to? (news, business, entertainment, lifestyle, opinion, sports)'
     }, {
       name: 'section',
-      message: '(Metadata) What section does this interactive belong to? (To see sections, go to dallasnews.com and hover over appropriate desk)'
+      message: '(Metadata) What section does this interactive belong to? (To see sections, go to dallasnews.com and hover over appropriate desk, sections with multiple words should be hyphen separated, ex: food-and-wine)'
     }, {
       name: 'keywords',
       message: '(Metadata) What are the keywords associated with this interactive? (comma separated, no space)'
