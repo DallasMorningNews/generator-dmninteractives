@@ -24,7 +24,47 @@ module.exports = yeoman.generators.Base.extend({
     },{
       name:'awsSecretKey',
       message: 'What\'s your AWS secret key?'
-    },{
+    },
+
+    /* stuff I'm adding */
+    {
+      name: 'title',
+      message: '(Metadata) What is the title of your interactive?'
+    }, {
+      name: 'description',
+      message: '(Metadata) What is the description of your interactive?'
+    }, {
+      name: 'authors',
+      message: '(Metadata) Who is/are the authors? (comma separated,no space)'
+    }, {
+      name: 'desk',
+      message: '(Metadata) What desk does this interactive belong to? (news, business, entertainment, lifestyle, opinion, sports)'
+    }, {
+      name: 'section',
+      message: '(Metadata) What section does this interactive belong to? (To see sections, go to dallasnews.com and hover over appropriate desk)'
+    }, {
+      name: 'keywords',
+      message: '(Metadata) What are the keywords associated with this interactive? (comma separated, no space)'
+    }, {
+      name: 'shareImage',
+      message: '(Metadata) What is the parent directory and name of the share image? (ex: images/share.jpg)'
+    }, {
+      name: 'shareImageWidth',
+      message: '(Metadata) What is the width of your share image in pixels? (standard is 1200; use just the number, no unit of measure)'
+    }, {
+      name: 'shareImageHeight',
+      message: '(Metadata) What is the height of your share image in pixels? (standard is 630; use just the number, no unit of measure)'
+    }, {
+      name: 'twitter',
+      message: '(Metadata) What is the twitter handle for the section this interactive belongs to? (@dallasnews, @sportsdaydfw, @DMNbiz, @guidelive, @DMNopinion)'
+    }, {
+      name: 'authorTwitter',
+      message: '(Metadata) What is the author\'s twitter handle? (include the @ symbol, comma separate if multiple)'
+    },
+
+
+    /* end stuff I'm adding */
+    {
       type: 'checkbox',
       name: 'features',
       message: 'What more would you like?',
@@ -75,6 +115,17 @@ module.exports = yeoman.generators.Base.extend({
       this.appName = camelCase(props.appName);
       this.awsAccessKey = props.awsAccessKey;
       this.awsSecretKey = props.awsSecretKey;
+      this.title = props.title;
+      this.description = props.description;
+      this.authors = props.authors;
+      this.desk = props.desk;
+      this.section = props.section;
+      this.keywords = props.keywords;
+      this.shareImage = props.shareImage;
+      this.shareImageWidth = props.shareImageWidth;
+      this.shareImageHeight = props.shareImageHeight;
+      this.twitter = props.twitter;
+      this.authorTwitter = props.authorTwitter;
       this.dependencies = {};
       this.dependencies.includeJQUI = hasFeature('includeJQUI');
       this.dependencies.includeJQSwipe = hasFeature('includeJQSwipe');
@@ -225,23 +276,25 @@ module.exports = yeoman.generators.Base.extend({
 
     meta: function(){
       var timestamp = new Date();
+      var defaultKeywords = ["interactives","dallas","dallas news","dfw news","dallas newspaper","dallas morning news","dallas morning news newspaper"];
+      var customKeywords = this.keywords.split(",");
       var metaJson = {
         name: this.projectName,
-        title: '<Title of Interactive>',
+        title: this.title,
         publishYear: timestamp.getFullYear(),
         publishDate: timestamp.getFullYear() +"-"+(timestamp.getMonth()+1)+"-"+timestamp.getDate()+"T00:00:00Z",
-        description: '<Project description>',
+        description: this.description,
         url: 'interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+"/",
         id: (Math.floor(Math.random() * 100000000000) + 1).toString() ,
-        authors: '<Project authors>',
-        desk: '<e.g., entertainment>',
-        section: '<e.g., books>',
-        keywords: ["interactives","dallas","dallas news","dfw news","dallas newspaper","dallas morning news","dallas morning news newspaper"],
-        imgURL: '<Preview image url>',
-        imgWidth: '<Preview image width>',
-        imgHeight: '<Preview image height>',
-        twitter: '<@siteHandle e.g. @dallasnews>',
-        authorTwitter: '<@twitterHandle e.g. @AlanPeppard>'
+        authors: this.authors,
+        desk: this.desk,
+        section: this.section,
+        keywords: defaultKeywords.concat(customKeywords),
+        imgURL: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+"/" + this.shareImage,
+        imgWidth: this.shareImageWidth,
+        imgHeight: this.shareImageHeight,
+        twitter: this.twitter,
+        authorTwitter: this.authorTwitter
       }
       this.fs.writeJSON('meta.json', metaJson);
     },
