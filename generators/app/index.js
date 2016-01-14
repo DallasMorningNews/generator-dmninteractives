@@ -209,7 +209,7 @@ module.exports = yeoman.generators.Base.extend({
 
       ///////////////////////////////////
       // Create output directories
-
+      mkdirp('./build/static/assets');
       mkdirp('./preview');
       mkdirp('./publish');
     },

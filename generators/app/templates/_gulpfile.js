@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     minifyCss = require('gulp-minify-css'),
     imageResize = require('gulp-image-resize'),
     imagemin = require('gulp-imagemin'),
+    imageminJpegRecompress = require('imagemin-jpeg-recompress'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
@@ -18,7 +19,6 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     batch = require('gulp-batch'),
     merge = require('merge-stream'),
-    open = require('open'),
     aws = require('aws-sdk');
 
 
@@ -78,6 +78,12 @@ gulp.task('dependencies', function () {
   return merge(css, js);
 });
 
+gulp.task('assets', function () {
+  var assets = gulp.src('./build/static/assets/**/*')
+    .pipe(gulp.dest('./preview/static/assets'));
+  return assets;
+});
+
 gulp.task('js', function () {
   // Copy data assets
   var data = gulp.src('./build/static/js/**/*.json')
@@ -108,7 +114,22 @@ gulp.task('scss', function () {
   return merge(bundled, copied);
 });
 
-gulp.task('css', ['scss'] ,function () {
+gulp.task('sass', function () {
+  // Compile bundled SCSS
+  var bundled = gulp.src('./build/static/sass/**/+*.sass')
+    .pipe(sass({indentedSyntax: true}).on('error', sass.logError))
+    .pipe(rename({extname: ".sass.css"}))
+    .pipe(gulp.dest('./build/static/css/common'));
+  // Compile non-bundled SCSS
+  var copied = gulp.src(['./build/static/sass/**/*.sass','!./build/static/sass/**/+*.sass'])
+    .pipe(sass({indentedSyntax: true}).on('error', sass.logError))
+    .pipe(rename({extname: ".sass.css"}))
+    .pipe(gulp.dest('./build/static/css'));
+
+  return merge(bundled, copied);
+});
+
+gulp.task('css', ['scss','sass'] ,function () {
   // Copy bundled CSS
   var bundled = gulp.src('./build/static/css/**/+*.css')
     .pipe(concat('styles-bundle.css'))
@@ -120,9 +141,9 @@ gulp.task('css', ['scss'] ,function () {
   return merge(bundled, copied);
 });
 
-gulp.task('img',function () {
+gulp.task('png',function () {
   function resize(size){
-    return gulp.src(['./build/static/images/**/*.{png,jpg,JPG}','!./build/static/images/**/_*.{png,jpg,JPG}'])
+    return gulp.src(['./build/static/images/**/*.png','!./build/static/images/**/_*.png'])
       .pipe(changed('./preview/static/images')) // Only process changed images for speed.
       .pipe(imageResize({ width : size, upscale : false, imageMagick : true }))
       .pipe(imagemin({
@@ -138,6 +159,46 @@ gulp.task('img',function () {
       .pipe(gulp.dest('./preview/static/images'));
   }
 
+  // Create and copy resized pngs
+  var s1 = resize(3000);
+  var s2 = resize(2400);
+  var s3 = resize(1800);
+  var s4 = resize(1200);
+  var s5 = resize(600);
+
+  return merge(s1, s2, s3, s4, s5);
+});
+
+gulp.task('jpg',function () {
+  function resize(size){
+    return gulp.src(['./build/static/images/**/*.{jpg,JPG}','!./build/static/images/**/_*.{jpg,JPG}'])
+      .pipe(changed('./preview/static/images')) // Only process changed images for speed.
+      .pipe(imageResize({ width : size, upscale : false, imageMagick : true }))
+      .pipe(imageminJpegRecompress({
+        loops: 3,
+        min: 50,
+        max: 75,
+        target: 0.9999
+      })())
+      .pipe(rename(function (path)  { 
+                                      path.basename += ("-" + size.toString()); 
+                                      path.extname = path.extname.toLowerCase(); 
+                                      return path; 
+                                    }))
+      .pipe(gulp.dest('./preview/static/images'));
+  }
+
+  // Create and copy resized jpgs
+  var s1 = resize(3000);
+  var s2 = resize(2400);
+  var s3 = resize(1800);
+  var s4 = resize(1200);
+  var s5 = resize(600);
+
+  return merge(s1, s2, s3, s4, s5);
+});
+
+gulp.task('img',['png','jpg'], function() {
   // Copies over SVGs or other image files
   var other = gulp.src(['./build/static/images/**/*','!./build/static/images/**/*.{png,jpg,JPG}'])
     .pipe(changed('./preview/static/images'))
@@ -147,14 +208,7 @@ gulp.task('img',function () {
     .pipe(changed('./preview/static/images'))
     .pipe(gulp.dest('./preview/static/images'));
 
-  // Create and copy resized imgs
-  var s1 = resize(3000);
-  var s2 = resize(2400);
-  var s3 = resize(1800);
-  var s4 = resize(1200);
-  var s5 = resize(600);
-
-  return merge(other, copied, s1, s2, s3, s4, s5);
+  return merge(other, copied);
 });
 
 // Watch for new images added and run img task
@@ -172,9 +226,7 @@ gulp.task('templates', function () {
         .pipe(gulp.dest('preview'));
 });
 
-gulp.task('docs', ['browser-sync'], function(){
-  open("https://github.com/DallasMorningNews/generator-dmninteractives/wiki/Cookbook");
-});
+
 
 ////////////////////////////
 /// Publish Tasks
@@ -284,8 +336,9 @@ gulp.task('clear-test', ['aws'],function() {
 ////////////////////////////
 /// Task runs
 
-gulp.task('default', ['scss','css','js','templates','dependencies','watch','browser-sync','docs'], function () {
-  gulp.watch('build/static/sass/**/*.scss', ['scss','css']);
+gulp.task('default', ['assets','scss','sass','css','js','templates','dependencies','watch','browser-sync'], function () {
+  gulp.watch('build/static/assets/**/*', ['assets']);
+  gulp.watch('build/static/sass/**/*.{scss,sass}', ['scss','sass','css']);
   gulp.watch('build/static/js/**/*.js*', ['js']);
   gulp.watch('build/static/css/**/*.css', ['css']);
   gulp.watch('build/static/vendor/**/*.{css,js}', ['dependencies']);
