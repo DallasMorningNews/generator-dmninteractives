@@ -56,7 +56,7 @@ module.exports = yeoman.generators.Base.extend({
       message: '(Metadata) What is the height of your share image in pixels? (standard is 630; use just the number, no unit of measure)'
     }, {
       name: 'twitter',
-      message: '(Metadata) What is the twitter handle for the section this interactive belongs to? (@dallasnews, @sportsdaydfw, @DMNbiz, @guidelive, @DMNopinion)'
+      message: '(Metadata) What is the twitter handle for the section this interactive belongs to? Note: DO NOT include the "@" symbol (dallasnews, sportsdaydfw, DMNbiz, guidelive, DMNopinion)'
     }, {
       name: 'authorTwitter',
       message: '(Metadata) What is the author\'s twitter handle? (include the @ symbol, comma separate if multiple)'
@@ -284,7 +284,7 @@ module.exports = yeoman.generators.Base.extend({
         publishYear: timestamp.getFullYear(),
         publishDate: timestamp.getFullYear() +"-"+(timestamp.getMonth()+1)+"-"+timestamp.getDate()+"T00:00:00Z",
         description: this.description,
-        url: 'interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+"/",
+        url: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+"/",
         id: (Math.floor(Math.random() * 100000000000) + 1).toString() ,
         authors: this.authors,
         desk: this.desk,
