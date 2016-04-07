@@ -1,6 +1,6 @@
 {
   "name": "generator-dmninteractives",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Yeoman generator for interactive pages at The Dallas Morning News",
   "license": "MIT",
   "main": "app/index.js",
@@ -20,9 +20,8 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "camel-case": "^1.1.2",
     "mkdirp": "^0.5.1",
-    "node-slug": "0.0.2",
+    "string": "^3.3.1",
     "yeoman-generator": "^0.19.0"
   },
   "devDependencies": {
