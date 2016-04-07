@@ -208,7 +208,7 @@ module.exports = yeoman.generators.Base.extend({
         publishYear: timestamp.getFullYear(),
         publishDate: timestamp.getFullYear() +"-"+(timestamp.getMonth()+1)+"-"+timestamp.getDate()+"T00:00:00Z",
         description: "<Description>",
-        url: 'interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+"/",
+        url: 'interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.directoryName+"/",
         id: (Math.floor(Math.random() * 100000000000) + 1).toString() ,
         authors: "<Authors>",
         desk: "<Desk>",
