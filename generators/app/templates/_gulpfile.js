@@ -223,7 +223,7 @@ gulp.task('templates', function () {
 /// Publish Tasks
 
 gulp.task('zip', function () {
-  return gulp.src(['./**/*','!aws.json','!node_modules/**/*','!.git/*','!./**/*.zip']) // Zip everything except aws credentials, node modules, git files and zip files
+  return gulp.src(['./**/*','!aws.json','!node_modules/**/*','!.git/*','!./**/*.zip','!./build/static/vendor/**/*']) // Zip everything except aws credentials, node modules, bower components, git files and zip files
       .pipe(zip(appName + '.zip'))
       .pipe(gulp.dest('public'));
 });

@@ -34,6 +34,10 @@ module.exports = yeoman.generators.Base.extend({
         value: 'includeJQSwipe',
         checked: false
       },{
+        name: 'Bowser',
+        value: 'includeBowser',
+        checked: false
+      },{
         name: 'Modernizr',
         value: 'includeModernizr',
         checked: false
@@ -71,6 +75,7 @@ module.exports = yeoman.generators.Base.extend({
       this.dependencies = {};
       this.dependencies.includeJQUI = hasFeature('includeJQUI');
       this.dependencies.includeJQSwipe = hasFeature('includeJQSwipe');
+      this.dependencies.includeBowser = hasFeature('includeBowser');
       this.dependencies.includeModernizr = hasFeature('includeModernizr');
       this.dependencies.includeD3 = hasFeature('includeD3');
       this.dependencies.includeLeaflet = hasFeature('includeLeaflet');
@@ -154,9 +159,7 @@ module.exports = yeoman.generators.Base.extend({
       var bowerJson = {
         name: this.appName,
         private: true,
-        dependencies: {
-          'jquery': null
-        }
+        dependencies: {}
       };
 
       if(this.dependencies.includeJQUI){
@@ -166,7 +169,10 @@ module.exports = yeoman.generators.Base.extend({
         bowerJson.dependencies['jquery-touchswipe'] = null;
       }
       if(this.dependencies.includeBowser){
-        bowerJson.dependencies['jquery-touchswipe'] = null;
+        bowerJson.dependencies['bowser'] = 'ded/bowser#^1.0.0';
+      }
+      if(this.dependencies.includeModernizr){
+        bowerJson.dependencies['modernizr-min'] = null;
       }
       if(this.dependencies.includeD3){
         bowerJson.dependencies['d3'] = null;
