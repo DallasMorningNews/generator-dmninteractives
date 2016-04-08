@@ -151,6 +151,7 @@ module.exports = yeoman.generators.Base.extend({
       ///////////////////////////////////
       // Create output directories
       mkdirp('./build/static/assets');
+      mkdirp('./build/static/vendor');
       mkdirp('./build/misc');
       mkdirp('./public');
     },
