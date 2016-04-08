@@ -14,12 +14,12 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     zip = require('gulp-zip'),
-    awspublish = require('gulp-awspublish'),
     confirm = require('gulp-confirm'),
+    awspublish = require('gulp-awspublish'),
+    aws = require('aws-sdk'),
     watch = require('gulp-watch'),
     batch = require('gulp-batch'),
     merge = require('merge-stream'),
-    aws = require('aws-sdk'),
     S = require('string');
 
 
@@ -34,7 +34,7 @@ gulp.task('browser-sync', function () {
   browserSync.init({
       files: ['./public/**/*'],
       server: {
-          baseDir: "./public/"
+          baseDir: './public/'
       },
       ghostMode: false
   });
@@ -94,12 +94,12 @@ gulp.task('scss', function () {
   // Compile bundled SCSS
   var bundled = gulp.src('./build/static/sass/**/+*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(rename({extname: ".scss.css"}))
+    .pipe(rename({extname: '.scss.css'}))
     .pipe(gulp.dest('./build/static/css/common'));
   // Compile non-bundled SCSS
   var copied = gulp.src(['./build/static/sass/**/*.scss','!./build/static/sass/**/+*.scss'])
     .pipe(sass().on('error', sass.logError))
-    .pipe(rename({extname: ".scss.css"}))
+    .pipe(rename({extname: '.scss.css'}))
     .pipe(gulp.dest('./build/static/css'));
 
   return merge(bundled, copied);
@@ -109,12 +109,12 @@ gulp.task('sass', function () {
   // Compile bundled SCSS
   var bundled = gulp.src('./build/static/sass/**/+*.sass')
     .pipe(sass({indentedSyntax: true}).on('error', sass.logError))
-    .pipe(rename({extname: ".sass.css"}))
+    .pipe(rename({extname: '.sass.css'}))
     .pipe(gulp.dest('./build/static/css/common'));
   // Compile non-bundled SCSS
   var copied = gulp.src(['./build/static/sass/**/*.sass','!./build/static/sass/**/+*.sass'])
     .pipe(sass({indentedSyntax: true}).on('error', sass.logError))
-    .pipe(rename({extname: ".sass.css"}))
+    .pipe(rename({extname: '.sass.css'}))
     .pipe(gulp.dest('./build/static/css'));
 
   return merge(bundled, copied);
@@ -143,7 +143,7 @@ gulp.task('png',function () {
             svgoPlugins: [{removeViewBox: false}],
         }))
       .pipe(rename(function (path)  {
-                                      path.basename += ("-" + size.toString());
+                                      path.basename += ('-' + size.toString());
                                       path.extname = path.extname.toLowerCase();
                                       return path;
                                     }))
@@ -172,7 +172,7 @@ gulp.task('jpg',function () {
         target: 0.9999
       })())
       .pipe(rename(function (path)  {
-                                      path.basename += ("-" + size.toString());
+                                      path.basename += ('-' + size.toString());
                                       path.extname = path.extname.toLowerCase();
                                       return path;
                                     }))
@@ -241,7 +241,7 @@ gulp.task('aws', ['zip'], function() {
       .pipe(rename(function (path) {
           path.dirname = '/'+year+'/'+appName + '/' + path.dirname.replace('.\\','');
       }))
-      .pipe(publisher.publish({},{force:true}))
+      .pipe(publisher.publish({},{force:false}))
       .pipe(publisher.cache())
       .pipe(awspublish.reporter());
 });
@@ -257,7 +257,7 @@ gulp.task('test', ['zip'], function() {
       .pipe(rename(function (path) {
           path.dirname = '/test/'+appName + '/' + path.dirname.replace('.\\','');
       }))
-      .pipe(publisher.publish({},{force:true}))
+      .pipe(publisher.publish({},{force:false}))
       .pipe(publisher.cache())
       .pipe(awspublish.reporter());
 });

@@ -62,7 +62,7 @@ module.exports = yeoman.generators.Base.extend({
 
       function hasFeature(feat) {
         return features && features.indexOf(feat) !== -1;
-      };
+      }
 
       this.directoryName = S(props.directoryName).slugify().s;
       this.appName = S(props.directoryName).camelize().s;
@@ -102,16 +102,16 @@ module.exports = yeoman.generators.Base.extend({
       // hosted in interactives_starterkit
 
       // HTML
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/base.html','./build/templates/',function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/index.html','./build/templates/',function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/base.html','./build/templates/', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/index.html','./build/templates/', function(err){});
       // CSS & SCSS
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/theme.scss','./build/static/sass/',function(err){
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/theme.scss','./build/static/sass/', function(err){
         fs.rename('./build/static/sass/theme.scss','./build/static/sass/+base.scss');
       });
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_mixins.scss','./build/static/sass/',function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_variables.scss','./build/static/sass/',function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_mixins.scss','./build/static/sass/', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_variables.scss','./build/static/sass/', function(err){});
       // JS
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/customJS.js','./build/static/js/',function(err){
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/customJS.js','./build/static/js/', function(err){
         fs.rename('./build/static/js/customJS.js','./build/static/js/+custom.js');
       });
 
@@ -155,30 +155,30 @@ module.exports = yeoman.generators.Base.extend({
         name: this.appName,
         private: true,
         dependencies: {
-          "jquery": null
+          'jquery': null
         }
       };
 
       if(this.dependencies.includeJQUI){
-        bowerJson.dependencies["jquery-ui"] = null;
+        bowerJson.dependencies['jquery-ui'] = null;
       }
       if(this.dependencies.includeJQSwipe){
-        bowerJson.dependencies["jquery-touchswipe"] = null;
+        bowerJson.dependencies['jquery-touchswipe'] = null;
       }
       if(this.dependencies.includeBowser){
-        bowerJson.dependencies["jquery-touchswipe"] = null;
+        bowerJson.dependencies['jquery-touchswipe'] = null;
       }
       if(this.dependencies.includeD3){
-        bowerJson.dependencies["d3"] = null;
+        bowerJson.dependencies['d3'] = null;
       }
       if(this.dependencies.includeLeaflet){
-        bowerJson.dependencies["leaflet"] = null;
+        bowerJson.dependencies['leaflet'] = null;
       }
       if(this.dependencies.includeFontAwesome){
-        bowerJson.dependencies["fontawesome"] = null;
+        bowerJson.dependencies['fontawesome'] = null;
       }
       if(this.dependencies.includeBootstrap){
-        bowerJson.dependencies["bootstrap"] = null;
+        bowerJson.dependencies['bootstrap'] = null;
       }
       this.fs.writeJSON('bower.json', bowerJson);
       this.fs.copy(
@@ -201,24 +201,25 @@ module.exports = yeoman.generators.Base.extend({
 
     meta: function(){
       var timestamp = new Date();
-      var defaultKeywords = ["interactives","dallas","dallas news","dfw news","dallas newspaper","dallas morning news","dallas morning news newspaper"];
+      var defaultKeywords = ['interactives','dallas','dallas news','dfw news','dallas newspaper','dallas morning news','dallas morning news newspaper'];
       var metaJson = {
+        id: (Math.floor(Math.random() * 100000000000) + 1).toString(),
         name: this.directoryName,
-        title: "<Title>",
+        pageTitle: '<Title>',
+        shareTitle: '<Title>',
+        shareText: '<Text>',
         publishYear: timestamp.getFullYear(),
-        publishDate: timestamp.getFullYear() +"-"+(timestamp.getMonth()+1)+"-"+timestamp.getDate()+"T00:00:00Z",
-        description: "<Description>",
-        url: 'interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.directoryName+"/",
-        id: (Math.floor(Math.random() * 100000000000) + 1).toString() ,
-        authors: "<Authors>",
-        desk: "<Desk>",
-        section: "<Section>",
+        publishDate: timestamp.getFullYear() +'-'+(timestamp.getMonth()+1)+'-'+timestamp.getDate()+'T00:00:00Z',
+        url: 'interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.directoryName+'/',
+        authors: '<Authors>',
+        desk: '<Desk>',
+        section: '<Section>',
         keywords: defaultKeywords,
-        imgURL: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +"/"+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+"/" + this.shareImage,
-        imgWidth: this.shareImageWidth,
-        imgHeight: this.shareImageHeight,
-        twitter: this.twitter,
-        authorTwitter: this.authorTwitter
+        imgURL: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+'/'+ this.shareImage,
+        imgWidth: '<Width>',
+        imgHeight: '<Height>',
+        houseTwitter: '<@handle>',
+        authorTwitter: '<@handle>'
       }
       this.fs.writeJSON('meta.json', metaJson);
     },
