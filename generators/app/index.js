@@ -210,16 +210,16 @@ module.exports = yeoman.generators.Base.extend({
         shareText: '<Text>',
         publishYear: timestamp.getFullYear(),
         publishDate: timestamp.getFullYear() +'-'+(timestamp.getMonth()+1)+'-'+timestamp.getDate()+'T00:00:00Z',
-        url: 'interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.directoryName+'/',
-        authors: '<Authors>',
+        url: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.directoryName+'/',
+        authors: '<Authors - comma-separated, lowercase>',
         desk: '<Desk>',
         section: '<Section>',
         keywords: defaultKeywords,
         imgURL: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+'/'+ this.shareImage,
-        imgWidth: '<Width>',
-        imgHeight: '<Height>',
-        houseTwitter: '<@handle>',
-        authorTwitter: '<@handle>'
+        imgWidth: '<Width - w/out "px">',
+        imgHeight: '<Height - w/out "px">',
+        sectionTwitter: '<handle - w/out "@">',
+        authorTwitter: '<handle - w/out "@">'
       }
       this.fs.writeJSON('meta.json', metaJson);
     },
