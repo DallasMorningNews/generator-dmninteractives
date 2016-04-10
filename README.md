@@ -1,4 +1,4 @@
-# generator-dmninteractives
+# generator-dmninteractives [![NPM version][npm-image]][npm-url]
 
 A [Yeoman](http://yeoman.io) generator for DMN-flavored "interactive" pages with easy publishing.
 
@@ -70,3 +70,6 @@ The `public` directory includes transpiled SCSS, minified JavaScript and respons
 To publish to an AWS S3 bucket, fill out `aws.json`, if you didn't during setup. Then execute one of the gulp publish commands to publish to either the test or production directory of the bucket:
 - `gulp publish`
 - `gulp publish-test`
+
+[npm-image]: https://badge.fury.io/js/generator-dmninteractives.svg
+[npm-url]: https://npmjs.org/package/generator-dmninteractives
