@@ -1,6 +1,9 @@
 .env
 aws.json
 
+# Local cache
+cache
+
 # Logs
 logs
 *.log
