@@ -30,6 +30,7 @@
     "jshint-stylish": "^2.1.0",
     "main-bower-files": "^2.11.1",
     "merge-stream": "^1.0.0",
+    "run-sequence": "^1.1.5",
     "string": "^3.3.1"
   }
 }
