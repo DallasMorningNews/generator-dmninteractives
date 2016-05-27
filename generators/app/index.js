@@ -109,6 +109,9 @@ module.exports = yeoman.generators.Base.extend({
       // HTML
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/base.html','./build/templates/', function(err){});
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/index.html','./build/templates/', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/adblock1.html','./build/templates/', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/adblock2.html','./build/templates/', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/adblock3.html','./build/templates/', function(err){});
       // CSS & SCSS
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/theme.scss','./build/static/sass/', function(err){
         fs.rename('./build/static/sass/theme.scss','./build/static/sass/+base.scss');
@@ -215,6 +218,7 @@ module.exports = yeoman.generators.Base.extend({
         pageTitle: '<Title>',
         shareTitle: '<Title>',
         shareText: '<Text>',
+        tweetText: '<Text>',
         publishYear: timestamp.getFullYear(),
         publishDate: timestamp.getFullYear() +'-'+(timestamp.getMonth()+1)+'-'+timestamp.getDate()+'T00:00:00Z',
         url: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.directoryName+'/',
