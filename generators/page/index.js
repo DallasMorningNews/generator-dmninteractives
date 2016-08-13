@@ -46,14 +46,6 @@ module.exports = yeoman.Base.extend({
         value: 'includeD3',
         checked: false
       },{
-        name: 'Leaflet.js',
-        value: 'includeLeaflet',
-        checked: false
-      },{
-        name: 'FontAwesome',
-        value: 'includeFontAwesome',
-        checked: false
-      },{
         name: 'Bootstrap',
         value: 'includeBootstrap',
         checked: false
@@ -78,8 +70,6 @@ module.exports = yeoman.Base.extend({
       this.dependencies.includeBowser = hasFeature('includeBowser');
       this.dependencies.includeModernizr = hasFeature('includeModernizr');
       this.dependencies.includeD3 = hasFeature('includeD3');
-      this.dependencies.includeLeaflet = hasFeature('includeLeaflet');
-      this.dependencies.includeFontAwesome = hasFeature('includeFontAwesome');
       this.dependencies.includeBootstrap = hasFeature('includeBootstrap');
 
       done();
@@ -109,6 +99,9 @@ module.exports = yeoman.Base.extend({
       // HTML
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/base.html','./build/templates/', function(err){});
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/index.html','./build/templates/', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/adblock1.html','./build/templates/', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/adblock2.html','./build/templates/', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/adblock3.html','./build/templates/', function(err){});
       // CSS & SCSS
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/theme.scss','./build/static/sass/', function(err){
         fs.rename('./build/static/sass/theme.scss','./build/static/sass/+base.scss');
@@ -119,7 +112,6 @@ module.exports = yeoman.Base.extend({
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/customJS.js','./build/static/js/', function(err){
         fs.rename('./build/static/js/customJS.js','./build/static/js/+custom.js');
       });
-
       ////////////////////////////////////
       // Copy rest of template files
 
@@ -178,12 +170,6 @@ module.exports = yeoman.Base.extend({
       if(this.dependencies.includeD3){
         bowerJson.dependencies['d3'] = null;
       }
-      if(this.dependencies.includeLeaflet){
-        bowerJson.dependencies['leaflet'] = null;
-      }
-      if(this.dependencies.includeFontAwesome){
-        bowerJson.dependencies['fontawesome'] = null;
-      }
       if(this.dependencies.includeBootstrap){
         bowerJson.dependencies['bootstrap'] = null;
       }
@@ -215,6 +201,7 @@ module.exports = yeoman.Base.extend({
         pageTitle: '<Title>',
         shareTitle: '<Title>',
         shareText: '<Text>',
+        tweetText: '<Text>',
         publishYear: timestamp.getFullYear(),
         publishDate: timestamp.getFullYear() +'-'+(timestamp.getMonth()+1)+'-'+timestamp.getDate()+'T00:00:00Z',
         url: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.directoryName+'/',
@@ -227,7 +214,7 @@ module.exports = yeoman.Base.extend({
         imgHeight: '<Height - w/out "px">',
         sectionTwitter: '<handle - w/out "@">',
         authorTwitter: '<handle - w/out "@">'
-      }
+      };
       this.fs.writeJSON('meta.json', metaJson);
     },
 

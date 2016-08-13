@@ -19,7 +19,7 @@ module.exports = yeoman.Base.extend({
             name: 'Interactive page',
             value: 'page'
           },{
-            name: 'Embeddable graphic',
+            name: 'Embeddable graphic (Under construction!)',
             value: 'graphic'
           }
         ]

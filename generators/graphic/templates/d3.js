@@ -49,5 +49,3 @@ function draw(width, height){
 
   });
 }
-
-

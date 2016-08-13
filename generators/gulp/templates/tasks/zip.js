@@ -8,7 +8,7 @@ var meta = require('./../../meta.json'),
 
 module.exports = function() {
   return gulp.src([
-  		'./**/*','!aws.json',
+  		'./**/*','./.*','!aws.json',
   		'!node_modules/**/*','!.git/*',
   		'!./**/*.zip','!./build/static/vendor/**/*'
   	]) // Zip everything except aws credentials, node modules, bower components, git files and zip files

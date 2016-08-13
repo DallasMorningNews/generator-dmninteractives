@@ -1,5 +1,6 @@
 .env
 aws.json
+.awspublish*
 
 # Local cache
 cache
