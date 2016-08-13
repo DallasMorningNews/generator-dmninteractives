@@ -1,10 +1,6 @@
 {
   "name": "generator-dmninteractives",
-<<<<<<< HEAD
-  "version": "0.2.4",
-=======
   "version": "0.2.5",
->>>>>>> keep-em-separated
   "description": "Yeoman generator for interactive pages at The Dallas Morning News",
   "license": "MIT",
   "main": "app/index.js",
