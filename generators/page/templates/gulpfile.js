@@ -17,8 +17,7 @@ var runSequence = require('run-sequence'),
         'scss',
         'templates',
         'test',
-        'watch-images',
-        'zip'
+        'watch-images'
     ]);
 
 
@@ -40,7 +39,7 @@ gulp.task('default', ['assets','img','js','styles','templates','dependencies','w
 });
 
 gulp.task('package',function(callback){
-  runSequence('zip','aws','clear-test', callback)
+  runSequence('aws','clear-test', callback)
 });
 
 gulp.task('publish',['package'], function(){
