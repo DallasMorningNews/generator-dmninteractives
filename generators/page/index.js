@@ -139,6 +139,10 @@ module.exports = yeoman.Base.extend({
         this.templatePath('buttonRight.svg'),
         this.destinationPath('./build/static/images/buttonRight.svg')
       );
+      this.fs.copy(
+        this.templatePath('gitkeep'),
+        this.destinationPath('./build/static/vendor/.gitkeep')
+      );
 
       ///////////////////////////////////
       // Create output directories
