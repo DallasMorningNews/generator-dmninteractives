@@ -29,5 +29,8 @@
   },
   "dependencies": {
     "d3": "^4.2.8"
+  },
+  "browserify": {
+    "transform": [["babelify", { "presets": ["es2015"] }]]
   }
 }
