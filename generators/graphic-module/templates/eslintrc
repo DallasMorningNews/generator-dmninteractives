@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "es6-recommended"
+  ],
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console": 0,
+  },
+  "globals": {
+    "$": false,
+    "window": false,
+  },
+}

@@ -1,0 +1,49 @@
+# <%= appName %>
+
+Chart module for election Texas county choropleths.
+
+### Install
+```bash
+$ npm install --save <%= appName %>
+```
+
+##### Requirements
+
+This module uses ES6 syntax. To use as a pre-compiled module, you'll need a compiler like [babel](https://babeljs.io/).
+
+### Use
+
+In the client, include the `global-chart.js` bundle, which defines a global chart object, `<%= objName %>`:
+
+```html
+<script src="some/path/to/global-chart.js"></script>
+```
+
+To use as a module, simply import the chart object:
+```javascript
+import <%= objName %> from '<%= appName %>';
+```
+
+The chart object has two methods, one to create the chart, initially, and another to update it.
+
+```javascript
+var myChart = new <%= objName %>();
+
+// create needs a selection string and prefectched data
+myChart.create('#chart', data);
+
+// update needs only new data
+myChart.update(newData);
+```
+
+### Developing
+
+Just run gulp:
+```bash
+$ gulp
+```
+
+Or to minimize javascript before publishing:
+```bash
+$ gulp --production
+```

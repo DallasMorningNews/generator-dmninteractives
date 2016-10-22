@@ -21,6 +21,9 @@ module.exports = yeoman.Base.extend({
           },{
             name: 'Embeddable graphic (Under construction!)',
             value: 'graphic'
+          }, {
+            name: 'Graphic module',
+            value: 'graphic-module'
           }
         ]
       }
@@ -37,6 +40,8 @@ module.exports = yeoman.Base.extend({
       this.composeWith('dmninteractives:page');
     }else if(this.props.module === 'graphic'){
       this.composeWith('dmninteractives:graphic');
+    } else if(this.props.module === 'graphic-module'){
+      this.composeWith('dmninteractives:graphic-module');
     }
   },
 });
