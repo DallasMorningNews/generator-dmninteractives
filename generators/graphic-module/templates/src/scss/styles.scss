@@ -1,6 +1,7 @@
-@import 'chartwerk';
+@import 'variables';
+@import 'chart-styles';
 
-#chart {
+#{$<%= objName %>-container} {
   border: 1px dashed red;
   width: 50%;
   min-width: 290px;

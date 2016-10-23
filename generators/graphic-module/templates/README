@@ -1,6 +1,8 @@
 # <%= appName %>
 
-Chart module for election Texas county choropleths.
+Chart module for _{your chart type here}_.
+
+![](preview.png)
 
 ### Install
 ```bash
@@ -36,9 +38,20 @@ myChart.create('#chart', data);
 myChart.update(newData);
 ```
 
+To apply this chart's default styles when using SCSS, simply define the variable `$<%= objName %>-container` to represent the ID or class of the chart's container(s) and import the `_chart-styles.scss` partial.
+
+```CSS
+$<%= objName %>-container: '#chart';
+
+@import 'path/to/<%= appName %>/src/scss/_chart-styles';
+```
+
+
 ### Developing
 
-Just run gulp:
+Write your chart code in `chart.js` and add custom styles to `_chart-styles.scss`.
+
+Then, just run gulp:
 ```bash
 $ gulp
 ```

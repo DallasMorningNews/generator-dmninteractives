@@ -16,7 +16,7 @@ module.exports = yeoman.Base.extend({
       message: 'What\'s your npm project name, e.g., "dmn-chart-scatterplot"?'
     },{
       name:'objName',
-      message: 'What\'s the name of the chart module users will call, e.g., "texasChoropleth"?'
+      message: 'What\'s the name of the chart class users will call, e.g., "TexasChoropleth"?'
     }];
 
     this.prompt(prompts, function (props) {
@@ -60,6 +60,10 @@ module.exports = yeoman.Base.extend({
         this.templatePath('eslintrc'),
         this.destinationPath('./.eslintrc')
       );
+      this.fs.copy(
+        this.templatePath('preview.png'),
+        this.destinationPath('./preview.png')
+      );
     },
 
     srcFiles: function () {
@@ -72,13 +76,20 @@ module.exports = yeoman.Base.extend({
         this.destinationPath('./src/js/global-chart.js'),
         { objName: this.objName }
       );
-      this.fs.copy(
-        this.templatePath('src/scss/_chartwerk.scss'),
-        this.destinationPath('./src/scss/_chartwerk.scss')
+      this.fs.copyTpl(
+        this.templatePath('src/scss/_variables.scss'),
+        this.destinationPath('./src/scss/_variables.scss'),
+        { objName: this.objName }
       );
-      this.fs.copy(
+      this.fs.copyTpl(
+        this.templatePath('src/scss/_chart-styles.scss'),
+        this.destinationPath('./src/scss/_chart-styles.scss'),
+        { objName: this.objName }
+      );
+      this.fs.copyTpl(
         this.templatePath('src/scss/styles.scss'),
-        this.destinationPath('./src/scss/styles.scss')
+        this.destinationPath('./src/scss/styles.scss'),
+        { objName: this.objName }
       );
     },
 
