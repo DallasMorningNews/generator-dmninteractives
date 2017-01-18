@@ -22,7 +22,7 @@
     "mkdirp": "^0.5.1",
     "octonode": "^0.7.7",
     "string": "^3.3.1",
-    "valid-url": "^1.0.9",
+    "underscore": "^1.8.3",
     "yeoman-generator": "^0.19.0"
   },
   "devDependencies": {
