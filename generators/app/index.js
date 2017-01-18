@@ -47,7 +47,7 @@ module.exports = yeoman.Base.extend({
       {
         type: 'list',
         name: 'module',
-        message: 'Welcome. What would like to make today?',
+        message: 'Welcome. What would you like to make today?',
         choices: _.map(
           this.subGeneratorConfigs,
           function(config) {
