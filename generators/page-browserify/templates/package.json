@@ -4,6 +4,7 @@
   "main": "app.js",
   "license": "ISC",
   "dependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "string": "^3.3.1"
   }
 }
