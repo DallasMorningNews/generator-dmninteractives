@@ -1,0 +1,9 @@
+{
+  "name": "<%= appName %>",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  }
+}
