@@ -198,6 +198,7 @@ module.exports = yeoman.Base.extend({
 
   install: function () {
     this.installDependencies({
+      bower: false,
       callback: function() {
         this.emit('dependenciesInstalled');
       }.bind(this)
