@@ -1,5 +1,45 @@
 {
     "verboseName": "Interactive page v2 (Browserify-enabled)",
     "description": "TK",
-    "priority": 1
+    "priority": 1,
+    "filesFromRepos": {
+        "DallasMorningNews/interactives_starterkit": [
+            {
+                "source": "templates/base.html",
+                "dest": { "path": "./build/templates/"  }
+            },
+            {
+                "source": "templates/index.html",
+                "dest": { "path": "./build/templates/" }
+            },
+            {
+                "source": "templates/adblock1.html",
+                "dest": { "path": "./build/templates/" }
+            },
+            {
+                "source": "templates/adblock2.html",
+                "dest": { "path": "./build/templates/" }
+            },
+            {
+                "source": "templates/adblock3.html",
+                "dest": { "path": "./build/templates/" }
+            },
+            {
+                "source": "css/theme.scss",
+                "dest": { "path": "./build/static/sass/", "name": "_base.scss" }
+            },
+            {
+                "source": "css/_mixins.scss",
+                "dest": { "path": "./build/static/sass/" }
+            },
+            {
+                "source": "css/_variables.scss",
+                "dest": { "path": "./build/static/sass/" }
+            },
+            {
+                "source": "js/customJS.js",
+                "dest": { "path": "./build/static/js/", "name": "custom.js" }
+            }
+        ]
+    }
 }
