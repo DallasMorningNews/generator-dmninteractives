@@ -62,15 +62,23 @@ module.exports = yeoman.Base.extend({
     });
   },
 
-  subgen() {
-    if (_.contains(_.map(this.subGeneratorConfigs, 'typeSlug'), this.props.module)) {
+  subgen: function () {
+    if (
+      _.contains(
+        _.pluck(this.subGeneratorConfigs, 'typeSlug'),
+        this.props.module
+      )
+    ) {
       this.composeWith(
-        `dmninteractives:${this.props.module}`,
+        'dmninteractives:' + this.props.module,
         {
           options: {
-            baseConfig: _.find(this.subGeneratorConfigs, { typeSlug: this.props.module }),
-          },
-        }  // eslint-disable-line comma-dangle
+            baseConfig: _.findWhere(
+              this.subGeneratorConfigs,
+              { typeSlug: this.props.module }
+            )
+          }
+        }
       );
     }
   },
