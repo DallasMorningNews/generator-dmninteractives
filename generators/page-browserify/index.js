@@ -82,10 +82,6 @@ module.exports = yeoman.Base.extend({
       // Fetch remote template files from github
       // hosted in interactives_starterkit
       if (!_.isUndefined(this.baseConfig.filesFromRepos)) {
-        this.log(this.baseConfig.filesFromRepos);
-      }
-
-      if (!_.isUndefined(this.baseConfig.filesFromRepos)) {
         _.each(this.baseConfig.filesFromRepos, function(repoFiles, repoName) {
           var repo = githubClient.repo(repoName);
 
