@@ -1,0 +1,24 @@
+<!-- Macros for creating responsive images tags -->
+
+{% macro jpg(filename, alt, class='', id='', sizes='(min-width: 1px) 100vw, 100vw', srcSize='1800') %}
+<img
+    srcset="images/{{filename}}-600.jpg 600w, images/{{filename}}-1200.jpg 1200w, images/{{filename}}-1800.jpg 1800w, images/{{filename}}-2400.jpg 2400w, images/{{filename}}-3000.jpg 3000w"
+    sizes="{{sizes}}"
+    src="images/{{filename}}-{{srcSize}}.jpg"
+    alt="{{alt}}"
+    class="{{class}}"
+    id="{{id}}"
+/>
+{% endmacro %}
+
+
+{% macro png(filename, alt, class='', id='', sizes='(min-width: 1px) 100vw, 100vw', srcSize='1800') %}
+<img
+    srcset="images/{{filename}}-600.png 600w, images/{{filename}}-1200.png 1200w, images/{{filename}}-1800.png 1800w, images/{{filename}}-2400.png 2400w, images/{{filename}}-3000.png 3000w"
+    sizes="{{sizes}}"
+    src="images/{{filename}}-{{srcSize}}.png"
+    alt="{{alt}}"
+    class="{{class}}"
+    id="{{id}}"
+/>
+{% endmacro %}
