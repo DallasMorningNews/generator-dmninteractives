@@ -71,7 +71,17 @@ module.exports = yeoman.Base.extend({
         this.props.module
       )
     ) {
-      this.composeWith('dmninteractives:' + this.props.module);
+      this.composeWith(
+        'dmninteractives:' + this.props.module,
+        {
+          options: {
+            baseConfig: _.findWhere(
+              this.subGeneratorConfigs,
+              { typeSlug: this.props.module }
+            )
+          }
+        }
+      );
     }
   },
 });
