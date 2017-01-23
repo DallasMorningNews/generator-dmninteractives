@@ -1,51 +1,53 @@
-// var runSequence = require('run-sequence');
-var S = require('string');
-var meta = require('./meta.json');
-var appName = S(meta.name).slugify().s;
-//     gulp = require('./gulp')([
-//         'assets',
-//         'aws',
-//         'browser-sync',
-//         'clear-test',
-//         'css',
-//         'dependencies',
-//         'plain-images',
-//         'js',
-//         'optimize-images',
-//         'resize-images',
-//         'sass',
-//         'scss',
-//         'templates',
-//         'test',
-//         'watch-images'
-//     ]);
+const runSequence = require('run-sequence');
+const S = require('string');
 
 
-// gulp.task('img', function(callback){
-//   runSequence('optimize-images','resize-images','plain-images', callback);
-// });
-//
-// gulp.task('styles', function(callback){
-//   runSequence('scss','sass','css', callback);
-// });
-//
-// gulp.task('default', ['assets','img','js','styles','templates','dependencies','watch-images','browser-sync'], function () {
-//   gulp.watch('build/static/assets/**/*', ['assets']);
-//   gulp.watch('build/static/sass/**/*.{scss,sass}', ['scss','sass','css']);
-//   gulp.watch('build/static/js/**/*.js*', ['js']);
-//   gulp.watch('build/static/css/**/*.css', ['css']);
-//   gulp.watch('build/static/vendor/**/*.{css,js}', ['dependencies']);
-//   gulp.watch('build/templates/**/*.html', ['templates']);
-// });
-//
+const gulp = require('./gulp')([
+  'assets',
+  'aws',
+  // 'clear-test',
+  // 'dependencies',
+  'plain-images',
+  // 'js',
+  'optimize-images',
+  'resize-images',
+  'scss',
+  // 'templates',
+  // 'test',
+  // 'watch-images',
+  'server'
+]);
+const meta = require('./meta.json');
+
+
+const appName = S(meta.name).slugify().s;
+
+
+gulp.task('img', callback => {
+  runSequence('optimize-images','resize-images','plain-images', callback);
+});
+
+gulp.task('styles', callback => { runSequence('scss', callback) });
+
+gulp.task('default', [
+  'assets',
+  'img',
+  // 'js',
+  'styles',
+  // 'templates',
+  // 'dependencies',
+  // 'watch-images',
+  'server'
+], () => {});
+
 // gulp.task('package',function(callback){
 //   runSequence('aws','clear-test', callback)
 // });
-//
+
 // gulp.task('publish',['package'], function(){
 //   console.log('Published at: http://interactives.dallasnews.com/' + meta.publishYear + '/' + appName);
 // });
-//
+
 // gulp.task('publish-test',['test'],function(){
 //   console.log('public at: http://interactives.dallasnews.com/test/' + appName);
 // });
