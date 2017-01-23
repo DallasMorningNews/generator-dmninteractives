@@ -71,9 +71,16 @@ module.exports = yeoman.Base.extend({
         this.destinationPath('./package.json'),
         { appName: this.appName }
       );
+    },
+
+    gulpfiles: function () {
       this.fs.copy(
         this.templatePath('gulpfile.js'),
         this.destinationPath('./gulpfile.js')
+      );
+      this.fs.copy(
+        this.templatePath('./gulp/**/*'),
+        this.destinationPath('./gulp/')
       );
     },
 
@@ -110,7 +117,7 @@ module.exports = yeoman.Base.extend({
 
       this.fs.copy(
         this.templatePath('bundled-styles.scss'),
-        this.destinationPath('./build/static/sass/bundled-styles.scss')
+        this.destinationPath('./build/static/scss/bundled-styles.scss')
       );
 
       this.fs.copy(
