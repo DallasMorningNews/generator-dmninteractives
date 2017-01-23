@@ -26,15 +26,15 @@
             },
             {
                 "source": "css/theme.scss",
-                "dest": { "path": "./build/static/sass/", "name": "_base.scss" }
+                "dest": { "path": "./build/static/scss/", "name": "_base.scss" }
             },
             {
                 "source": "css/_mixins.scss",
-                "dest": { "path": "./build/static/sass/" }
+                "dest": { "path": "./build/static/scss/" }
             },
             {
                 "source": "css/_variables.scss",
-                "dest": { "path": "./build/static/sass/" }
+                "dest": { "path": "./build/static/scss/" }
             },
             {
                 "source": "js/customJS.js",
