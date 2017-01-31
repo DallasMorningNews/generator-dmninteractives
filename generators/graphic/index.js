@@ -105,11 +105,20 @@ module.exports = yeoman.Base.extend({
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/theme.scss','./build/static/sass/', function(err){
         fs.rename('./build/static/sass/theme.scss','./build/static/sass/+base.scss');
       });
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/header.scss','./build/static/sass/', function(err){
+        fs.rename('./build/static/sass/header.scss','./build/static/sass/+header.scss');
+      });
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/footer.scss','./build/static/sass/', function(err){
+        fs.rename('./build/static/sass/footer.scss','./build/static/sass/+footer.scss');
+      });
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_mixins.scss','./build/static/sass/', function(err){});
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_variables.scss','./build/static/sass/', function(err){});
       // JS
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/customJS.js','./build/static/js/', function(err){
         fs.rename('./build/static/js/customJS.js','./build/static/js/+custom.js');
+      });
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/furniture.js','./build/static/js/', function(err){
+        fs.rename('./build/static/js/furniture.js','./build/static/js/+furniture.js');
       });
 
       ////////////////////////////////////
