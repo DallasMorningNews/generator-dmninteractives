@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 
 const chalk = require('chalk');
@@ -26,7 +24,7 @@ module.exports = yeoman.Base.extend({
       name: 'slug',
       message: 'What\'s your graphics\'s slug?',
       default: process.cwd().split(path.sep).pop(),
-      filter: (answer) => S(answer).slugify().s,
+      filter: answer => S(answer).slugify().s,
     }, {
       type: 'checkbox',
       message: 'Which fonts would you like to include?',
@@ -44,24 +42,24 @@ module.exports = yeoman.Base.extend({
       }],
     }, {
       type: 'input',
-      name:'year',
+      name: 'year',
       message: 'What year will this graphic publish?',
       default: () => (new Date()).getFullYear(),
     }, {
       type: 'input',
-      name:'awsAccessKey',
+      name: 'awsAccessKey',
       message: 'What\'s your AWS access key?',
-      store: true
+      store: true,
     }, {
       type: 'input',
-      name:'awsSecretKey',
+      name: 'awsSecretKey',
       message: 'What\'s your AWS secret key?',
-      store: true
+      store: true,
     }];
 
     this.prompt(prompts, (answers) => {
-      this._prompts = answers;
-      this._prompts.projectName = `embed_${answers.slug}`;
+      this.prefs = answers;
+      this.prefs.projectName = `embed_${answers.slug}`;
 
       done();
     });
@@ -72,17 +70,17 @@ module.exports = yeoman.Base.extend({
       this.fs.copyTpl(
         this.templatePath('package.json'),
         this.destinationPath('./package.json'),
-        { appName: this._prompts.projectName }
+        { appName: this.prefs.projectName },
       );
 
       this.fs.copy(
         this.templatePath('gulpfile.js'),
-        this.destinationPath('./gulpfile.js')
+        this.destinationPath('./gulpfile.js'),
       );
 
       this.fs.copy(
         this.templatePath('gulp/**/*.js'),
-        this.destinationPath('./gulp/')
+        this.destinationPath('./gulp/'),
       );
     },
 
@@ -96,35 +94,35 @@ module.exports = yeoman.Base.extend({
 
       this.fs.copy(
         this.templatePath('src/sass/styles.scss'),
-        this.destinationPath('./src/sass/styles.scss')
+        this.destinationPath('./src/sass/styles.scss'),
       );
 
       // JavaScript
       this.fs.copy(
         this.templatePath('src/js/scripts.js'),
-        this.destinationPath('./src/js/scripts.js')
+        this.destinationPath('./src/js/scripts.js'),
       );
 
       // HTML
       this.fs.copyTpl(
         this.templatePath('dist/index.html'),
         this.destinationPath('./dist/index.html'),
-        { fonts: this._prompts.fonts, }
+        { fonts: this.prefs.fonts },
       );
       this.fs.copyTpl(
         this.templatePath('dist/embed.html'),
         this.destinationPath('./dist/embed.html'),
-        { slug: this._prompts.slug, fonts: this._prompts.fonts, }
+        { slug: this.prefs.slug, fonts: this.prefs.fonts },
       );
     },
 
     aws() {
       const awsJson = {
-        accessKeyId: this._prompts.awsAccessKey,
-        secretAccessKey: this._prompts.awsSecretKey,
-        params:{
-          Bucket: 'interactives.dallasnews.com'
-        }
+        accessKeyId: this.prefs.awsAccessKey,
+        secretAccessKey: this.prefs.awsSecretKey,
+        params: {
+          Bucket: 'interactives.dallasnews.com',
+        },
       };
 
       this.fs.writeJSON('aws.json', awsJson);
@@ -132,8 +130,8 @@ module.exports = yeoman.Base.extend({
 
     meta() {
       const metaJson = {
-        name: this._prompts.slug,
-        publishYear: this._prompts.year,
+        name: this.prefs.slug,
+        publishYear: this.prefs.year,
       };
       this.fs.writeJSON('meta.json', metaJson);
     },
@@ -141,13 +139,13 @@ module.exports = yeoman.Base.extend({
     git() {
       this.fs.copy(
         this.templatePath('gitignore'),
-        this.destinationPath('./.gitignore')
+        this.destinationPath('./.gitignore'),
       );
 
       this.fs.copyTpl(
         this.templatePath('README.md'),
         this.destinationPath('./README.md'),
-        { slug: this._prompts.slug, year: this._prompts.year, }
+        { slug: this.prefs.slug, year: this.prefs.year },
       );
     },
   },
