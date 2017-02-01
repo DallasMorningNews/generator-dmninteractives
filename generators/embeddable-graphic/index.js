@@ -70,18 +70,15 @@ module.exports = yeoman.Base.extend({
       this.fs.copyTpl(
         this.templatePath('package.json'),
         this.destinationPath('./package.json'),
-        { appName: this.prefs.projectName },
-      );
+        { appName: this.prefs.projectName });
 
       this.fs.copy(
         this.templatePath('gulpfile.js'),
-        this.destinationPath('./gulpfile.js'),
-      );
+        this.destinationPath('./gulpfile.js'));
 
       this.fs.copy(
         this.templatePath('gulp/**/*.js'),
-        this.destinationPath('./gulp/'),
-      );
+        this.destinationPath('./gulp/'));
     },
 
     projectfiles() {
@@ -94,26 +91,22 @@ module.exports = yeoman.Base.extend({
 
       this.fs.copy(
         this.templatePath('src/sass/styles.scss'),
-        this.destinationPath('./src/sass/styles.scss'),
-      );
+        this.destinationPath('./src/sass/styles.scss'));
 
       // JavaScript
       this.fs.copy(
         this.templatePath('src/js/scripts.js'),
-        this.destinationPath('./src/js/scripts.js'),
-      );
+        this.destinationPath('./src/js/scripts.js'));
 
       // HTML
       this.fs.copyTpl(
         this.templatePath('dist/index.html'),
         this.destinationPath('./dist/index.html'),
-        { fonts: this.prefs.fonts },
-      );
+        { fonts: this.prefs.fonts });
       this.fs.copyTpl(
         this.templatePath('dist/embed.html'),
         this.destinationPath('./dist/embed.html'),
-        { slug: this.prefs.slug, fonts: this.prefs.fonts },
-      );
+        { slug: this.prefs.slug, fonts: this.prefs.fonts });
     },
 
     aws() {
@@ -139,14 +132,12 @@ module.exports = yeoman.Base.extend({
     git() {
       this.fs.copy(
         this.templatePath('gitignore'),
-        this.destinationPath('./.gitignore'),
-      );
+        this.destinationPath('./.gitignore'));
 
       this.fs.copyTpl(
         this.templatePath('README.md'),
         this.destinationPath('./README.md'),
-        { slug: this.prefs.slug, year: this.prefs.year },
-      );
+        { slug: this.prefs.slug, year: this.prefs.year });
     },
   },
 
