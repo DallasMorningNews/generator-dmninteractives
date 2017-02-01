@@ -10,9 +10,6 @@
     "email": "jmcclure@dallasnews.com",
     "url": "https://github.com/hobbes7878"
   },
-  "scripts": {
-    "test": "mocha"
-  },
   "files": [
     "generators"
   ],
@@ -30,7 +27,6 @@
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.9.0",
-    "mocha": "*"
+    "eslint-plugin-react": "^6.9.0"
   }
 }
