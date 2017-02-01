@@ -6,6 +6,10 @@ var yeoman      = require('yeoman-generator'),
 
 
 module.exports = yeoman.Base.extend({
+  initializing: function() {
+    this.composeWith('dmninteractives:linters');
+  },
+
   prompting: function () {
     var done = this.async();
 
@@ -55,10 +59,6 @@ module.exports = yeoman.Base.extend({
       this.fs.copy(
         this.templatePath('gitignore'),
         this.destinationPath('./.gitignore')
-      );
-      this.fs.copy(
-        this.templatePath('eslintrc'),
-        this.destinationPath('./.eslintrc')
       );
       this.fs.copy(
         this.templatePath('preview.png'),
