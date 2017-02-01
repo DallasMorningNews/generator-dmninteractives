@@ -1,0 +1,21 @@
+@import '../../node_modules/normalize.css/normalize';
+
+@import 'mixins';
+@import 'variables';
+
+
+html.embedded {
+  // Applied when embedded using Pym.js
+}
+
+body {
+  // This helps Pym.js more more accurately measure our <body>
+  &:before,
+  *:after {
+    content: " ";
+    display: table;
+  }
+}
+
+
+// Your styles go here
