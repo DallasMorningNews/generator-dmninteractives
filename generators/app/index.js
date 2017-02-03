@@ -1,11 +1,10 @@
-'use strict';
-var _ = require('lodash');
-var fs = require('fs');
-var path = require('path');
-var yeoman = require('yeoman-generator');
+const _ = require('lodash');
+const fs = require('fs');
+const path = require('path');
+const yeoman = require('yeoman-generator');
+
 
 module.exports = yeoman.Base.extend({
-
   prompting() {
     const done = this.async();
 
@@ -16,22 +15,22 @@ module.exports = yeoman.Base.extend({
     this.log('/_____/_/  /_/_/ |_/_/  |_/ .___/ .___/____/\n');
     this.log('                         /_/   /_/            \n');
 
-    var generatorDir = path.join(this.sourceRoot(), '../..');
-    var generatorSubdirs = _.filter(
+    const generatorDir = path.join(this.sourceRoot(), '../..');
+    const generatorSubdirs = _.filter(
       fs.readdirSync(generatorDir),
-      function(pathName) {
-        return fs.statSync(path.join(generatorDir, pathName)).isDirectory();
-      }
+      // eslint-disable-next-line comma-dangle
+      pathName => fs.statSync(path.join(generatorDir, pathName)).isDirectory()
     );
 
-    var subGeneratorConfigs = [];
-    _.each(generatorSubdirs, function(dirName) {
-      var rawConfigPath = path.join(generatorDir, dirName, 'config.json');
+    let subGeneratorConfigs = [];
+    _.each(generatorSubdirs, (dirName) => {
+      const rawConfigPath = path.join(generatorDir, dirName, 'config.json');
 
       if (fs.existsSync(rawConfigPath)) {
-        var rawConfig = require(rawConfigPath);
+        // eslint-disable-next-line import/no-dynamic-require,global-require
+        const rawConfig = require(rawConfigPath);
 
-        var finalConfig = _.clone(rawConfig);
+        const finalConfig = _.clone(rawConfig);
 
         finalConfig.typeSlug = dirName;
 
@@ -43,18 +42,17 @@ module.exports = yeoman.Base.extend({
 
     this.subGeneratorConfigs = subGeneratorConfigs;
 
-    var prompts = [
+    const prompts = [
       {
         type: 'list',
         name: 'module',
         message: 'Welcome. What would you like to make today?',
         choices: _.map(
           this.subGeneratorConfigs,
-          function(config) {
-            return { name: config.verboseName, value: config.typeSlug };
-          }
-        )
-      }
+          // eslint-disable-next-line comma-dangle
+          config => ({ name: config.verboseName, value: config.typeSlug })
+        ),
+      },
     ];
 
     this.prompt(prompts, (props) => {
@@ -63,18 +61,15 @@ module.exports = yeoman.Base.extend({
     });
   },
 
-  subgen: function () {
-    if (_.has(_.map(this.subGeneratorConfigs, 'typeSlug'), this.props.module)) {
+  subgen() {
+    if (_.includes(_.map(this.subGeneratorConfigs, 'typeSlug'), this.props.module)) {
       this.composeWith(
-        'dmninteractives:' + this.props.module,
+        `dmninteractives:${this.props.module}`,
         {
           options: {
-            baseConfig: _.findWhere(
-              this.subGeneratorConfigs,
-              { typeSlug: this.props.module }
-            )
-          }
-        }
+            baseConfig: _.find(this.subGeneratorConfigs, { typeSlug: this.props.module }),
+          },
+        }  // eslint-disable-line comma-dangle
       );
     }
   },
