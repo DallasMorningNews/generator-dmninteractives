@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
-  <% _.each(fonts, function( font ) { %>
-    <link rel="stylesheet" href="<%- font %>">
-  <% }); %>
-    <link rel="stylesheet" href="css/styles.css" />
+
+<% _.each(fonts, function( font ) { %>    <link rel="stylesheet" href="<%- font %>">
+<% }); %><link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+
     <!-- Your markup goes here -->
 
     <script src="js/scripts.js"></script>
