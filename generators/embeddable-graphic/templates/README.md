@@ -32,7 +32,7 @@ This is an embeddable graphic built using the [`dmninteractives` Yeoman generato
 The below embed code can be pasted into a Serif "code block":
 
 ```html
-<div id="embed-<%= slug %>" class="embed-preview"></div>
+<div id="embed-<%= slug %>"></div>
 
 <script src="//pym.nprapps.org/pym.v1.min.js"></script>
 <script>new pym.Parent('embed-<%= slug %>', '//interactives.dallasnews.com/embeds/<%= year %>/<%= slug %>/', {})</script>
