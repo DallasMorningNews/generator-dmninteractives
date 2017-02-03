@@ -1,5 +1,5 @@
 'use strict';
-var _ = require('underscore');
+var _ = require('lodash');
 var fs = require('fs');
 var path = require('path');
 var yeoman = require('yeoman-generator');
@@ -39,7 +39,7 @@ module.exports = yeoman.Base.extend({
       }
     });
 
-    subGeneratorConfigs = _.sortBy(subGeneratorConfigs, 'priority');
+    subGeneratorConfigs = _.sortBy(subGeneratorConfigs, ['priority']);
 
     this.subGeneratorConfigs = subGeneratorConfigs;
 
@@ -64,12 +64,7 @@ module.exports = yeoman.Base.extend({
   },
 
   subgen: function () {
-    if (
-      _.contains(
-        _.pluck(this.subGeneratorConfigs, 'typeSlug'),
-        this.props.module
-      )
-    ) {
+    if (_.has(_.map(this.subGeneratorConfigs, 'typeSlug'), this.props.module)) {
       this.composeWith(
         'dmninteractives:' + this.props.module,
         {
