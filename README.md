@@ -22,7 +22,7 @@ Translation: A simple app that helps speed up developing a custom "interactive" 
 Install global dependencies, including Yeoman and the generator.
 
 ```bash
-$ npm install -g gulp
+$ npm install -g gulp-cli
 $ npm install -g yo
 $ npm install -g generator-dmninteractives
 ```
