@@ -1,7 +1,7 @@
 'use strict';
 
 
-var _ = require('underscore');
+var _ = require('lodash');
 var fs = require('fs');
 var github = require('octonode');
 var googleURL = require('google-url-helper');
