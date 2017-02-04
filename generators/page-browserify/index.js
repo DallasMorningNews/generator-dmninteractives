@@ -57,8 +57,6 @@ module.exports = yeoman.Base.extend({
         );
       }
 
-      console.log(this);
-
       done();
     });
   },
