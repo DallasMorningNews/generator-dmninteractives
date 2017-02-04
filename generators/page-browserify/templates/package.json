@@ -17,6 +17,7 @@
     "gulp-confirm": "^1.0.4",
     "gulp-image-resize": "^0.7.0",
     "gulp-imagemin": "^2.3.0",
+    "gulp-nunjucks-render": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
