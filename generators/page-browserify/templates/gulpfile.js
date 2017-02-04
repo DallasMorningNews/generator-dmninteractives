@@ -5,17 +5,16 @@ const S = require('string');
 const gulp = require('./gulp')([
   'assets',
   'aws',
-  // 'clear-test',
-  // 'dependencies',
+  'aws-test',
+  'browserify',
+  'clear-test',
   'plain-images',
-  // 'js',
   'optimize-images',
   'resize-images',
   'scss',
   // 'templates',
-  // 'test',
-  // 'watch-images',
-  'server'
+  'server',
+  'watchify',
 ]);
 const meta = require('./meta.json');
 
@@ -23,31 +22,23 @@ const meta = require('./meta.json');
 const appName = S(meta.name).slugify().s;
 
 
-gulp.task('img', callback => {
-  runSequence('optimize-images','resize-images','plain-images', callback);
+gulp.task('img', (cb) => {
+  runSequence('optimize-images', 'resize-images', 'plain-images', cb);
 });
-
-gulp.task('styles', callback => { runSequence('scss', callback) });
 
 gulp.task('default', [
   'assets',
   'img',
-  // 'js',
-  'styles',
+  'scss',
+  'watchify',
   // 'templates',
-  // 'dependencies',
-  // 'watch-images',
-  'server'
+  'server',
 ], () => {});
 
-// gulp.task('package',function(callback){
-//   runSequence('aws','clear-test', callback)
-// });
+gulp.task('build', ['assets', 'img', 'scss', 'browserify']);
+// gulp.task('build', ['assets', 'img', 'scss', 'templates', 'browserify']);
 
-// gulp.task('publish',['package'], function(){
-//   console.log('Published at: http://interactives.dallasnews.com/' + meta.publishYear + '/' + appName);
-// });
 
-// gulp.task('publish-test',['test'],function(){
-//   console.log('public at: http://interactives.dallasnews.com/test/' + appName);
-// });
+gulp.task('publish', (cb) => { runSequence('build', 'aws', 'clear-test', cb); });
+
+gulp.task('publish-test', (cb) => { runSequence('build', 'aws-test', cb); });

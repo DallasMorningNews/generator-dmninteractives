@@ -7,10 +7,10 @@ const merge = require('merge-stream');
 
 module.exports = () => {
   const pngs = gulp.src([
-      './build/static/images/**/*.png',
-      '!./build/static/images/opt/**/*'
-    ])
-    .pipe(changed('./build/static/images/opt'))
+    './src/static/images/**/*.png',
+    '!./src/static/images/opt/**/*',
+  ])
+    .pipe(changed('./src/static/images/opt'))
     .pipe(
         imagemin({
           optimizationLevel: 4,
@@ -18,13 +18,13 @@ module.exports = () => {
           svgoPlugins: [{removeViewBox: false}],
         })
     )
-    .pipe(gulp.dest('./build/static/images/opt'));
+    .pipe(gulp.dest('./src/static/images/opt'));
 
   const jpgs = gulp.src([
-      './build/static/images/**/*.{jpg,JPG}',
-      '!./build/static/images/opt/**/*'
-    ])
-    .pipe(changed('./build/static/images/opt'))
+    './src/static/images/**/*.{jpg,JPG}',
+    '!./src/static/images/opt/**/*',
+  ])
+    .pipe(changed('./src/static/images/opt'))
     .pipe(imageminJpegRecompress({
           loops: 3,
           min: 50,
@@ -33,7 +33,7 @@ module.exports = () => {
           progressive: true
         })()
     )
-    .pipe(gulp.dest('./build/static/images/opt'));
+    .pipe(gulp.dest('./src/static/images/opt'));
 
   return merge(pngs, jpgs);
 };

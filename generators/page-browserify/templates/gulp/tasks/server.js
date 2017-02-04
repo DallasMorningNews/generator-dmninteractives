@@ -3,49 +3,37 @@ const browserSync = require('browser-sync').create();
 const gulp = require('gulp');
 const watch = require('gulp-watch');
 
+
 module.exports = () => {
   browserSync.init({
-    files: ['./public/**/*'],
+    files: ['./dist/**/*'],
     server: {
-      baseDir: './public/',
+      baseDir: './dist/',
     },
     ghostMode: false,
   });
 
+  watch('./src/static/assets/**/*', 'assets');
+
+  watch('./src/static/scss/**/*.scss', 'scss');
+
   watch(
-    './build/static/assets/**/*',
-    batch((e, cb) => { gulp.start('assets', cb)})
-  );
-  watch(
-    './build/static/scss/**/*.scss',
-    batch((e, cb) => { gulp.start('scss', cb)})
-  );
-  watch(
-    './build/static/js/**/*.js*',
-    batch((e, cb) => {
-      console.log('JS refresh.');
-      // gulp.start('js', cb)
-    })
-  );
-  // watch(
-  //   './build/static/vendor/**/*.{css,js}',
-  //   batch((e, cb) => {
-  //     // gulp.start('dependencies', cb)
-  //   })
-  // );
-  watch(
-    './build/templates/**/*.html',
+    './src/templates/**/*.html',
     batch((e, cb) => {
       console.log('Template refresh.');
+
+      if (typeof cb === 'undefined') {
+        //
+      }
       // gulp.start('templates', cb)
-    })
+    })  // eslint-disable-line comma-dangle
   );
   watch(
     [
-      './build/static/images/**/*',
-      '!./build/static/images/opt/**/*',
-      '!**/*.crdownload' // Ignore chrome's temp file
+      './src/static/images/**/*',
+      '!./src/static/images/opt/**/*',
+      '!**/*.crdownload', // Ignore chrome's temp file
     ],
-    batch((e, cb) => { gulp.start('img', done); })
+    batch((e, cb) => { gulp.start('img', cb); })  // eslint-disable-line comma-dangle
   );
 };

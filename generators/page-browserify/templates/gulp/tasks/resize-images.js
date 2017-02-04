@@ -47,17 +47,17 @@ module.exports = () => {
     }
 
     return gulp.src([
-        './build/static/images/opt/**/*.{png,jpg,JPG}',
-        '!./build/static/images/opt/**/_*.{png,jpg,JPG}'
-      ])
-        .pipe(changed('./public/images',{hasChanged: cacheCompare}))
+      './src/static/images/opt/**/*.{png,jpg,JPG}',
+      '!./src/static/images/opt/**/_*.{png,jpg,JPG}',
+    ])
+        .pipe(changed('./dist/images', { hasChanged: cacheCompare }))
         .pipe(imageResize({ width : size, upscale : false, imageMagick : true }))
         .pipe(rename(path => {
           path.basename += ('-' + size.toString());
           path.extname = path.extname.toLowerCase();
           return path;
         }))
-        .pipe(gulp.dest('./public/images'));
+        .pipe(gulp.dest('./dist/images'));
   }
 
   // Create and copy resized pngs
