@@ -12,7 +12,7 @@ const gulp = require('./gulp')([
   'optimize-images',
   'resize-images',
   'scss',
-  // 'templates',
+  'templates',
   'server',
   'watchify',
 ]);
@@ -31,14 +31,15 @@ gulp.task('default', [
   'img',
   'scss',
   'watchify',
-  // 'templates',
+  'templates',
   'server',
 ], () => {});
 
-gulp.task('build', ['assets', 'img', 'scss', 'browserify']);
-// gulp.task('build', ['assets', 'img', 'scss', 'templates', 'browserify']);
+
+gulp.task('build', ['assets', 'img', 'scss', 'templates', 'browserify']);
 
 
 gulp.task('publish', (cb) => { runSequence('build', 'aws', 'clear-test', cb); });
+
 
 gulp.task('publish-test', (cb) => { runSequence('build', 'aws-test', cb); });
