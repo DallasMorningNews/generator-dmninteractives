@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const chalk = require('chalk');
 const fs = require('fs');
 const github = require('octonode');
 const googleURL = require('google-url-helper');
@@ -13,6 +14,10 @@ const githubClient = github.client();
 
 
 module.exports = yeoman.Base.extend({
+  initializing() {
+    this.composeWith('dmninteractives:linters');
+  },
+
   prompting() {
     const done = this.async();
 
@@ -114,9 +119,9 @@ module.exports = yeoman.Base.extend({
       // Copy rest of template files
 
       this.fs.copy(
-        this.templatePath('bundled-styles.scss'),
+        this.templatePath('styles.scss'),
         // eslint-disable-next-line comma-dangle
-        this.destinationPath('./src/scss/bundled-styles.scss')
+        this.destinationPath('./src/scss/styles.scss')
       );
 
       this.fs.copy(
@@ -176,17 +181,17 @@ module.exports = yeoman.Base.extend({
 
     meta() {
       const timestamp = new Date();
-      // const defaultKeywords = [
-      //   'interactives', 'dallas', 'dallas news', 'dfw news', 'dallas newspaper',
-      //   'dallas morning news', 'dallas morning news newspaper',
-      // ];
+      const defaultKeywords = [
+        'interactives', 'dallas', 'dallas news', 'dfw news', 'dallas newspaper',
+        'dallas morning news', 'dallas morning news newspaper',
+      ];  // Archie-able
       const metaJson = {
         id: (Math.floor(Math.random() * 100000000000) + 1).toString(),
         name: this.directoryName,
-        // pageTitle: '<Title>',
-        // shareTitle: '<Title>',
-        // shareText: '<Text>',
-        // tweetText: '<Text>',
+        pageTitle: '<Title>',  // Archie-able
+        shareTitle: '<Title>',  // Archie-able
+        shareText: '<Text>',  // Archie-able
+        tweetText: '<Text>',  // Archie-able
         publishYear: timestamp.getFullYear(),
         publishDate: `${
           timestamp.getFullYear()
@@ -196,13 +201,16 @@ module.exports = yeoman.Base.extend({
           timestamp.getDate()
         }T00:00:00Z`,
         url: `http://interactives.dallasnews.com/${timestamp.getFullYear()}/${this.directoryName}/`,
-        // authors: '<Authors - comma-separated, capitalize first letter of names.
-        // NOTE: If more than one author, you will need to manually edit the author
-        // key in the parsely json object. Author names should be comma separated
-        // strings within an array in the parsely json object.>',
-        // desk: '<Desk>',
-        // section: '<Section>',
-        // keywords: defaultKeywords,
+        authors: [
+          '<Authors - comma-separated, capitalize first letter of names.',
+          'NOTE: If more than one author, you will need to manually edit the',
+          'author key in the parsely json object. Author names should be',
+          'comma-separated strings within an array in the parsely',
+          'json object.>',
+        ].join(' '),  // Archie-able
+        desk: '<Desk>',  // Archie-able
+        section: '<Section>',  // Archie-able
+        keywords: defaultKeywords,  // Archie-able
         imgURL: `http://interactives.dallasnews.com/${
           timestamp.getFullYear()
         }/${
@@ -212,8 +220,8 @@ module.exports = yeoman.Base.extend({
         }`,
         imgWidth: '<Width - w/out "px">',
         imgHeight: '<Height - w/out "px">',
-        // sectionTwitter: '<handle - w/out "@">',
-        // authorTwitter: '<handle - w/out "@">'
+        sectionTwitter: '<handle - w/out "@">',  // Archie-able
+        authorTwitter: '<handle - w/out "@">',  // Archie-able
       };
       this.fs.writeJSON('meta.json', metaJson);
     },
@@ -227,17 +235,32 @@ module.exports = yeoman.Base.extend({
   },
 
   install() {
-    this.composeWith('dmninteractives:linters');
-
     this.installDependencies({
       bower: false,
       // eslint-disable-next-line comma-dangle
       callback: () => { this.emit('dependenciesInstalled'); }
     });
 
-    this.on('dependenciesInstalled', () => {
-      this.spawnCommand('gulp', ['img']);
-      this.spawnCommand('gulp');
+    // this.on('dependenciesInstalled', () => {
+    //   this.spawnCommand('gulp', ['img']);
+    //   this.spawnCommand('gulp');
+    // });
+  },
+
+  end() {
+    const done = this.async();
+    const imageProcess = this.spawnCommand('gulp', ['img']);
+
+    imageProcess.on('close', () => {
+      const buildProcess = this.spawnCommand('gulp', ['build']);
+
+      buildProcess.on('close', () => {
+        this.log(`\n${chalk.bold('Done!')}`);
+        this.log(` See the generated ${chalk.yellow('README.md')} for usage info.`);
+        this.log(` Run ${chalk.magenta('gulp')} to start developing.\n`);
+
+        done();
+      });
     });
   },
 
