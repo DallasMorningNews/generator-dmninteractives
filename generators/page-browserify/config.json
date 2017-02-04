@@ -6,39 +6,39 @@
         "DallasMorningNews/interactives_starterkit": [
             {
                 "source": "templates/base.html",
-                "dest": { "path": "./build/templates/"  }
+                "dest": { "path": "./src/templates/"  }
             },
             {
                 "source": "templates/index.html",
-                "dest": { "path": "./build/templates/" }
+                "dest": { "path": "./src/templates/" }
             },
             {
                 "source": "templates/adblock1.html",
-                "dest": { "path": "./build/templates/" }
+                "dest": { "path": "./src/templates/" }
             },
             {
                 "source": "templates/adblock2.html",
-                "dest": { "path": "./build/templates/" }
+                "dest": { "path": "./src/templates/" }
             },
             {
                 "source": "templates/adblock3.html",
-                "dest": { "path": "./build/templates/" }
+                "dest": { "path": "./src/templates/" }
             },
             {
                 "source": "css/theme.scss",
-                "dest": { "path": "./build/static/scss/", "name": "_base.scss" }
+                "dest": { "path": "./src/static/scss/", "name": "_base.scss" }
             },
             {
                 "source": "css/_mixins.scss",
-                "dest": { "path": "./build/static/scss/" }
+                "dest": { "path": "./src/static/scss/" }
             },
             {
                 "source": "css/_variables.scss",
-                "dest": { "path": "./build/static/scss/" }
+                "dest": { "path": "./src/static/scss/" }
             },
             {
                 "source": "js/customJS.js",
-                "dest": { "path": "./build/static/js/", "name": "custom.js" }
+                "dest": { "path": "./src/static/js/", "name": "custom.js" }
             }
         ]
     }
