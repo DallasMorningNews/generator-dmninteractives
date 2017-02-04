@@ -126,8 +126,8 @@ jspm_packages
 cache
 
 # Ignore the optimized images in src
-src/static/images/opt
+src/images/opt
 
 # Ignore every file in the vendor folder, other than the .gitkeep file
-src/static/vendor/*
-!src/static/vendor/.gitkeep
+src/vendor/*
+!src/vendor/.gitkeep

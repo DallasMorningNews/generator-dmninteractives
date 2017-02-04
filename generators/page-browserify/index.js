@@ -116,13 +116,13 @@ module.exports = yeoman.Base.extend({
       this.fs.copy(
         this.templatePath('bundled-styles.scss'),
         // eslint-disable-next-line comma-dangle
-        this.destinationPath('./src/static/scss/bundled-styles.scss')
+        this.destinationPath('./src/scss/bundled-styles.scss')
       );
 
       this.fs.copy(
         this.templatePath('data.json'),
         // eslint-disable-next-line comma-dangle
-        this.destinationPath('./src/static/js/data.json')
+        this.destinationPath('./src/js/data.json')
       );
 
       this.fs.copy(
@@ -134,31 +134,30 @@ module.exports = yeoman.Base.extend({
       this.fs.copy(
         this.templatePath('defaultImage.jpg'),
         // eslint-disable-next-line comma-dangle
-        this.destinationPath('./src/static/images/_defaultImage.jpg')
+        this.destinationPath('./src/images/_defaultImage.jpg')
       );
 
       this.fs.copy(
         this.templatePath('buttonLeft.svg'),
         // eslint-disable-next-line comma-dangle
-        this.destinationPath('./src/static/images/buttonLeft.svg')
+        this.destinationPath('./src/images/buttonLeft.svg')
       );
 
       this.fs.copy(
         this.templatePath('buttonRight.svg'),
         // eslint-disable-next-line comma-dangle
-        this.destinationPath('./src/static/images/buttonRight.svg')
+        this.destinationPath('./src/images/buttonRight.svg')
       );
 
       this.fs.copy(
         this.templatePath('gitkeep'),
         // eslint-disable-next-line comma-dangle
-        this.destinationPath('./src/static/vendor/.gitkeep')
+        this.destinationPath('./src/assets/.gitkeep')
       );
 
       // -------------------------
       // Create output directories
-      mkdirp('./src/static/assets');
-      mkdirp('./src/static/vendor');
+      mkdirp('./src/assets');
       mkdirp('./src/misc');
       mkdirp('./dist');
     },
