@@ -26,19 +26,19 @@
             },
             {
                 "source": "css/theme.scss",
-                "dest": { "path": "./src/static/scss/", "name": "_base.scss" }
+                "dest": { "path": "./src/scss/", "name": "_base.scss" }
             },
             {
                 "source": "css/_mixins.scss",
-                "dest": { "path": "./src/static/scss/" }
+                "dest": { "path": "./src/scss/" }
             },
             {
                 "source": "css/_variables.scss",
-                "dest": { "path": "./src/static/scss/" }
+                "dest": { "path": "./src/scss/" }
             },
             {
                 "source": "js/customJS.js",
-                "dest": { "path": "./src/static/js/", "name": "custom.js" }
+                "dest": { "path": "./src/js/", "name": "custom.js" }
             }
         ]
     }

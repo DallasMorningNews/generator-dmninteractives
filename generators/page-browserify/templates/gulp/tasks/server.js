@@ -13,9 +13,9 @@ module.exports = () => {
     ghostMode: false,
   });
 
-  watch('./src/static/assets/**/*', 'assets');
+  watch('./src/assets/**/*', 'assets');
 
-  watch('./src/static/scss/**/*.scss', 'scss');
+  watch('./src/scss/**/*.scss', 'scss');
 
   watch(
     './src/templates/**/*.html',
@@ -30,8 +30,8 @@ module.exports = () => {
   );
   watch(
     [
-      './src/static/images/**/*',
-      '!./src/static/images/opt/**/*',
+      './src/images/**/*',
+      '!./src/images/opt/**/*',
       '!**/*.crdownload', // Ignore chrome's temp file
     ],
     batch((e, cb) => { gulp.start('img', cb); })  // eslint-disable-line comma-dangle

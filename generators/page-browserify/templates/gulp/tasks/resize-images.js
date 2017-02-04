@@ -47,8 +47,8 @@ module.exports = () => {
     }
 
     return gulp.src([
-      './src/static/images/opt/**/*.{png,jpg,JPG}',
-      '!./src/static/images/opt/**/_*.{png,jpg,JPG}',
+      './src/images/opt/**/*.{png,jpg,JPG}',
+      '!./src/images/opt/**/_*.{png,jpg,JPG}',
     ])
         .pipe(changed('./dist/images', { hasChanged: cacheCompare }))
         .pipe(imageResize({ width : size, upscale : false, imageMagick : true }))
