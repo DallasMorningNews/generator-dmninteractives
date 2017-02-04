@@ -1,6 +1,7 @@
 const batch = require('gulp-batch');
 const browserSync = require('browser-sync').create();
 const gulp = require('gulp');
+const runSequence = require('run-sequence');
 const watch = require('gulp-watch');
 
 
@@ -13,27 +14,19 @@ module.exports = () => {
     ghostMode: false,
   });
 
-  watch('./src/assets/**/*', 'assets');
+  watch('./src/assets/**/*', () => { runSequence('assets'); });
 
-  watch('./src/scss/**/*.scss', 'scss');
+  watch('./src/scss/**/*.scss', () => { runSequence('scss'); });
 
-  watch(
-    './src/templates/**/*.html',
-    batch((e, cb) => {
-      console.log('Template refresh.');
+  watch('./src/templates/**/*.html', () => { runSequence('templates'); });
 
-      if (typeof cb === 'undefined') {
-        //
-      }
-      // gulp.start('templates', cb)
-    })  // eslint-disable-line comma-dangle
-  );
   watch(
     [
       './src/images/**/*',
       '!./src/images/opt/**/*',
       '!**/*.crdownload', // Ignore chrome's temp file
     ],
-    batch((e, cb) => { gulp.start('img', cb); })  // eslint-disable-line comma-dangle
+    () => { runSequence('img'); }  // eslint-disable-line comma-dangle
+    // batch((e, cb) => { gulp.start('img', cb); })
   );
 };
