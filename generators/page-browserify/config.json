@@ -37,8 +37,16 @@
                 "dest": { "path": "./src/scss/" }
             },
             {
+                "source": "css/header.scss",
+                "dest": { "path": "./src/scss/", "name": "_header.scss" }
+            },
+            {
+                "source": "css/footer.scss",
+                "dest": { "path": "./src/scss/", "name": "_footer.scss" }
+            },
+            {
                 "source": "js/customJS.js",
-                "dest": { "path": "./src/js/", "name": "custom.js" }
+                "dest": { "path": "./src/js/", "name": "scripts.js" }
             }
         ]
     }
