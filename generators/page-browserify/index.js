@@ -227,6 +227,8 @@ module.exports = yeoman.Base.extend({
   },
 
   install() {
+    this.composeWith('dmninteractives:linters');
+
     this.installDependencies({
       bower: false,
       // eslint-disable-next-line comma-dangle
