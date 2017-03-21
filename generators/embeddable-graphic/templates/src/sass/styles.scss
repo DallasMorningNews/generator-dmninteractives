@@ -2,16 +2,17 @@
 
 @import 'mixins';
 @import 'variables';
-
+@import 'base';
 
 html.embedded {
   // Applied when embedded using Pym.js
+  font-size: 10px;
 }
 
 body {
   // This helps Pym.js more more accurately measure our <body>
   &:before,
-  *:after {
+  &:after {
     content: " ";
     display: table;
   }
