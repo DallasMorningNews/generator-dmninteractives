@@ -90,8 +90,8 @@ module.exports = yeoman.Base.extend({
       });
 
       this.fs.copy(
-        this.templatePath('src/sass/styles.scss'),
-        this.destinationPath('./src/sass/styles.scss'));
+        this.templatePath('src/sass/**.scss'),
+        this.destinationPath('./src/sass/'));
 
       // JavaScript
       this.fs.copy(
