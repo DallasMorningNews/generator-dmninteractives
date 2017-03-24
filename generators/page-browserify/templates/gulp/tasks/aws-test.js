@@ -33,13 +33,5 @@ module.exports = () => {
       }))
       .pipe(publisher.publish({}, { force: false }))
       .pipe(publisher.cache())
-      .pipe(awspublish.reporter())
-      .on(
-        'end',
-        gutil.log.bind(
-          gutil,
-          // eslint-disable-next-line comma-dangle
-          `Live at 'http://interactives.dallasnews.com/${awsDirectory}'.`
-        )  // eslint-disable-line comma-dangle
-      );
+      .pipe(awspublish.reporter());
 };
