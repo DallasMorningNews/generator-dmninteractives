@@ -121,7 +121,22 @@ jspm_packages
 
 # End of https://www.gitignore.io/api/osx,windows,linux,node
 
+
 ### Additional custom ignores ###
+
+# Coverage directory used by tools like istanbul
+coverage
+
+dist/css
+dist/images
+dist/js
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+src/Release
+
 # Local cache
 cache
 
