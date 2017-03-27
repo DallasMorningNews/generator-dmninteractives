@@ -1,3 +1,9 @@
+/* eslint-disable strict */
+
+'use strict';
+
+/* eslint-enable strict */
+
 const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
