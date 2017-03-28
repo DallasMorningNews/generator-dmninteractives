@@ -114,6 +114,15 @@ module.exports = yeoman.Base.extend({
       });
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_mixins.scss','./build/static/sass/', function(err){});
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_variables.scss','./build/static/sass/', function(err){});
+      // scss modules
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_relatedlinks.scss','./build/static/sass/components', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_breakouts.scss','./build/static/sass/components', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_drop-list.scss','./build/static/sass/components', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_pullquotes.scss','./build/static/sass/components', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_side-blocks.scss','./build/static/sass/components', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_slideshows.scss','./build/static/sass/components', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_synopsis.scss','./build/static/sass/components', function(err){});
+      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_videos.scss','./build/static/sass/components', function(err){});
       // JS
       this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/customJS.js','./build/static/js/', function(err){
         fs.rename('./build/static/js/customJS.js','./build/static/js/+custom.js');
