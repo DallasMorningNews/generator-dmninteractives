@@ -1,0 +1,53 @@
+{
+    "verboseName": "Interactive page v2 (Browserify-enabled)",
+    "description": "TK",
+    "priority": 1,
+    "filesFromRepos": {
+        "DallasMorningNews/interactives_starterkit": [
+            {
+                "source": "templates/base.html",
+                "dest": { "path": "./src/templates/"  }
+            },
+            {
+                "source": "templates/index.html",
+                "dest": { "path": "./src/templates/" }
+            },
+            {
+                "source": "templates/adblock1.html",
+                "dest": { "path": "./src/templates/" }
+            },
+            {
+                "source": "templates/adblock2.html",
+                "dest": { "path": "./src/templates/" }
+            },
+            {
+                "source": "templates/adblock3.html",
+                "dest": { "path": "./src/templates/" }
+            },
+            {
+                "source": "css/theme.scss",
+                "dest": { "path": "./src/scss/", "name": "_base.scss" }
+            },
+            {
+                "source": "css/_mixins.scss",
+                "dest": { "path": "./src/scss/" }
+            },
+            {
+                "source": "css/_variables.scss",
+                "dest": { "path": "./src/scss/" }
+            },
+            {
+                "source": "css/header.scss",
+                "dest": { "path": "./src/scss/", "name": "_header.scss" }
+            },
+            {
+                "source": "css/footer.scss",
+                "dest": { "path": "./src/scss/", "name": "_footer.scss" }
+            },
+            {
+                "source": "js/customJS.js",
+                "dest": { "path": "./src/js/", "name": "scripts.js" }
+            }
+        ]
+    }
+}
