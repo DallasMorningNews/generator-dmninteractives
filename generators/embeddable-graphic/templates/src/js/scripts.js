@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import pym from 'pym.js';
 
-import './embed-tracking';
 
 const pymChild = new pym.Child();
 
