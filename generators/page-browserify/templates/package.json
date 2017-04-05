@@ -26,6 +26,7 @@
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.5",
     "imagemin-jpeg-recompress": "^4.3.0",
+    "jquery": "^3.2.1",
     "merge-stream": "^1.0.0",
     "run-sequence": "^1.1.5",
     "string": "^3.3.1",
