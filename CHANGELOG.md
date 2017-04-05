@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - `page-browserify` generator for ES6-enabled interactive pages.
 - NPM installability for `page-browserify` projects' dependencies.
+- Google Analytics tracking script for `embeddable-graphic` projects.
 
 ## [0.4.2] - 2017-03-28
 ### Changed
