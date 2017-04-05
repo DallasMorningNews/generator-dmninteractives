@@ -45,7 +45,7 @@
                 "dest": { "path": "./src/scss/", "name": "_footer.scss" }
             },
             {
-                "source": "js/customJS.js",
+                "source": "js/customES6.js",
                 "dest": { "path": "./src/js/", "name": "scripts.js" }
             }
         ]
