@@ -1,3 +1,9 @@
+/* eslint-disable strict */
+
+'use strict';
+
+/* eslint-enable strict */
+
 const awspublish = require('gulp-awspublish');
 const confirm = require('gulp-confirm');
 const deline = require('deline');

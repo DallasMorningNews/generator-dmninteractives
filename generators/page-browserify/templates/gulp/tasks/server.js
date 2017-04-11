@@ -1,3 +1,9 @@
+/* eslint-disable strict */
+
+'use strict';
+
+/* eslint-enable strict */
+
 const batch = require('gulp-batch');
 const browserSync = require('browser-sync').create();
 const gulp = require('gulp');

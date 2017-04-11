@@ -1,3 +1,9 @@
+/* eslint-disable strict */
+
+'use strict';
+
+/* eslint-enable strict */
+
 const gulp = require('gulp');
 const nunjucksRender = require('gulp-nunjucks-render');
 

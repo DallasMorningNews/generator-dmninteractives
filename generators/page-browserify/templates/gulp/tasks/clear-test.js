@@ -1,3 +1,9 @@
+/* eslint-disable strict */
+
+'use strict';
+
+/* eslint-enable strict */
+
 const aws = require('aws-sdk');
 const gulp = require('gulp');
 const S = require('string');

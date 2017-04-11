@@ -1,3 +1,9 @@
+/* eslint-disable strict */
+
+'use strict';
+
+/* eslint-enable strict */
+
 const runSequence = require('run-sequence');
 const S = require('string');
 

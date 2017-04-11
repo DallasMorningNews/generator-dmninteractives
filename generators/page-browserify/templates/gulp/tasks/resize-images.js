@@ -1,3 +1,9 @@
+/* eslint-disable strict */
+
+'use strict';
+
+/* eslint-enable strict */
+
 const changed = require('gulp-changed');
 const fs = require('fs');
 const gulp = require('gulp');
