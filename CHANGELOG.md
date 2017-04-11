@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ## [Unreleased]
 (No changes yet)
 
+## [0.5.1] - 2017-04-11
+### Changed
+- Gulp templates in `page-browserify` generator now have `'use strict'` declarations, which enable backward-compatibility with older Node versions on users' systems.
+
 ## [0.5.0] - 2017-04-05
 ### Changed
 - New system for configuring sub-generators' names, descriptions and ordering in the "What would you like to make today?" prompt. See `./generators/page-browserify/config.json` for an example, and `./generators/app/index.js` for implementation.
