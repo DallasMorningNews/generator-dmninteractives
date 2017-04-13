@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ## [Unreleased]
 (No changes yet)
 
-## [0.5.1] - 2017-04-11
+## [0.5.1] - 2017-04-13
 ### Changed
 - Gulp templates in `page-browserify` generator now have `'use strict'` declarations, which enable backward-compatibility with older Node versions on users' systems.
+- The 'page-browserify' subgenerator now knows to copy 'furniture.js' and 'components/*.scss' files from the `DallasMorningNews/interactives_starterkit` repo. This reflects a refactoring of the files within `interactives_starterkit`.
 
 ## [0.5.0] - 2017-04-05
 ### Changed
@@ -141,7 +142,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.4.2...v0.5.0
 [0.4.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.4.0...v0.4.1
