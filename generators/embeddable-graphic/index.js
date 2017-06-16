@@ -10,6 +10,7 @@ const STARTERKIT = 'https://raw.githubusercontent.com/DallasMorningNews/' +
 
 module.exports = yeoman.Base.extend({
   initializing() {
+    this.composeWith('dmninteractives:aws');
     this.composeWith('dmninteractives:linters');
   },
 
@@ -45,16 +46,6 @@ module.exports = yeoman.Base.extend({
       name: 'year',
       message: 'What year will this graphic publish?',
       default: () => (new Date()).getFullYear(),
-    }, {
-      type: 'input',
-      name: 'awsAccessKey',
-      message: 'What\'s your AWS access key?',
-      store: true,
-    }, {
-      type: 'input',
-      name: 'awsSecretKey',
-      message: 'What\'s your AWS secret key?',
-      store: true,
     }];
 
     this.prompt(prompts, (answers) => {
@@ -107,18 +98,6 @@ module.exports = yeoman.Base.extend({
         this.templatePath('dist/embed.html'),
         this.destinationPath('./dist/embed.html'),
         { slug: this.prefs.slug, fonts: this.prefs.fonts });
-    },
-
-    aws() {
-      const awsJson = {
-        accessKeyId: this.prefs.awsAccessKey,
-        secretAccessKey: this.prefs.awsSecretKey,
-        params: {
-          Bucket: 'interactives.dallasnews.com',
-        },
-      };
-
-      this.fs.writeJSON('aws.json', awsJson);
     },
 
     meta() {

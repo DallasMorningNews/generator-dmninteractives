@@ -15,6 +15,7 @@ const githubClient = github.client();
 
 module.exports = yeoman.Base.extend({
   initializing() {
+    this.composeWith('dmninteractives:aws');
     this.composeWith('dmninteractives:linters');
   },
 
@@ -31,14 +32,6 @@ module.exports = yeoman.Base.extend({
         message: 'What\'s your directory name?',
       },
       {
-        name: 'awsAccessKey',
-        message: 'What\'s your AWS access key?',
-      },
-      {
-        name: 'awsSecretKey',
-        message: 'What\'s your AWS secret key?',
-      },
-      {
         name: 'hotCopyID',
         message: '[Optional] Enter the ID or URL of this page\'s Google Doc copy.',
       },
@@ -47,8 +40,6 @@ module.exports = yeoman.Base.extend({
     this.prompt(prompts, (props) => {
       this.directoryName = S(props.directoryName).slugify().s;
       this.appName = S(props.directoryName).camelize().s;
-      this.awsAccessKey = props.awsAccessKey;
-      this.awsSecretKey = props.awsSecretKey;
 
       if (props.hotCopyID === '') {
         this.hotCopyID = null;
@@ -165,18 +156,6 @@ module.exports = yeoman.Base.extend({
       mkdirp('./src/assets');
       mkdirp('./src/misc');
       mkdirp('./dist');
-    },
-
-    aws() {
-      const awsJson = {
-        accessKeyId: this.awsAccessKey,
-        secretAccessKey: this.awsSecretKey,
-        params: {
-          Bucket: 'interactives.dallasnews.com',
-        },
-      };
-
-      this.fs.writeJSON('aws.json', awsJson);
     },
 
     meta() {
