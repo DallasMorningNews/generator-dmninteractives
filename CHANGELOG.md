@@ -5,7 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
-(No changes yet)
+### Changed
+- AWS credentials are now validated to make sure they can access the interactives.dallasnews.com S3 bucket
+- The prompts for and creation of the aws.json file now lives in a subgenerator (`dmnitneractives:aws`), which now handles AWS setup for all other subgenerators
+
+### Added
+- New `dmninteractives:googleauth` subgenerator, which downloads credentials for hotcopy's service user and stores them in the user's home folder
 
 ## [0.5.1] - 2017-04-13
 ### Changed
