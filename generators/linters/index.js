@@ -48,6 +48,9 @@ module.exports = yeoman.Base.extend({
       rules: {
         'no-console': 0,
       },
+      env: {
+        browser: true,
+      },
     };
 
     switch (this.lintProfile) {
