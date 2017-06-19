@@ -48,6 +48,9 @@ module.exports = yeoman.Base.extend({
       rules: {
         'no-console': 0,
       },
+      env: {
+        browser: true,
+      },
     };
 
     switch (this.lintProfile) {
@@ -72,7 +75,7 @@ module.exports = yeoman.Base.extend({
     if (this.lintProfile === this.CHOICE_NO_ESLINT) return;
 
     const npmDeps = [
-      'eslint',
+      'eslint@3',
       'babel-eslint',
     ];
 
