@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 - Changes the default project structure, creating separate directories for original media assets, data, etc.
 - Embeddables now follow the same directory structure as interactives, housing all relevant files in the `src` directory
 - Don't track video, audio and ZIP files in `git`
+- Provided ESLint config now sets the environment to browser so `window`, `document`, etc. shouldn't cause warnings anymore
+
+### Fixed
+- Pins ESlint at version 3 because our configs aren't yet 4.x.x-compatible
 
 ## [0.5.1] - 2017-04-13
 ### Changed
