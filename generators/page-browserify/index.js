@@ -222,6 +222,7 @@ module.exports = yeoman.Base.extend({
         imgHeight: '<Height - w/out "px">',
         sectionTwitter: '<handle - w/out "@">',  // Archie-able
         authorTwitter: '<handle - w/out "@">',  // Archie-able
+        authorFBProfile: '<Url for author FB profile. Leave empty string if none>',
       };
       this.fs.writeJSON('meta.json', metaJson);
     },
