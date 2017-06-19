@@ -200,7 +200,7 @@ module.exports = yeoman.Base.extend({
         }-${
           timestamp.getDate()
         }T00:00:00Z`,
-        url: `http://interactives.dallasnews.com/${timestamp.getFullYear()}/${this.directoryName}/`,
+        url: `https://interactives.dallasnews.com/${timestamp.getFullYear()}/${this.directoryName}/`,
         authors: [
           '<Authors - comma-separated, capitalize first letter of names.',
           'NOTE: If more than one author, you will need to manually edit the',
@@ -211,7 +211,7 @@ module.exports = yeoman.Base.extend({
         desk: '<Desk>',  // Archie-able
         section: '<Section>',  // Archie-able
         keywords: defaultKeywords,  // Archie-able
-        imgURL: `http://interactives.dallasnews.com/${
+        imgURL: `https://interactives.dallasnews.com/${
           timestamp.getFullYear()
         }/${
           this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
