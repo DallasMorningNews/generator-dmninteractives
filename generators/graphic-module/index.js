@@ -8,6 +8,7 @@ var yeoman      = require('yeoman-generator'),
 module.exports = yeoman.Base.extend({
   initializing: function() {
     this.composeWith('dmninteractives:linters');
+    this.composeWith('dmninteractives:common');
   },
 
   prompting: function () {
@@ -55,10 +56,6 @@ module.exports = yeoman.Base.extend({
       this.fs.copy(
         this.templatePath('gulpfile.js'),
         this.destinationPath('./gulpfile.js')
-      );
-      this.fs.copy(
-        this.templatePath('gitignore'),
-        this.destinationPath('./.gitignore')
       );
       this.fs.copy(
         this.templatePath('preview.png'),

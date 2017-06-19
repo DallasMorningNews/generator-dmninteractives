@@ -11,6 +11,7 @@ const STARTERKIT = 'https://raw.githubusercontent.com/DallasMorningNews/' +
 module.exports = yeoman.Base.extend({
   initializing() {
     this.composeWith('dmninteractives:linters');
+    this.composeWith('dmninteractives:common');
   },
 
   prompting() {
@@ -130,10 +131,6 @@ module.exports = yeoman.Base.extend({
     },
 
     git() {
-      this.fs.copy(
-        this.templatePath('gitignore'),
-        this.destinationPath('./.gitignore'));
-
       this.fs.copyTpl(
         this.templatePath('README.md'),
         this.destinationPath('./README.md'),

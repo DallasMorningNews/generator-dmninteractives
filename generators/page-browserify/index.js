@@ -16,6 +16,7 @@ const githubClient = github.client();
 module.exports = yeoman.Base.extend({
   initializing() {
     this.composeWith('dmninteractives:linters');
+    this.composeWith('dmninteractives:common');
   },
 
   prompting() {
@@ -224,13 +225,6 @@ module.exports = yeoman.Base.extend({
         authorTwitter: '<handle - w/out "@">',  // Archie-able
       };
       this.fs.writeJSON('meta.json', metaJson);
-    },
-
-    git() {
-      this.fs.copy(
-        this.templatePath('gitignore'),
-        this.destinationPath('./.gitignore')  // eslint-disable-line comma-dangle
-      );
     },
   },
 
