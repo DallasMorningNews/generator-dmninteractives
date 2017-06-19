@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 
 ### Fixed
 - Pins ESlint at version 3 because our configs aren't yet 4.x.x-compatible
+- URLs in the meta.json are now https
 
 ## [0.5.1] - 2017-04-13
 ### Changed
