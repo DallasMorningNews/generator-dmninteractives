@@ -16,10 +16,11 @@ This is an embeddable graphic built using the [`dmninteractives` Yeoman generato
 
 #### What's inside
 
-- `dist/index.html` - Graphic HTML markup; there's no Nunjucks, etc. so this is just straight HTML
-- `dist/embed.html` - A page to test your embed
-- `src/js/*.js` - Graphic scripts, written in ES2015 and transpiled with Babel
+- `src/index.html` - Graphic HTML markup; there's no Nunjucks, etc. so this is just straight HTML
+- `src/embed.html` - A page to test your embed
+- `src/js/*.js` - Graphic scripts, written in ES2015 (it'll be transpiled with Babel)
 - `src/sass/*.scss` - Graphic styles in SCSS
+- `dist/*` - All of the above, transpiled
 
 #### Publishing
 

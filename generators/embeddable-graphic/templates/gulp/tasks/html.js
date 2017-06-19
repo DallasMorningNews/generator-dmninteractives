@@ -8,5 +8,5 @@ const gulp = require('gulp');
 
 
 module.exports = () =>
-    gulp.src('./src/data/**/*')
-      .pipe(gulp.dest('./dist/data'));
+    gulp.src('./src/*.html')
+      .pipe(gulp.dest('./dist/'));

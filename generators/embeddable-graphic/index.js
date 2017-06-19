@@ -101,12 +101,12 @@ module.exports = yeoman.Base.extend({
 
       // HTML
       this.fs.copyTpl(
-        this.templatePath('dist/index.html'),
-        this.destinationPath('./dist/index.html'),
+        this.templatePath('src/index.html'),
+        this.destinationPath('./src/index.html'),
         { fonts: this.prefs.fonts });
       this.fs.copyTpl(
-        this.templatePath('dist/embed.html'),
-        this.destinationPath('./dist/embed.html'),
+        this.templatePath('src/embed.html'),
+        this.destinationPath('./src/embed.html'),
         { slug: this.prefs.slug, fonts: this.prefs.fonts });
     },
 

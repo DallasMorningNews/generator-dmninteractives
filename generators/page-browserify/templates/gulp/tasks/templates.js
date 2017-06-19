@@ -18,6 +18,7 @@ module.exports = () => {
     './src/templates/**/*.html',
     '!./src/templates/base.html',
     '!./src/templates/partials/**/*.html',
+    '!./src/templates/adblock*.html',
   ])
     .pipe(nunjucksRender(meta))
     .pipe(gulp.dest('./dist'));

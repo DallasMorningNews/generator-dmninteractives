@@ -4,14 +4,31 @@
  * projects is a good fit for this subgenerator.
  */
 
+const mkdirp = require('mkdirp');
 const yeoman = require('yeoman-generator');
 
 
 module.exports = yeoman.Base.extend({
-  writing() {
-    this.fs.copy(
-      this.templatePath('gitignore'),
-      this.destinationPath('.gitignore')  // eslint-disable-line comma-dangle
-    );
+  writing: {
+    git() {
+      this.fs.copy(
+        this.templatePath('gitignore'),
+        this.destinationPath('.gitignore')  // eslint-disable-line comma-dangle
+      );
+
+      this.fs.copy(
+        this.templatePath('gitkeep'),
+        this.destinationPath('./src/assets/.gitkeep')  // eslint-disable-line comma-dangle
+      );
+
+      this.fs.copy(
+        this.templatePath('gitkeep'),
+        this.destinationPath('./src/data/.gitkeep')  // eslint-disable-line comma-dangle
+      );
+    },
+
+    directories() {
+      mkdirp('./dist');
+    },
   },
 });

@@ -128,7 +128,7 @@ module.exports = yeoman.Base.extend({
       this.fs.copy(
         this.templatePath('data.json'),
         // eslint-disable-next-line comma-dangle
-        this.destinationPath('./src/js/data.json')
+        this.destinationPath('./src/data/data.json')
       );
 
       this.fs.copy(
@@ -155,16 +155,15 @@ module.exports = yeoman.Base.extend({
         this.destinationPath('./src/images/buttonRight.svg')
       );
 
-      this.fs.copy(
-        this.templatePath('gitkeep'),
+      this.fs.copyTpl(
+        this.templatePath('README.md'),
+        this.destinationPath('./README.md'),
         // eslint-disable-next-line comma-dangle
-        this.destinationPath('./src/assets/.gitkeep')
+        { slug: this.directoryName, year: (new Date()).getFullYear() }
       );
 
       // -------------------------
       // Create output directories
-      mkdirp('./src/assets');
-      mkdirp('./src/misc');
       mkdirp('./dist');
     },
 

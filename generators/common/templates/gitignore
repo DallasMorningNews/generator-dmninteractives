@@ -186,4 +186,4 @@ src/assets/*
 *.zip
 
 # .gitkeeps (used by some subgenerators)
-!.gitkeep
+!src/assets/.gitkeep

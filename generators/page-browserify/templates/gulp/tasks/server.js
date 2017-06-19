@@ -20,7 +20,7 @@ module.exports = () => {
     ghostMode: false,
   });
 
-  watch('./src/assets/**/*', () => { runSequence('assets'); });
+  watch('./src/data/**/*', () => { runSequence('assets'); });
 
   watch('./src/scss/**/*.scss', () => { runSequence('scss'); });
 

@@ -5,7 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
-(No changes yet)
+### Added
+- Add a README file to Browserify-ed projects (much like the embeddable one)
+
+### Changed
+- Use a single, universal `.gitignore` file that properly excludes various system files, video and audio
+- Changes the default project structure, creating separate directories for original media assets, data, etc.
+- Embeddables now follow the same directory structure as interactives, housing all relevant files in the `src` directory
+- Don't track video, audio and ZIP files in `git`
 
 ## [0.5.1] - 2017-04-13
 ### Changed

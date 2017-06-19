@@ -9,4 +9,4 @@ const gulp = require('gulp');
 
 module.exports = () =>
     gulp.src('./src/data/**/*')
-      .pipe(gulp.dest('./dist/data'));
+      .pipe(gulp.dest('./dist/data/'));
