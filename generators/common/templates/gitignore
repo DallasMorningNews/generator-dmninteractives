@@ -182,5 +182,8 @@ src/images/opt
 # Original media assets
 src/assets/*
 
+# ZIP files
+*.zip
+
 # .gitkeeps (used by some subgenerators)
 !.gitkeep
