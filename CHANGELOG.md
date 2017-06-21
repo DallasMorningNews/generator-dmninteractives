@@ -149,7 +149,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 - Initial working versions of files.
 
 [Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.5.2...HEAD
-[0.5.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.1...v0.5.2
+[0.5.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.4.2...v0.5.0
 [0.4.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.4.1...v0.4.2
