@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
+- Soft-pin (`^`) the versions for `eslint-config-airbnb` and its peer dependencies because installing the latest version of it and its peers often results in ESlint errors (see #53)
 
 ## [0.5.2] - 2017-06-21
 ### Changed
