@@ -82,10 +82,10 @@ module.exports = yeoman.Base.extend({
     switch (this.lintProfile) {
       case this.CHOICE_AIRBNB:
         npmDeps.push(
-          'eslint-plugin-import',
-          'eslint-plugin-react',
-          'eslint-plugin-jsx-a11y',
-          'eslint-config-airbnb');
+          'eslint-plugin-import@^2.6',
+          'eslint-plugin-react@^7.1',
+          'eslint-plugin-jsx-a11y@^5.1',
+          'eslint-config-airbnb@^15.0');
         break;
       case this.CHOICE_ES6_RECOMMENDED:
         npmDeps.push('eslint-plugin-es6-recommended');

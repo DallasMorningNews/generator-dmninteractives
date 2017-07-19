@@ -7,22 +7,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ## [Unreleased]
 ### Added
 - Add a README file to Browserify-ed projects (much like the embeddable one)
+- Soft-pin (`^`) the versions for `eslint-config-airbnb` and its peer dependencies because installing the latest version of it and its peers often results in ESlint errors (see #53)
 
 ### Changed
 - Use a single, universal `.gitignore` file that properly excludes various system files, video and audio
 - Changes the default project structure, creating separate directories for original media assets, data, etc.
 - Embeddables now follow the same directory structure as interactives, housing all relevant files in the `src` directory
 - Don't track video, audio and ZIP files in `git`
+
+### Fixed
+- URLs in the meta.json are now https
+
+## [0.5.2] - 2017-06-21
+### Changed
 - Provided ESLint config now sets the environment to browser so `window`, `document`, etc. shouldn't cause warnings anymore
 
 ### Fixed
 - Pins ESlint at version 3 because our configs aren't yet 4.x.x-compatible
-- URLs in the meta.json are now https
 
 ## [0.5.1] - 2017-04-13
 ### Changed
 - Gulp templates in `page-browserify` generator now have `'use strict'` declarations, which enable backward-compatibility with older Node versions on users' systems.
-- The 'page-browserify' subgenerator now knows to copy 'furniture.js' and 'components/*.scss' files from the `DallasMorningNews/interactives_starterkit` repo. This reflects a refactoring of the files within `interactives_starterkit`.
+- The 'page-browserify' subgenerator now knows to copy 'furniture.js' and 'components/\*.scss' files from the `DallasMorningNews/interactives_starterkit` repo. This reflects a refactoring of the files within `interactives_starterkit`.
 
 ## [0.5.0] - 2017-04-05
 ### Changed
@@ -154,7 +160,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.4.2...v0.5.0
 [0.4.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.4.1...v0.4.2
