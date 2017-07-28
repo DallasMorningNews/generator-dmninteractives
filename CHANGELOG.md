@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
+
+## [0.6.0] - 2017-07-28
 ### Added
 - Add a README file to Browserify-ed projects (much like the embeddable one)
 - Soft-pin (`^`) the versions for `eslint-config-airbnb` and its peer dependencies because installing the latest version of it and its peers often results in ESlint errors (see #53)
@@ -160,7 +162,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.5.2...HEAD
+[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.2...v0.6.0
 [0.5.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.4.2...v0.5.0
