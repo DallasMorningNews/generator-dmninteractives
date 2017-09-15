@@ -18,14 +18,6 @@ body {
   }
 }
 
-.source, .credit {
-  @include type(1.2rem, 1.5rem, .6rem);
-}
-
-.credit {
-  text-align: right;
-}
-
 
 // NOTE!!!! If you need ooyala code, add @import 'ooyala';  to your list of imports above
 

@@ -47,21 +47,37 @@ h6 {
   background-color: $black245;
   padding: 2.4rem;
   display: block;
+  a {
+    color: $dmnblue;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
+
+.embed__chatter {
+  margin-bottom: 2.4rem;
   p {
     @include type(1.4rem, 1.8rem, 1.2rem);
     &:last-of-type {
       margin-bottom: 0;
     }
   }
-  a {
-    color: $dmnblue;
-    text-decoration: underline;
+  h4 {
+    margin-top: 0;
   }
 }
 
-.embed__chatter {
-  margin-bottom: 2.4rem;
-  h4 {
-    margin-top: 0;
+.embed__content {
+  p {
+    @include type(1.4rem, 1.8rem, 1.2rem);
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  .source, .credit {
+    @include type(1.2rem, 1.5rem, .6rem);
+  }
+  .credit {
+    text-align: right;
   }
 }

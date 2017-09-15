@@ -1,0 +1,114 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.3.10
+3 info using node@v4.2.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/johnhancock/Desktop/interactives/generator-dmninteractives',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/johnhancock/.npm/generator-dmninteractives/0.6.1/package.tgz not in flight; packing
+9 info lifecycle generator-dmninteractives@0.6.1~prepublish: generator-dmninteractives@0.6.1
+10 silly lifecycle generator-dmninteractives@0.6.1~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/Users/johnhancock/.npm/generator-dmninteractives/0.6.1/package.tgz',
+11 verbose tar pack   '/Users/johnhancock/Desktop/interactives/generator-dmninteractives' ]
+12 verbose tarball /Users/johnhancock/.npm/generator-dmninteractives/0.6.1/package.tgz
+13 verbose folder /Users/johnhancock/Desktop/interactives/generator-dmninteractives
+14 verbose addLocalTarball adding from inside cache /Users/johnhancock/.npm/generator-dmninteractives/0.6.1/package.tgz
+15 silly cache afterAdd generator-dmninteractives@0.6.1
+16 verbose afterAdd /Users/johnhancock/.npm/generator-dmninteractives/0.6.1/package/package.json not in flight; writing
+17 verbose afterAdd /Users/johnhancock/.npm/generator-dmninteractives/0.6.1/package/package.json written
+18 silly publish { name: 'generator-dmninteractives',
+18 silly publish   version: '0.6.1',
+18 silly publish   description: 'Yeoman generator for interactive pages at The Dallas Morning News',
+18 silly publish   license: 'MIT',
+18 silly publish   main: 'app/index.js',
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git+https://github.com/dallasmorningnews/generator-dmninteractives.git' },
+18 silly publish   author:
+18 silly publish    { name: 'Jon McClure, Andrew Chavez and Allan James Vestal',
+18 silly publish      email: 'newsapps@dallasnews.com',
+18 silly publish      url: 'https://github.com/DallasMorningNews' },
+18 silly publish   files: [ 'generators' ],
+18 silly publish   keywords: [ 'yeoman-generator' ],
+18 silly publish   dependencies:
+18 silly publish    { chalk: '^1.1.3',
+18 silly publish      'google-url-helper': '^1.0.3',
+18 silly publish      lodash: '^4.17.4',
+18 silly publish      mkdirp: '^0.5.1',
+18 silly publish      octonode: '^0.7.7',
+18 silly publish      string: '^3.3.1',
+18 silly publish      'valid-url': '^1.0.9',
+18 silly publish      'yeoman-generator': '^0.19.0' },
+18 silly publish   devDependencies:
+18 silly publish    { eslint: '^3.14.1',
+18 silly publish      'eslint-config-airbnb': '^14.0.0',
+18 silly publish      'eslint-plugin-import': '^2.2.0',
+18 silly publish      'eslint-plugin-jsx-a11y': '^3.0.2',
+18 silly publish      'eslint-plugin-react': '^6.9.0' },
+18 silly publish   readme: '# generator-dmninteractives [![NPM version][npm-image]][npm-url]\n\nA [Yeoman](http://yeoman.io) generator for DMN-flavored "interactive" pages with easy publishing.\n\nTranslation: A simple app that helps speed up developing a custom "interactive" page using our DMN house template.\n\n### What it does:\n\n- Scaffolds your project\'s development directory, shortcutting setup time.\n- Downloads and bundles your dependencies into single, minified files.\n- Compiles SCSS files.\n- Bundles and minifies CSS and JS files.\n- Populates metatags from a JSON file.\n- Creates responsive image sets optimized for mobile devices.\n- Publishes your project to an Amazon S3 bucket.\n- Creates an archive of your development directory so you or anyone else can pick up your project exactly where you left it.\n\n## See the [wiki](https://github.com/DallasMorningNews/generator-dmninteractives/wiki) for complete instructions on using the app.\n\n## Quickstart\n\nInstall global dependencies, including Yeoman and the generator.\n\n```bash\n$ npm install -g gulp-cli\n$ npm install -g yo\n$ npm install -g generator-dmninteractives\n```\n\nCreate a clean directory for your project in your terminal.\n\n```bash\n$ mkdir your-app-directory\n$ cd your-app-directory\n```\n\nRun the generator in your new project directory.\n\n```bash\n$ yo dmninteractives\n```\n\nThe generator will set up your working directory, install dependencies, copy template files and scripts, start a local webserver and open your browser.\n\nBe sure to fill out the `meta.json` file to correctly complete metatags in the template.\n\n## Developing your project\n\n### Gulp\n\nThe generator uses [gulp](http://gulpjs.com/), a node-based task runner, to watch your directories for changes as you code, render templates, prepare static files and start a local webserver to preview your project in the browser.\n\nTo work on your project, launch gulp in your app\'s root directory:\n\n```bash\n$ gulp\n```\n\nYour project is separated into two main directories:\n- `build`\n- `public`\n\n\nThe `build` directory is your working directory. You\'ll write all your code and place all necessary static assets in this directory.\n\nThe `public` directory includes transpiled SCSS, minified JavaScript and responsive images. Gulp serves a live preview of your page from this folder.\n\n## Publishing\n\nTo publish to an AWS S3 bucket, fill out `aws.json`, if you didn\'t during setup. Then execute one of the gulp publish commands to publish to either the test or production directory of the bucket:\n- `gulp publish`\n- `gulp publish-test`\n\n[npm-image]: https://badge.fury.io/js/generator-dmninteractives.svg\n[npm-url]: https://npmjs.org/package/generator-dmninteractives\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: '6e48627fc39a557c47e4196e9fe4bf3fc363b46d',
+18 silly publish   bugs: { url: 'https://github.com/dallasmorningnews/generator-dmninteractives/issues' },
+18 silly publish   homepage: 'https://github.com/dallasmorningnews/generator-dmninteractives#readme',
+18 silly publish   _id: 'generator-dmninteractives@0.6.1',
+18 silly publish   scripts: {},
+18 silly publish   _shasum: '67e42ddac9def0ede9c3e38ccc32ecf7b84a644a',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name generator-dmninteractives
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/generator-dmninteractives
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /Users/johnhancock/.npm/generator-dmninteractives/0.6.1/package.tgz
+26 verbose request uri https://registry.npmjs.org/generator-dmninteractives
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 9:41:08 AM
+29 verbose request using bearer token for auth
+30 verbose request id a1930533b417ae46
+31 http request PUT https://registry.npmjs.org/generator-dmninteractives
+32 http 403 https://registry.npmjs.org/generator-dmninteractives
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'content-length': '91',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Fri, 15 Sep 2017 14:41:09 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-dfw18636-DFW',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1505486468.445459,VS0,VE1196',
+33 verbose headers   vary: 'Accept-Encoding, Accept' }
+34 verbose request invalidating /Users/johnhancock/.npm/registry.npmjs.org/generator-dmninteractives on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: You cannot publish over the previously published version 0.6.1. : generator-dmninteractives
+36 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+36 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+36 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+36 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+36 verbose stack     at emitTwo (events.js:87:13)
+36 verbose stack     at Request.emit (events.js:172:7)
+36 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1082:10)
+36 verbose stack     at emitOne (events.js:82:20)
+36 verbose stack     at Request.emit (events.js:169:7)
+36 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+37 verbose statusCode 403
+38 verbose pkgid generator-dmninteractives
+39 verbose cwd /Users/johnhancock/Desktop/interactives/generator-dmninteractives
+40 error Darwin 16.7.0
+41 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+42 error node v4.2.2
+43 error npm  v3.3.10
+44 error code E403
+45 error You cannot publish over the previously published version 0.6.1. : generator-dmninteractives
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
