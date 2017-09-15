@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
+
+## [0.6.2] - 2017-09-15
+### Changed
+- Fine-tunes styles from 0.6.1.
+
 ## [0.6.1] - 2017-09-15
 ### Added
 - Add `_ooyala.scss` sass file for controlling ooyala styles.
