@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
+## [0.6.1] - 2017-09-15
+### Added
+- Add `_ooyala.scss` sass file for controlling ooyala styles.
+- Add base styles for `p` and `a` tags, along with `.source` and `.credit` lines
+
+### Changed
+- More semantic class names on the embeddable container, chatter and body class.
 
 ## [0.6.0] - 2017-07-28
 ### Added
