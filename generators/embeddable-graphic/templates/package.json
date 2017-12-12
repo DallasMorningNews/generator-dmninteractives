@@ -11,6 +11,7 @@
     "pym.js": "^1.1.1"
   },
   "devDependencies": {
+    "autoprefixer": "^7.2.2",
     "babel-preset-env": "^1.6.1",
     "babelify": "^7.3.0",
     "browser-sync": "^2.17.5",
@@ -19,6 +20,7 @@
     "gulp": "^3.9.1",
     "gulp-awspublish": "^3.3.0",
     "gulp-confirm": "^1.0.4",
+    "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.1.1",

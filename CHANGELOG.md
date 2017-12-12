@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 
 ## [Unreleased]
 ### Added
-- Added a [`.browserslistrc` config file](https://github.com/ai/browserslist), which specifies the browsers we support (for now, anything with greater than 2% usage within the US or that is one of the last major versions). JS transpilers and CSS post-processors will now reference this file.
+- There's now a [`.browserslistrc` config file](https://github.com/ai/browserslist), which specifies the browsers we support (for now, anything with greater than 2% usage within the US or that is one of the last major versions). JS transpilers and CSS post-processors will now reference this file.
+- Transpiled CSS is now auto-prefixed using [Autoprefixer](https://github.com/postcss/autoprefixer)'s [PostCSS](https://github.com/postcss/postcss) plugin to be compatible with our list of supported browsers (see above).
 
 ### Changed
 - Switch from `babel-preset-es2015` to its replacement, [`babel-preset-env`](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
