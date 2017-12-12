@@ -8,10 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Changed
 - Deprecate the non-Browserify-ed, original interactives generator. RIP.
 - All output package.json files now specify `UNLICENSED` instead of `ISC` in the license field
+- Clarified language about what is tracked by `git` and how the assets and data folders and handled
 
 ### Fixed
 - Render HTML and copy all static assets during initial build (see #56)
-- Clarified language about what is tracked by `git` and how the assets and data folders and handled
+- Fix for error during template rendering in page generator caused by meta.json author property being a string instead of an array
 
 ## [0.6.3] - 2017-12-11
 ### Changed
