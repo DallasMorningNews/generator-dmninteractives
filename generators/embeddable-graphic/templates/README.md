@@ -22,6 +22,8 @@ This is an embeddable graphic built using the [`dmninteractives` Yeoman generato
 - `src/sass/*.scss` - Graphic styles in SCSS
 - `dist/*` - All of the above, transpiled
 
+_Important caveat:_ Video, audio and ZIP files are ignored by `git` regardless of where they're saved. You'll need to manually alter the [`.gitignore`](.gitignore) file to have them committed to Github.
+
 #### Publishing
 
 `gulp publish` will upload your [`dist/`](dist/) folder to the `embeds/<%= year %>/<%= slug %>/` folder on our interactives S3 bucket.
