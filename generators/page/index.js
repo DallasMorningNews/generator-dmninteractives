@@ -201,13 +201,7 @@ module.exports = yeoman.Base.extend({
           timestamp.getDate()
         }T00:00:00Z`,
         url: `https://interactives.dallasnews.com/${timestamp.getFullYear()}/${this.directoryName}/`,
-        authors: [
-          '<Authors - comma-separated, capitalize first letter of names.',
-          'NOTE: If more than one author, you will need to manually edit the',
-          'author key in the parsely json object. Author names should be',
-          'comma-separated strings within an array in the parsely',
-          'json object.>',
-        ].join(' '),  // Archie-able
+        authors: ['<Author1>', '<Author2>'],  // Archie-able
         desk: '<Desk>',  // Archie-able
         section: '<Section>',  // Archie-able
         keywords: defaultKeywords,  // Archie-able
