@@ -227,7 +227,7 @@ module.exports = yeoman.Base.extend({
         publishYear: timestamp.getFullYear(),
         publishDate: timestamp.getFullYear() +'-'+(timestamp.getMonth()+1)+'-'+timestamp.getDate()+'T00:00:00Z',
         url: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.directoryName+'/',
-        authors: '<Authors - comma-separated, capitalize first letter of names. NOTE: If more than one author, you will need to manually edit the author key in the parsely json object. Author names should be comma separated strings within an array in the parsely json object.>',
+        authors: ['<Author1>', '<Author2>'],
         desk: '<Desk>',
         section: '<Section>',
         keywords: defaultKeywords,

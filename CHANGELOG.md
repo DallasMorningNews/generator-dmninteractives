@@ -6,8 +6,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 
 ## [Unreleased]
 
+## [0.6.2] - 2017-09-15
+### Changed
+- Fine-tunes styles from 0.6.1.
+
 ### Fixed
 - Render HTML and copy all static assets during initial build (see #56)
+
+## [0.6.1] - 2017-09-15
+### Added
+- Add `_ooyala.scss` sass file for controlling ooyala styles.
+- Add base styles for `p` and `a` tags, along with `.source` and `.credit` lines
+
+### Changed
+- More semantic class names on the embeddable container, chatter and body class.
 
 ## [0.6.0] - 2017-07-28
 ### Added
