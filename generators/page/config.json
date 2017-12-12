@@ -1,5 +1,91 @@
 {
     "verboseName": "Interactive page",
     "description": "TK",
-    "priority": 3
+    "priority": 1,
+    "filesFromRepos": {
+        "DallasMorningNews/interactives_starterkit": [
+            {
+                "source": "templates/base.html",
+                "dest": { "path": "./src/templates/"  }
+            },
+            {
+                "source": "templates/index.html",
+                "dest": { "path": "./src/templates/" }
+            },
+            {
+                "source": "templates/adblock1.html",
+                "dest": { "path": "./src/templates/" }
+            },
+            {
+                "source": "templates/adblock2.html",
+                "dest": { "path": "./src/templates/" }
+            },
+            {
+                "source": "templates/adblock3.html",
+                "dest": { "path": "./src/templates/" }
+            },
+            {
+                "source": "css/theme.scss",
+                "dest": { "path": "./src/scss/", "name": "_base.scss" }
+            },
+            {
+                "source": "css/_mixins.scss",
+                "dest": { "path": "./src/scss/" }
+            },
+            {
+                "source": "css/_variables.scss",
+                "dest": { "path": "./src/scss/" }
+            },
+            {
+                "source": "css/header.scss",
+                "dest": { "path": "./src/scss/", "name": "_header.scss" }
+            },
+            {
+                "source": "css/footer.scss",
+                "dest": { "path": "./src/scss/", "name": "_footer.scss" }
+            },
+            {
+                "source": "css/components/_breakouts.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_breakouts.scss" }
+            },
+            {
+                "source": "css/components/_drop-list.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_drop-list.scss" }
+            },
+            {
+                "source": "css/components/_pullquotes.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_pullquotes.scss" }
+            },
+            {
+                "source": "css/components/_relatedlinks.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_relatedlinks.scss" }
+            },
+            {
+                "source": "css/components/_side-blocks.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_side-blocks.scss" }
+            },
+            {
+                "source": "css/components/_slideshows.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_slideshows.scss" }
+            },
+            {
+                "source": "css/components/_synopsis.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_synopsis.scss" }
+            },
+            {
+                "source": "css/components/_videos.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_videos.scss" }
+            },
+
+
+            {
+                "source": "js/furniture.js",
+                "dest": { "path": "./src/js/", "name": "furniture.js" }
+            },
+            {
+                "source": "js/customES6.js",
+                "dest": { "path": "./src/js/", "name": "scripts.js" }
+            }
+        ]
+    }
 }

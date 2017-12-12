@@ -1,270 +1,261 @@
-'use strict';
-var yeoman      = require('yeoman-generator'),
-    mkdirp      = require('mkdirp'),
-    fs          = require('fs'),
-    S           = require('string');
+const _ = require('lodash');
+const chalk = require('chalk');
+const fs = require('fs');
+const github = require('octonode');
+const googleURL = require('google-url-helper');
+const mkdirp = require('mkdirp');
+const path = require('path');
+const S = require('string');
+const validURL = require('valid-url');
+const yeoman = require('yeoman-generator');
+
+
+const githubClient = github.client();
 
 
 module.exports = yeoman.Base.extend({
-  prompting: function () {
-    var done = this.async();
+  initializing() {
+    this.composeWith('dmninteractives:linters');
+    this.composeWith('dmninteractives:common');
+  },
 
-    this.log('Starting up an INTERACTIVE PAGE...');
+  prompting() {
+    const done = this.async();
 
-    var prompts = [{
-      name:'directoryName',
-      message: 'What\'s your directory name?'
-    },{
-      name:'awsAccessKey',
-      message: 'What\'s your AWS access key?'
-    },{
-      name:'awsSecretKey',
-      message: 'What\'s your AWS secret key?'
-    },
-    {
-      type: 'checkbox',
-      name: 'features',
-      message: 'What more would you like?',
-      choices: [{
-        name: 'JQuery UI',
-        value: 'includeJQUI',
-        checked: false
-      },{
-        name: 'JQuery TouchSwipe',
-        value: 'includeJQSwipe',
-        checked: false
-      },{
-        name: 'Bowser',
-        value: 'includeBowser',
-        checked: false
-      },{
-        name: 'Modernizr',
-        value: 'includeModernizr',
-        checked: false
-      },{
-        name: 'D3.js',
-        value: 'includeD3',
-        checked: false
-      },{
-        name: 'Bootstrap',
-        value: 'includeBootstrap',
-        checked: false
-      }]
-    }];
+    this.log('Starting up an INTERACTIVE PAGE with BROWSERIFY...');
 
-    this.prompt(prompts, function (props) {
+    this.baseConfig = this.options.baseConfig;
 
-      var features = props.features;
+    const prompts = [
+      {
+        name: 'directoryName',
+        message: 'What\'s your directory name?',
+      },
+      {
+        name: 'awsAccessKey',
+        message: 'What\'s your AWS access key?',
+      },
+      {
+        name: 'awsSecretKey',
+        message: 'What\'s your AWS secret key?',
+      },
+      {
+        name: 'hotCopyID',
+        message: '[Optional] Enter the ID or URL of this page\'s Google Doc copy.',
+      },
+    ];
 
-      function hasFeature(feat) {
-        return features && features.indexOf(feat) !== -1;
-      }
-
+    this.prompt(prompts, (props) => {
       this.directoryName = S(props.directoryName).slugify().s;
       this.appName = S(props.directoryName).camelize().s;
       this.awsAccessKey = props.awsAccessKey;
       this.awsSecretKey = props.awsSecretKey;
-      this.dependencies = {};
-      this.dependencies.includeJQUI = hasFeature('includeJQUI');
-      this.dependencies.includeJQSwipe = hasFeature('includeJQSwipe');
-      this.dependencies.includeBowser = hasFeature('includeBowser');
-      this.dependencies.includeModernizr = hasFeature('includeModernizr');
-      this.dependencies.includeD3 = hasFeature('includeD3');
-      this.dependencies.includeBootstrap = hasFeature('includeBootstrap');
+
+      if (props.hotCopyID === '') {
+        this.hotCopyID = null;
+      } else {
+        this.hotCopyID = (
+          validURL.isUri(props.hotCopyID)
+        ) ? (
+          googleURL.parseId(props.hotCopyID)
+        ) : (
+          props.hotCopyID
+        );
+      }
 
       done();
-    }.bind(this));
+    });
   },
 
   writing: {
-    app: function () {
+    app() {
       this.fs.copyTpl(
         this.templatePath('package.json'),
         this.destinationPath('./package.json'),
-        { appName: this.appName }
+        { appName: this.appName }  // eslint-disable-line comma-dangle
       );
-      this.fs.copy(
-        this.templatePath('gulpfile.js'),
-        this.destinationPath('./gulpfile.js')
-      );
-
     },
 
-    projectfiles: function () {
+    gulpfiles() {
+      this.fs.copy(
+        this.templatePath('gulpfile.js'),
+        this.destinationPath('./gulpfile.js')  // eslint-disable-line comma-dangle
+      );
 
-      /////////////////////////////////////////////////
+      this.fs.copy(
+        this.templatePath('./gulp/**/*'),
+        this.destinationPath('./gulp/')  // eslint-disable-line comma-dangle
+      );
+    },
+
+    projectfiles() {
+      // ---------------------------------------
       // Fetch remote template files from github
       // hosted in interactives_starterkit
+      if (!_.isUndefined(this.baseConfig.filesFromRepos)) {
+        _.each(this.baseConfig.filesFromRepos, (repoFiles, repoName) => {
+          const repo = githubClient.repo(repoName);
 
-      // HTML
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/base.html','./build/templates/', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/index.html','./build/templates/', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/adblock1.html','./build/templates/', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/adblock2.html','./build/templates/', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/templates/adblock3.html','./build/templates/', function(err){});
-      // CSS & SCSS
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/theme.scss','./build/static/sass/', function(err){
-        fs.rename('./build/static/sass/theme.scss','./build/static/sass/+base.scss');
-      });
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/header.scss','./build/static/sass/', function(err){
-        fs.rename('./build/static/sass/header.scss','./build/static/sass/+header.scss');
-      });
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/footer.scss','./build/static/sass/', function(err){
-        fs.rename('./build/static/sass/footer.scss','./build/static/sass/+footer.scss');
-      });
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_mixins.scss','./build/static/sass/', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/_variables.scss','./build/static/sass/', function(err){});
-      // scss modules
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_relatedlinks.scss','./build/static/sass/components', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_breakouts.scss','./build/static/sass/components', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_drop-list.scss','./build/static/sass/components', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_pullquotes.scss','./build/static/sass/components', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_side-blocks.scss','./build/static/sass/components', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_slideshows.scss','./build/static/sass/components', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_synopsis.scss','./build/static/sass/components', function(err){});
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/css/components/_videos.scss','./build/static/sass/components', function(err){});
-      // JS
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/customJS.js','./build/static/js/', function(err){
-        fs.rename('./build/static/js/customJS.js','./build/static/js/+custom.js');
-      });
-      this.fetch('https://raw.githubusercontent.com/DallasMorningNews/interactives_starterkit/master/js/furniture.js','./build/static/js/', function(err){
-        fs.rename('./build/static/js/furniture.js','./build/static/js/+furniture.js');
-      });
-      ////////////////////////////////////
+          _.each(repoFiles, (file) => {
+            const destFilePath = (
+              _.has(file.dest, 'name')
+            ) ? (
+              path.join(file.dest.path, file.dest.name)
+            ) : (
+              path.join(file.dest.path, path.basename(file.source))
+            );
+
+            mkdirp(path.dirname(destFilePath));
+
+            repo.contents(file.source, (error, contents) => {
+              const fileContents = new Buffer(contents.content, 'base64');
+
+              fs.writeFileSync(destFilePath, fileContents);
+            });
+          });
+        });
+      }
+
+      // ---------------------------
       // Copy rest of template files
 
       this.fs.copy(
-        this.templatePath('custom.scss'),
-        this.destinationPath('./build/static/sass/+custom.scss')
+        this.templatePath('styles.scss'),
+        // eslint-disable-next-line comma-dangle
+        this.destinationPath('./src/scss/styles.scss')
       );
+
       this.fs.copy(
         this.templatePath('data.json'),
-        this.destinationPath('./build/static/js/data.json')
+        // eslint-disable-next-line comma-dangle
+        this.destinationPath('./src/data/data.json')
       );
+
       this.fs.copy(
         this.templatePath('img.html'),
-        this.destinationPath('./build/templates/partials/img.html')
+        // eslint-disable-next-line comma-dangle
+        this.destinationPath('./src/templates/partials/img.html')
       );
+
       this.fs.copy(
         this.templatePath('defaultImage.jpg'),
-        this.destinationPath('./build/static/images/_defaultImage.jpg')
+        // eslint-disable-next-line comma-dangle
+        this.destinationPath('./src/images/_defaultImage.jpg')
       );
+
       this.fs.copy(
         this.templatePath('buttonLeft.svg'),
-        this.destinationPath('./build/static/images/buttonLeft.svg')
+        // eslint-disable-next-line comma-dangle
+        this.destinationPath('./src/images/buttonLeft.svg')
       );
+
       this.fs.copy(
         this.templatePath('buttonRight.svg'),
-        this.destinationPath('./build/static/images/buttonRight.svg')
-      );
-      this.fs.copy(
-        this.templatePath('gitkeep'),
-        this.destinationPath('./build/static/vendor/.gitkeep')
+        // eslint-disable-next-line comma-dangle
+        this.destinationPath('./src/images/buttonRight.svg')
       );
 
-      ///////////////////////////////////
+      this.fs.copyTpl(
+        this.templatePath('README.md'),
+        this.destinationPath('./README.md'),
+        // eslint-disable-next-line comma-dangle
+        { slug: this.directoryName, year: (new Date()).getFullYear() }
+      );
+
+      // -------------------------
       // Create output directories
-      mkdirp('./build/static/assets');
-      mkdirp('./build/static/vendor');
-      mkdirp('./build/misc');
-      mkdirp('./public');
+      mkdirp('./dist');
     },
 
-    dependencies: function(){
-      var bowerJson = {
-        name: this.appName,
-        private: true,
-        dependencies: {}
-      };
-
-      if(this.dependencies.includeJQUI){
-        bowerJson.dependencies['jquery-ui'] = null;
-      }
-      if(this.dependencies.includeJQSwipe){
-        bowerJson.dependencies['jquery-touchswipe'] = null;
-      }
-      if(this.dependencies.includeBowser){
-        bowerJson.dependencies['bowser'] = 'ded/bowser#^1.0.0';
-      }
-      if(this.dependencies.includeModernizr){
-        bowerJson.dependencies['modernizr-min'] = null;
-      }
-      if(this.dependencies.includeD3){
-        bowerJson.dependencies['d3'] = null;
-      }
-      if(this.dependencies.includeBootstrap){
-        bowerJson.dependencies['bootstrap'] = null;
-      }
-      this.fs.writeJSON('bower.json', bowerJson);
-      this.fs.copy(
-        this.templatePath('bowerrc'),
-        this.destinationPath('.bowerrc')
-      );
-    },
-
-
-    aws: function(){
-      var awsJson = {
+    aws() {
+      const awsJson = {
         accessKeyId: this.awsAccessKey,
         secretAccessKey: this.awsSecretKey,
-        params:{
-            Bucket: 'interactives.dallasnews.com'
-          }
-        };
+        params: {
+          Bucket: 'interactives.dallasnews.com',
+        },
+      };
+
       this.fs.writeJSON('aws.json', awsJson);
     },
 
-    meta: function(){
-      var timestamp = new Date();
-      var defaultKeywords = ['interactives','dallas','dallas news','dfw news','dallas newspaper','dallas morning news','dallas morning news newspaper'];
-      var metaJson = {
+    meta() {
+      const timestamp = new Date();
+      const defaultKeywords = [
+        'interactives', 'dallas', 'dallas news', 'dfw news', 'dallas newspaper',
+        'dallas morning news', 'dallas morning news newspaper',
+      ];  // Archie-able
+      const metaJson = {
         id: (Math.floor(Math.random() * 100000000000) + 1).toString(),
         name: this.directoryName,
-        pageTitle: '<Title>',
-        shareTitle: '<Title>',
-        shareText: '<Text>',
-        tweetText: '<Text>',
+        pageTitle: '<Title>',  // Archie-able
+        shareTitle: '<Title>',  // Archie-able
+        shareText: '<Text>',  // Archie-able
+        tweetText: '<Text>',  // Archie-able
         publishYear: timestamp.getFullYear(),
-        publishDate: timestamp.getFullYear() +'-'+(timestamp.getMonth()+1)+'-'+timestamp.getDate()+'T00:00:00Z',
-        url: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.directoryName+'/',
-        authors: ['<Author1>', '<Author2>'],
-        desk: '<Desk>',
-        section: '<Section>',
-        keywords: defaultKeywords,
-        imgURL: 'http://interactives.dallasnews.com/' + timestamp.getFullYear() +'/'+this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()+'/'+ this.shareImage,
+        publishDate: `${
+          timestamp.getFullYear()
+        }-${
+          timestamp.getMonth() + 1
+        }-${
+          timestamp.getDate()
+        }T00:00:00Z`,
+        url: `https://interactives.dallasnews.com/${timestamp.getFullYear()}/${this.directoryName}/`,
+        authors: [
+          '<Authors - comma-separated, capitalize first letter of names.',
+          'NOTE: If more than one author, you will need to manually edit the',
+          'author key in the parsely json object. Author names should be',
+          'comma-separated strings within an array in the parsely',
+          'json object.>',
+        ].join(' '),  // Archie-able
+        desk: '<Desk>',  // Archie-able
+        section: '<Section>',  // Archie-able
+        keywords: defaultKeywords,  // Archie-able
+        imgURL: `https://interactives.dallasnews.com/${
+          timestamp.getFullYear()
+        }/${
+          this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+        }/${
+          this.shareImage
+        }`,
         imgWidth: '<Width - w/out "px">',
         imgHeight: '<Height - w/out "px">',
-        sectionTwitter: '<handle - w/out "@">',
-        authorTwitter: '<handle - w/out "@">',
-        authorFBProfile: '<Url for author FB profile. Leave empty string if none>'
+        sectionTwitter: '<handle - w/out "@">',  // Archie-able
+        authorTwitter: '<handle - w/out "@">',  // Archie-able
+        authorFBProfile: '<Url for author FB profile. Leave empty string if none>',
       };
       this.fs.writeJSON('meta.json', metaJson);
     },
-
-    git: function () {
-      this.fs.copy(
-        this.templatePath('gitignore'),
-        this.destinationPath('./.gitignore')
-      );
-    },
   },
 
-  install: function () {
+  install() {
     this.installDependencies({
-      callback: function() {
-        this.emit('dependenciesInstalled');
-      }.bind(this)
+      bower: false,
+      // eslint-disable-next-line comma-dangle
+      callback: () => { this.emit('dependenciesInstalled'); }
     });
 
-    this.on('dependenciesInstalled', function() {
-        this.spawnCommand('gulp', ['img']);
-        this.spawnCommand('gulp');
-    });
-
+    // this.on('dependenciesInstalled', () => {
+    //   this.spawnCommand('gulp', ['img']);
+    //   this.spawnCommand('gulp');
+    // });
   },
 
-  subgen: function () {
-      this.composeWith('dmninteractives:gulp');
+  end() {
+    const done = this.async();
+    const imageProcess = this.spawnCommand('gulp', ['img']);
+
+    imageProcess.on('close', () => {
+      const buildProcess = this.spawnCommand('gulp', ['build']);
+
+      buildProcess.on('close', () => {
+        this.log(`\n${chalk.bold('Done!')}`);
+        this.log(` See the generated ${chalk.yellow('README.md')} for usage info.`);
+        this.log(` Run ${chalk.magenta('gulp')} to start developing.\n`);
+
+        done();
+      });
+    });
   },
 
 });

@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
+### Changed
+- Deprecate the non-Browserify-ed, original interactives generator. RIP.
+
 ### Fixed
 - Render HTML and copy all static assets during initial build (see #56)
 - Clarified language about what is tracked by `git` and how the assets and data folders and handled
