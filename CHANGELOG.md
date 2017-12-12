@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 
 ## [Unreleased]
 
+### Fixed
+- Render HTML and copy all static assets during initial build (see #56)
+
 ## [0.6.0] - 2017-07-28
 ### Added
 - Add a README file to Browserify-ed projects (much like the embeddable one)
