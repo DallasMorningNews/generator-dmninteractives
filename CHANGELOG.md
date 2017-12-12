@@ -5,13 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
+### Fixed
+- Render HTML and copy all static assets during initial build (see #56)
+
+## [0.6.3] - 2017-12-11
+### Changed
+- Update Parse.ly tags to newer JSON+LD format
 
 ## [0.6.2] - 2017-09-15
 ### Changed
 - Fine-tunes styles from 0.6.1.
-
-### Fixed
-- Render HTML and copy all static assets during initial build (see #56)
 
 ## [0.6.1] - 2017-09-15
 ### Added
@@ -177,7 +180,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.3...HEAD
+[0.6.3]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.2...v0.6.3
+[0.6.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.1...v0.6.2
+[0.6.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.2...v0.6.0
 [0.5.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.5.0...v0.5.1
