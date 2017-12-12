@@ -29,7 +29,7 @@ module.exports = (watch) => {
       };
 
       const bundler = wrapper(browserify(props).transform(babelify, {
-        presets: ['es2015'],
+        presets: ['env'],
       }));
 
       function bundle() {

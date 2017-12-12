@@ -44,7 +44,7 @@ module.exports = yeoman.Base.extend({
 
     const esLintConfig = {
       root: true,
-      parser: 'babel-eslint',
+      parser: 'babel-env',
       rules: {
         'no-console': 0,
       },

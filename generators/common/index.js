@@ -30,5 +30,12 @@ module.exports = yeoman.Base.extend({
     directories() {
       mkdirp('./dist');
     },
+
+    browserCompat() {
+      this.fs.copy(
+        this.templatePath('browserslistrc'),
+        this.destinationPath('.browserslistrc')  // eslint-disable-line comma-dangle
+      );
+    },
   },
 });

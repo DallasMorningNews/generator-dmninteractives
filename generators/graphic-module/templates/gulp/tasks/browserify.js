@@ -26,7 +26,7 @@ module.exports = () => {
     };
 
     const bundler = watchify(browserify(props).transform(babelify, {
-      presets: ['es2015'],
+      presets: ['env'],
     }));
 
     function bundle() {
