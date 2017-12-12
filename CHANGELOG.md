@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ## [Unreleased]
 ### Changed
 - Deprecate the non-Browserify-ed, original interactives generator. RIP.
+- All output package.json files now specify `UNLICENSED` instead of `ISC` in the license field
 
 ### Fixed
 - Render HTML and copy all static assets during initial build (see #56)
