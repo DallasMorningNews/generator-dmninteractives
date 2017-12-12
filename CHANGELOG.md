@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 
 ### Changed
 - Switch from `babel-preset-es2015` to its replacement, [`babel-preset-env`](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
+- Bumped the 3.x version of `gulp-sass` for the page generator (the embeddable already had it). It `npm install`s much, much quicker than the 2.x version.
 - Deprecate the non-Browserify-ed, original interactives generator. RIP.
 - All output package.json files now specify `UNLICENSED` instead of `ISC` in the license field
 - Clarified language about what is tracked by `git` and how the assets and data folders and handled
