@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
-## [Unreleased]
+## [0.7.1] - 2017-12-27
+### Fixed
+- Corrected esLintConfig parser in linters/index.js
+
+## [0.7.0] - 2017-12-12
 ### Added
 - There's now a [`.browserslistrc` config file](https://github.com/ai/browserslist), which specifies the browsers we support (for now, anything with greater than 2% usage within the US or that is one of the last major versions). JS transpilers and CSS post-processors will now reference this file.
 - Transpiled CSS is now auto-prefixed using [Autoprefixer](https://github.com/postcss/autoprefixer)'s [PostCSS](https://github.com/postcss/postcss) plugin to be compatible with our list of supported browsers (see above).
