@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
+## [0.7.2] - 2017-12-27
+### Fixed
+- Resolves correct version number for npm and github
+
 ## [0.7.1] - 2017-12-27
 ### Fixed
 - Corrected esLintConfig parser in linters/index.js
