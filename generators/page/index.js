@@ -181,6 +181,12 @@ module.exports = yeoman.Base.extend({
 
     meta() {
       const timestamp = new Date();
+      const rawMonth = (timestamp.getMonth() + 1).toString();
+      const rawDate = timestamp.getDate().toString();
+
+      const month = rawMonth.length === 1 ? `0${rawMonth}` : rawMonth;
+      const date = rawDate.length === 1 ? `0${rawDate}` : rawDate;
+
       const defaultKeywords = [
         'interactives', 'dallas', 'dallas news', 'dfw news', 'dallas newspaper',
         'dallas morning news', 'dallas morning news newspaper',
@@ -196,9 +202,9 @@ module.exports = yeoman.Base.extend({
         publishDate: `${
           timestamp.getFullYear()
         }-${
-          timestamp.getMonth() + 1
+          month
         }-${
-          timestamp.getDate()
+          date
         }T00:00:00Z`,
         url: `https://interactives.dallasnews.com/${timestamp.getFullYear()}/${this.directoryName}/`,
         authors: ['<Author1>', '<Author2>'],  // Archie-able
