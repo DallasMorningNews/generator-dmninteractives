@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
+## [0.7.3] - 2017-12-27
+### Fixed
+- Correctly prepends leading `0` in dates in meta.json
+
 ## [0.7.2] - 2017-12-27
 ### Fixed
 - Resolves correct version number for npm and github
@@ -200,7 +204,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/338270b3637169712a31751f8e203e76baf2b09c...HEAD
+[0.7.3]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/0cd22e4af3f133720612f9aa322555a766af15b4...338270b3637169712a31751f8e203e76baf2b09c
+[0.7.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/faaf14fb6e120e84112129eb80efc212f40f6e65...0cd22e4af3f133720612f9aa322555a766af15b4
+[0.7.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.0...faaf14fb6e120e84112129eb80efc212f40f6e65
 [0.7.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.3...v0.7.0
 [0.6.3]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.2...v0.6.3
 [0.6.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.1...v0.6.2
