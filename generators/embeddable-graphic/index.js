@@ -35,7 +35,7 @@ module.exports = yeoman.Base.extend({
         value: 'https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic',
       }, {
         name: 'Gotham',
-        value: 'https://cloud.typography.com/6922714/7642152/css/fonts.css',
+        value: 'https://cloud.typography.com/7613174/7017952/css/fonts.css',
         checked: true,
       }, {
         name: 'FontAwesome',
