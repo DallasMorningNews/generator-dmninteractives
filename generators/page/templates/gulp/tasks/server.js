@@ -24,7 +24,7 @@ module.exports = () => {
 
   watch('./src/scss/**/*.scss', () => { runSequence('scss'); });
 
-  watch('./src/templates/**/*.html', () => { runSequence('templates'); });
+  watch('./src/templates/**/*.{html,svg}', () => { runSequence('templates'); });
 
   watch(
     [
