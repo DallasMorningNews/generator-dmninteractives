@@ -15,5 +15,5 @@ module.exports = () => {
 
   gulp.watch(['./src/sass/*.scss'], ['sass']);
   gulp.watch(['./src/data/**/*'], ['data']);
-  gulp.watch(['./src/*.{html,svg}'], ['html']);
+  gulp.watch(['./src/*.html'], ['html']);
 };

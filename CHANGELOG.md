@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ## Unreleased
 ### Added
 - Invalidate Cloudfront for published objects during publish (#59)
+- Add cache headers to images and videos (#59)
 
 ### Fixed
 - Also watch SVGs in `src/` and rerun the Nunjucks renderer when they change (#58)

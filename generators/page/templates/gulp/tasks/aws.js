@@ -5,12 +5,12 @@
 /* eslint-enable strict */
 
 const awspublish = require('gulp-awspublish');
+const awspublishRouter = require("gulp-awspublish-router");
 const cloudfront = require('gulp-cloudfront-invalidate-aws-publish');
 const confirm = require('gulp-confirm');
 const deline = require('deline');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
-const path = require('path');
 const rename = require('gulp-rename');
 const S = require('string');
 
@@ -33,6 +33,27 @@ const cfSettings = {
   wait: false,
 };
 
+const routes = {
+  routes: {
+    // Cache video and audio for 1 week on user's computer, one month in CloudFront
+    '^.*\\.(aif|iff|m3u|m4a|mid|mp3|mpa|ra|wav|wma|3g2|3gp|asf|asx|avi|flv|mov|mp4|mpg|rm|swf|vob|wmv)': {
+      cacheTime: 86400 * 7,
+      sharedCacheTime: 86400 * 30,
+    },
+    // Cache images 2 days on user's computer, one month in CloudFront
+    '^.*\\.(jpg|jpeg|svg|bmp|png|tiff|gif)': {
+      cacheTime: 60 * 60 * 24 * 2,
+      sharedCacheTime: 86400 * 30,
+    },
+    // Cache images 5 minutes on user's computer, one month in CloudFront
+    '^.*\\.(html|js|css)': {
+      cacheTime: 60 * 5,
+      sharedCacheTime: 86400,
+    },
+  },
+};
+
+
 module.exports = () =>
     gulp.src('./dist/**/*')
         .pipe(confirm({
@@ -47,10 +68,11 @@ module.exports = () =>
           // eslint-disable-next-line no-param-reassign
           filePath.dirname = awsDirectory + filePath.dirname.replace('.\\', '');
         }))
+        .pipe(awspublishRouter(routes))
         .pipe(publisher.publish({}, { force: false }))
+        .pipe(cloudfront(cfSettings))
         .pipe(publisher.cache())
         .pipe(awspublish.reporter())
-        .pipe(cloudfront(cfSettings))
         .on(
           'end',
           gutil.log.bind(
