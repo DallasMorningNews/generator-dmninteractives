@@ -5,6 +5,7 @@
 /* eslint-enable strict */
 
 const awspublish = require('gulp-awspublish');
+const cloudfront = require('gulp-cloudfront-invalidate-aws-publish');
 const confirm = require('gulp-confirm');
 const deline = require('deline');
 const gulp = require('gulp');
@@ -25,6 +26,12 @@ const year = meta.publishYear;
 
 const awsDirectory = `${year}/${appName}/`;
 
+const cfSettings = {
+  distribution: 'E3QK9W6AW5LAVH',
+  accessKeyId: awsJson.accessKeyId,
+  secretAccessKey: awsJson.secretAccessKey,
+  wait: false,
+};
 
 module.exports = () =>
     gulp.src('./dist/**/*')
@@ -43,6 +50,7 @@ module.exports = () =>
         .pipe(publisher.publish({}, { force: false }))
         .pipe(publisher.cache())
         .pipe(awspublish.reporter())
+        .pipe(cloudfront(cfSettings))
         .on(
           'end',
           gutil.log.bind(
