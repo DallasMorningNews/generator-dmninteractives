@@ -14,9 +14,7 @@ const gulp = require('./gulp')([
   'aws-test',
   'browserify',
   'clear-test',
-  'plain-images',
-  'optimize-images',
-  'resize-images',
+  'img',
   'scss',
   'templates',
   'server',
@@ -26,11 +24,6 @@ const meta = require('./meta.json');
 
 
 const appName = S(meta.name).slugify().s;
-
-
-gulp.task('img', (cb) => {
-  runSequence('optimize-images', 'resize-images', 'plain-images', cb);
-});
 
 gulp.task('default', [
   'assets',
