@@ -26,13 +26,7 @@ module.exports = () => {
 
   watch('./src/templates/**/*.{html,svg}', () => { runSequence('templates'); });
 
-  watch(
-    [
-      './src/images/**/*',
-      '!./src/images/opt/**/*',
-      '!**/*.crdownload', // Ignore chrome's temp file
-    ],
-    () => { runSequence('img'); }  // eslint-disable-line comma-dangle
-    // batch((e, cb) => { gulp.start('img', cb); })
-  );
+  // Ignore Chrome's temp file from the glob below, as developers tend to download
+  // images straight from Chrome to this folder.
+  watch(['./src/images/**/*', '!**/*.crdownload'], () => { runSequence('img'); });
 };
