@@ -221,12 +221,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 - Initial working versions of files.
 
 [Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.6...HEAD
-[0.7.6]:https://github.com/DallasMorningNews/generator-dmninteractives/compare/6aab9f55ec148cbc269083b9326e9d36926881db...v0.7.6
-[0.7.5]:https://github.com/DallasMorningNews/generator-dmninteractives/compare/fb56abcf7731d6284ed24bd4aa93bfabced809ad...6aab9f55ec148cbc269083b9326e9d36926881db
-[0.7.4]:https://github.com/DallasMorningNews/generator-dmninteractives/compare/338270b3637169712a31751f8e203e76baf2b09c...fb56abcf7731d6284ed24bd4aa93bfabced809ad
-[0.7.3]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/0cd22e4af3f133720612f9aa322555a766af15b4...338270b3637169712a31751f8e203e76baf2b09c
-[0.7.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/faaf14fb6e120e84112129eb80efc212f40f6e65...0cd22e4af3f133720612f9aa322555a766af15b4
-[0.7.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.0...faaf14fb6e120e84112129eb80efc212f40f6e65
+[0.7.6]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.5...v0.7.6
+[0.7.5]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.4...v0.7.5
+[0.7.4]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.3...v0.7.4
+[0.7.3]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.2...v0.7.3
+[0.7.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.1...v0.7.2
+[0.7.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.3...v0.7.0
 [0.6.3]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.2...v0.6.3
 [0.6.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.6.1...v0.6.2
