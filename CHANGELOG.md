@@ -4,7 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
-## [0.7.3] - 2017-12-27
+## [0.7.6] - 2018-04-30
+### Fixed
+- Bump BrowserSync version in generated apps to close [vulnerability](https://github.com/BrowserSync/browser-sync/issues/1546) in `localtunnel` dependency, which relies on a vulnerable version of `hoek`
+- Bump `octonode` version in this repo to fix a similar dependency on `hoek`
+- Repair CHANGELOG
+
+## [0.7.5] - 2018-03-01
+### Changed
+- Updates font weights for new font stack
+
+## [0.7.4] - 2018-02-26
+### Changed
+- Switches typography.com call to DMN house account
+- Pin frontend dependencies (jQuery, etc.) at major version so we get the latest and greatest
+- Include [package-lock.json](package-lock.json) file in VC
+
+## [0.7.3] - 2018-02-14
 ### Fixed
 - Correctly prepends leading `0` in dates in meta.json
 
@@ -204,7 +220,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/338270b3637169712a31751f8e203e76baf2b09c...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.6...HEAD
+[0.7.6]:https://github.com/DallasMorningNews/generator-dmninteractives/compare/6aab9f55ec148cbc269083b9326e9d36926881db...v0.7.6
+[0.7.5]:https://github.com/DallasMorningNews/generator-dmninteractives/compare/fb56abcf7731d6284ed24bd4aa93bfabced809ad...6aab9f55ec148cbc269083b9326e9d36926881db
+[0.7.4]:https://github.com/DallasMorningNews/generator-dmninteractives/compare/338270b3637169712a31751f8e203e76baf2b09c...fb56abcf7731d6284ed24bd4aa93bfabced809ad
 [0.7.3]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/0cd22e4af3f133720612f9aa322555a766af15b4...338270b3637169712a31751f8e203e76baf2b09c
 [0.7.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/faaf14fb6e120e84112129eb80efc212f40f6e65...0cd22e4af3f133720612f9aa322555a766af15b4
 [0.7.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.0...faaf14fb6e120e84112129eb80efc212f40f6e65
