@@ -24,8 +24,10 @@ Install global dependencies, including Yeoman and the generator.
 ```bash
 $ npm install -g gulp-cli
 $ npm install -g yo
-$ npm install -g generator-dmninteractives
+$ npm install -g --production generator-dmninteractives
 ```
+
+_(The `--production` flag is optional, but prevents your global Node modules folder from getting confused by the dev tooling for the generator)_
 
 Create a clean directory for your project in your terminal.
 
