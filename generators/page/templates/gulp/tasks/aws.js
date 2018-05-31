@@ -33,22 +33,24 @@ const cfSettings = {
   wait: false,
 };
 
+const oneDayInMS = 60 * 60 * 24;
+
 const routes = {
   routes: {
     // Cache video and audio for 1 week on user's computer, one month in CloudFront
     '^.*\\.(aif|iff|m3u|m4a|mid|mp3|mpa|ra|wav|wma|3g2|3gp|asf|asx|avi|flv|mov|mp4|mpg|rm|swf|vob|wmv)': {
-      cacheTime: 86400 * 7,
-      sharedCacheTime: 86400 * 30,
+      cacheTime: oneDayInMS * 7,
+      sharedCacheTime: oneDayInMS * 30,
     },
     // Cache images 2 days on user's computer, one month in CloudFront
     '^.*\\.(jpg|jpeg|svg|bmp|png|tiff|gif)': {
-      cacheTime: 60 * 60 * 24 * 2,
-      sharedCacheTime: 86400 * 30,
+      cacheTime: oneDayInMS * 2,
+      sharedCacheTime: oneDayInMS * 30,
     },
     // Cache images 5 minutes on user's computer, one month in CloudFront
     '^.*\\.(html|js|css)': {
       cacheTime: 60 * 5,
-      sharedCacheTime: 86400,
+      sharedCacheTime: oneDayInMS,
     },
   },
 };
