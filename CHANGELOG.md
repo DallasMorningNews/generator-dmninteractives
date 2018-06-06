@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
+## Unreleased
+### Added
+- Invalidate Cloudfront for published objects during publish (#59)
+- Add cache headers to images and videos (#59)
+
+### Fixed
+- Also watch SVGs in `src/` and rerun the Nunjucks renderer when they change (#58)
+
 ## [0.7.6] - 2018-04-30
 ### Fixed
 - Bump BrowserSync version in generated apps to close [vulnerability](https://github.com/BrowserSync/browser-sync/issues/1546) in `localtunnel` dependency, which relies on a vulnerable version of `hoek`
