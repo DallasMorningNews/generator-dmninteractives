@@ -26,7 +26,7 @@ module.exports = () => {
   const s3 = new aws.S3();
 
   let params = {
-    Bucket: awsJson.params.Bucket,
+    Bucket: 'interactives.dallasnews.com.test',
     // Do not change this!
     Prefix: `test/${appName}`,
   };
