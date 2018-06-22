@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 
 ### Fixed
 - Also watch SVGs in `src/` and rerun the Nunjucks renderer when they change (#58)
+- Drops deprecated `gutil` module and replaces with `fancy-log`
 
 ## [0.7.6] - 2018-04-30
 ### Fixed
