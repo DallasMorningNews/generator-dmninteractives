@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 
 ### Changed
 - Publishes test content as private to new password-protected test bucket
+- Gulp and tooling dependencies are now under `devDependencies`
 
 ### Fixed
 - Also watch SVGs in `src/` and rerun the Nunjucks renderer when they change (#58)
