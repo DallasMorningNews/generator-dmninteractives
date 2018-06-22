@@ -5,26 +5,20 @@
 /* eslint-enable strict */
 
 const awspublish = require('gulp-awspublish');
-const awspublishRouter = require("gulp-awspublish-router");
+const awspublishRouter = require('gulp-awspublish-router');
 const cloudfront = require('gulp-cloudfront-invalidate-aws-publish');
 const confirm = require('gulp-confirm');
 const deline = require('deline');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const rename = require('gulp-rename');
-const S = require('string');
-
 
 const awsJson = require('./../../aws.json');
-const meta = require('./../../meta.json');
+const getAwsDirectory = require('./../utils').getAwsDirectory;
 
 
-const appName = S(meta.name).slugify().s;
 const publisher = awspublish.create(awsJson);
-const year = meta.publishYear;
-
-
-const awsDirectory = `${year}/${appName}/`;
+const awsDirectory = getAwsDirectory();
 
 const cfSettings = {
   distribution: 'E3QK9W6AW5LAVH',
