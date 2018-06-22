@@ -5,9 +5,6 @@
 /* eslint-enable strict */
 
 const runSequence = require('run-sequence');
-const S = require('string');
-
-
 const gulp = require('./gulp')([
   'assets',
   'aws',
@@ -22,10 +19,6 @@ const gulp = require('./gulp')([
   'server',
   'watchify',
 ]);
-const meta = require('./meta.json');
-
-
-const appName = S(meta.name).slugify().s;
 
 
 gulp.task('img', (cb) => {
@@ -41,11 +34,8 @@ gulp.task('default', [
   'server',
 ], () => {});
 
-
 gulp.task('build', ['assets', 'img', 'scss', 'templates', 'browserify']);
 
-
-gulp.task('publish', (cb) => { runSequence('build', 'aws', 'clear-test', cb); });
-
+gulp.task('publish', (cb) => { runSequence('build', 'aws', 'clear-test', 'reindex', cb); });
 
 gulp.task('publish-test', (cb) => { runSequence('build', 'aws-test', cb); });
