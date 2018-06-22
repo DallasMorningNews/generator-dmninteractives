@@ -69,6 +69,19 @@ module.exports = yeoman.Base.extend({
     }
 
     this.fs.writeJSON('./src/.eslintrc.json', esLintConfig);
+
+    const nodeEsLintConfig = Object.assign({}, esLintConfig, {
+      env: {
+        node: true,
+      },
+      rules: {
+        // Allows Gulp tooling to be installed in devDepedencies
+        'import/no-extraneous-dependencies': [
+          'error', { devDependencies: true },
+        ],
+      },
+    });
+    this.fs.writeJSON('./.eslintrc.json', nodeEsLintConfig);
   },
 
   install() {

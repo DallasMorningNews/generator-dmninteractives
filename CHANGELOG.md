@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Invalidate Cloudfront for published objects during publish (#59)
 - Add cache headers to images and videos (#59)
+- Adds an .eslintrc.json file at the root for Gulp and other tooling
 
 ### Changed
 - Publishes test content as private to new password-protected test bucket
