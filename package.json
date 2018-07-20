@@ -24,7 +24,7 @@
     "octonode": "^0.9.2",
     "string": "^3.3.1",
     "valid-url": "^1.0.9",
-    "yeoman-generator": "^0.19.0"
+    "yeoman-generator": "^0.19.2"
   },
   "devDependencies": {
     "eslint": "^3.14.1",
