@@ -5,26 +5,20 @@
 /* eslint-enable strict */
 
 const awspublish = require('gulp-awspublish');
-const awspublishRouter = require("gulp-awspublish-router");
+const awspublishRouter = require('gulp-awspublish-router');
 const cloudfront = require('gulp-cloudfront-invalidate-aws-publish');
 const confirm = require('gulp-confirm');
 const deline = require('deline');
 const gulp = require('gulp');
-const gutil = require('gulp-util');
+const log = require('fancy-log');
 const rename = require('gulp-rename');
-const S = require('string');
-
 
 const awsJson = require('./../../aws.json');
-const meta = require('./../../meta.json');
+const getAwsDirectory = require('./../utils').getAwsDirectory;
 
 
-const appName = S(meta.name).slugify().s;
 const publisher = awspublish.create(awsJson);
-const year = meta.publishYear;
-
-
-const awsDirectory = `${year}/${appName}/`;
+const awsDirectory = getAwsDirectory();
 
 const cfSettings = {
   distribution: 'E3QK9W6AW5LAVH',
@@ -75,11 +69,6 @@ module.exports = () =>
         .pipe(cloudfront(cfSettings))
         .pipe(publisher.cache())
         .pipe(awspublish.reporter())
-        .on(
-          'end',
-          gutil.log.bind(
-            gutil,
-            // eslint-disable-next-line comma-dangle
-            `Published at 'http://interactives.dallasnews.com/${awsDirectory}'.`
-          )  // eslint-disable-line comma-dangle
-        );
+        .on('end', () => {
+          log(`Published at 'http://interactives.dallasnews.com/${awsDirectory}'.`);
+        });

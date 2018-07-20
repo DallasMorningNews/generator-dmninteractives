@@ -9,7 +9,7 @@ const browserify = require('browserify');
 const buffer = require('vinyl-buffer');
 const es = require('event-stream');
 const gulp = require('gulp');
-const gutil = require('gulp-util');
+const log = require('fancy-log');
 const rename = require('gulp-rename');
 const source = require('vinyl-source-stream');
 const sourcemaps = require('gulp-sourcemaps');
@@ -40,18 +40,18 @@ module.exports = (watch) => {
 
       function bundle() {
         return bundler.bundle()
-          .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+          .on('error', log.bind(log, 'Browserify Error'))
           .pipe(source(entry))
           .pipe(buffer())
           // eslint-disable-next-line no-param-reassign
           .pipe(rename((filePath) => { filePath.basename += '-bundle'; }))
           .pipe(sourcemaps.init({ loadMaps: true }))
-          .pipe(uglify({ mangle: false, compress: true }).on('error', gutil.log))
+          .pipe(uglify({ mangle: false, compress: true }).on('error', log))
           .pipe(sourcemaps.write('./'))
           .pipe(gulp.dest('./dist/js/'));
       }
 
-      bundler.on('log', gutil.log);
+      bundler.on('log', log);
       bundler.on('update', bundle);
 
       return bundle();

@@ -8,12 +8,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Invalidate Cloudfront for published objects during publish (#59)
 - Add cache headers to images and videos (#59)
+- Adds an .eslintrc.json file at the root for Gulp and other tooling
+- Adds a new custom task, `reindex`, that posts to DataLab each time an interactive is published, allowing DataLab to reindex the interactive and post its content to Serif
 
 ### Changed
 - Publishes test content as private to new password-protected test bucket
+- Gulp and tooling dependencies are now under `devDependencies`
 
 ### Fixed
 - Also watch SVGs in `src/` and rerun the Nunjucks renderer when they change (#58)
+- Drops deprecated `gutil` module and replaces with `fancy-log`
 
 ## [0.7.6] - 2018-04-30
 ### Fixed

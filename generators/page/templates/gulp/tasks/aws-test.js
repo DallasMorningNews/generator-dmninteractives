@@ -8,8 +8,6 @@ const awspublish = require('gulp-awspublish');
 const confirm = require('gulp-confirm');
 const deline = require('deline');
 const gulp = require('gulp');
-const gutil = require('gulp-util');
-const path = require('path');
 const rename = require('gulp-rename');
 const S = require('string');
 
