@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Fixed
 - Also watch SVGs in `src/` and rerun the Nunjucks renderer when they change (#58)
 
+## [0.7.7] - 2018-07-23
+### Changed
+- Enabled grid support to autoprefixer for pages and embeddable graphics.
+
 ## [0.7.6] - 2018-04-30
 ### Fixed
 - Bump BrowserSync version in generated apps to close [vulnerability](https://github.com/BrowserSync/browser-sync/issues/1546) in `localtunnel` dependency, which relies on a vulnerable version of `hoek`
