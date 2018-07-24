@@ -1,7 +1,7 @@
 const path = require('path');
 
 const chalk = require('chalk');
-const S = require('string');
+const slugify = require('underscore.string/slugify');
 const yeoman = require('yeoman-generator');
 
 const STARTERKIT = 'https://raw.githubusercontent.com/DallasMorningNews/' +
@@ -25,7 +25,7 @@ module.exports = yeoman.Base.extend({
       name: 'slug',
       message: 'What\'s your graphics\'s slug?',
       default: process.cwd().split(path.sep).pop(),
-      filter: answer => S(answer).slugify().s,
+      filter: answer => slugify(answer),
     }, {
       type: 'checkbox',
       message: 'Which fonts would you like to include?',

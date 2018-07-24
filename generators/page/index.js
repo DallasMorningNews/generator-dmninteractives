@@ -1,11 +1,12 @@
 const _ = require('lodash');
+const camelize = require('underscore.string/camelize');
 const chalk = require('chalk');
 const fs = require('fs');
 const github = require('octonode');
 const googleURL = require('google-url-helper');
 const mkdirp = require('mkdirp');
 const path = require('path');
-const S = require('string');
+const slugify = require('underscore.string/slugify');
 const validURL = require('valid-url');
 const yeoman = require('yeoman-generator');
 
@@ -46,8 +47,8 @@ module.exports = yeoman.Base.extend({
     ];
 
     this.prompt(prompts, (props) => {
-      this.directoryName = S(props.directoryName).slugify().s;
-      this.appName = S(props.directoryName).camelize().s;
+      this.directoryName = slugify(props.directoryName);
+      this.appName = camelize(props.directoryName);
       this.awsAccessKey = props.awsAccessKey;
       this.awsSecretKey = props.awsSecretKey;
 

@@ -1,8 +1,9 @@
 'use strict';
+
+const camelize = require('underscore.string/camelize');
+
 var yeoman      = require('yeoman-generator'),
-    mkdirp      = require('mkdirp'),
-    fs          = require('fs'),
-    S           = require('string');
+    mkdirp      = require('mkdirp');
 
 
 module.exports = yeoman.Base.extend({
@@ -32,7 +33,7 @@ module.exports = yeoman.Base.extend({
         return features && features.indexOf(feat) !== -1;
       }
 
-      this.objName = S(props.objName).camelize().s;
+      this.objName = camelize(props.objName);
       this.appName = props.appName;
       done();
     }.bind(this));
