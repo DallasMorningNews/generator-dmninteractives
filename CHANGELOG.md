@@ -4,20 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
-## Unreleased
+## [Unreleased]
+### Changed
+- Drop `string` module due to [CVE-2017-16116](https://nvd.nist.gov/vuln/detail/CVE-2017-16116) and replace with `underscore.string`
+
+## [0.7.7] - 2018-07-23
 ### Added
 - Invalidate Cloudfront for published objects during publish (#59)
 - Add cache headers to images and videos (#59)
 
 ### Changed
 - Publishes test content as private to new password-protected test bucket
+- Enabled grid support to autoprefixer for pages and embeddable graphics.
 
 ### Fixed
 - Also watch SVGs in `src/` and rerun the Nunjucks renderer when they change (#58)
-
-## [0.7.7] - 2018-07-23
-### Changed
-- Enabled grid support to autoprefixer for pages and embeddable graphics.
+- Update `node-mime` due to [CVE-2017-16138](https://nvd.nist.gov/vuln/detail/CVE-2017-16138)
 
 ## [0.7.6] - 2018-04-30
 ### Fixed
@@ -235,7 +237,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.6...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.7...HEAD
+[0.7.7]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.6...v0.7.7
 [0.7.6]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.5...v0.7.6
 [0.7.5]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.4...v0.7.5
 [0.7.4]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.3...v0.7.4
