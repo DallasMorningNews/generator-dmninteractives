@@ -18,6 +18,6 @@ module.exports = () =>
       .pipe(rename((filePath) => { filePath.basename += '-bundle'; }))
       .pipe(sourcemaps.init())
       .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-      .pipe(postcss([autoprefixer()]))
+      .pipe(postcss([autoprefixer({grid: true,})]))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest('./dist/css'));
