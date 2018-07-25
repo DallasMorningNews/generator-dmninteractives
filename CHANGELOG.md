@@ -9,19 +9,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 - Drop `string` module due to [CVE-2017-16116](https://nvd.nist.gov/vuln/detail/CVE-2017-16116) and replace with `underscore.string`
 
 ### Fixed
-- Bumped `node-sass` version, switched to [SCSS version](https://github.com/JohnAlbin/normalize-scss) of Normalize.css and added [Eyeglass](https://github.com/sass-eyeglass/eyeglass) support due to pending deprecation of CSS imports in `node-sass` [#65](https://github.com/DallasMorningNews/issues/65)
+- Bumped `node-sass` version, switched to [SCSS version](https://github.com/JohnAlbin/normalize-scss) of Normalize.css and added [Eyeglass](https://github.com/sass-eyeglass/eyeglass) support due to pending deprecation of CSS imports in `node-sass` [#65](https://github.com/DallasMorningNews/generator-dmninteractives/issues/65)
 
 ## [0.7.7] - 2018-07-23
 ### Added
-- Invalidate Cloudfront for published objects during publish [#59](https://github.com/DallasMorningNews/issues/59)
-- Add cache headers to images and videos [#59](https://github.com/DallasMorningNews/issues/59)
+- Invalidate Cloudfront for published objects during publish [#59](https://github.com/DallasMorningNews/generator-dmninteractives/issues/59)
+- Add cache headers to images and videos [#59](https://github.com/DallasMorningNews/generator-dmninteractives/issues/59)
 
 ### Changed
 - Publishes test content as private to new password-protected test bucket
 - Enabled grid support to autoprefixer for pages and embeddable graphics.
 
 ### Fixed
-- Also watch SVGs in `src/` and rerun the Nunjucks renderer when they change (#58)
+- Also watch SVGs in `src/` and rerun the Nunjucks renderer when they change [#58](https://github.com/DallasMorningNews/generator-dmninteractives/issues/58)
 - Update `node-mime` due to [CVE-2017-16138](https://nvd.nist.gov/vuln/detail/CVE-2017-16138)
 
 ## [0.7.6] - 2018-04-30
