@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {
     "jquery": "^3",
-    "normalize.css": "*",
+    "normalize-scss": "*",
     "pym.js": "^1.x"
   },
   "devDependencies": {
@@ -17,6 +17,7 @@
     "browser-sync": "^2.24.0",
     "browserify": "^14.0.0",
     "event-stream": "^3.3.4",
+    "eyeglass": "^1.2.1",
     "gulp": "^3.9.1",
     "gulp-awspublish": "^3.3.0",
     "gulp-awspublish-router": "^0.1.5",
@@ -24,7 +25,7 @@
     "gulp-confirm": "^1.0.4",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.1.1",
     "gulp-uglify": "^2.0.0",
     "run-sequence": "^1.2.2",
