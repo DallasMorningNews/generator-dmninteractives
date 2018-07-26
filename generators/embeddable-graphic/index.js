@@ -12,6 +12,7 @@ module.exports = yeoman.Base.extend({
   initializing() {
     this.composeWith('dmninteractives:linters');
     this.composeWith('dmninteractives:common');
+    this.composeWith('dmninteractives:nvm');
   },
 
   prompting() {

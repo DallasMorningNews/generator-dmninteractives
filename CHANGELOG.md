@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
+### Added
+- Auto-create an [.nvmrc file](https://github.com/creationix/nvm#nvmrc) to store Node version at time of project creation
+
 ### Changed
 - Drop `string` module due to [CVE-2017-16116](https://nvd.nist.gov/vuln/detail/CVE-2017-16116) and replace with `underscore.string`
 
