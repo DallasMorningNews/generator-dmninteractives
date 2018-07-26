@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
+Nothing yet
+
+## [0.8.0] - 2018-07-26
 ### Added
 - All generators now offer to create a new repo with [`git-secrets`](https://github.com/awslabs/git-secrets) protection
 - Auto-create an [.nvmrc file](https://github.com/creationix/nvm#nvmrc) to store Node version at time of project creation
@@ -244,7 +247,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.7...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.7...v0.8.0
 [0.7.7]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.6...v0.7.7
 [0.7.6]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.5...v0.7.6
 [0.7.5]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.4...v0.7.5
