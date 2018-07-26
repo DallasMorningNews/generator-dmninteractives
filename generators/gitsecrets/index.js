@@ -1,6 +1,7 @@
 /**
- * Mix this into your generator by adding a composeWith('nvm') to your
- * generator's initializing() method to add auto-creation of .nvmrc
+ * Mix this into your generator by adding a composeWith('gitsecrets') to your
+ * generator's initializing() method to add optional run of `git init` and
+ * secrets protection with git-secrets
  */
 const chalk = require('chalk');
 const yeoman = require('yeoman-generator');
