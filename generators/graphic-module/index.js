@@ -10,6 +10,7 @@ module.exports = yeoman.Base.extend({
   initializing: function() {
     this.composeWith('dmninteractives:linters');
     this.composeWith('dmninteractives:common');
+    this.composeWith('dmninteractives:gitsecrets');
   },
 
   prompting: function () {

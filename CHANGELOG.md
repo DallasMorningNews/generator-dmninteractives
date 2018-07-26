@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 
 ## [Unreleased]
 ### Added
+- All generators now offer to create a new repo with [`git-secrets`](https://github.com/awslabs/git-secrets) protection
 - Auto-create an [.nvmrc file](https://github.com/creationix/nvm#nvmrc) to store Node version at time of project creation
 
 ### Changed

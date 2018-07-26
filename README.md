@@ -17,6 +17,8 @@ Translation: A simple app that helps speed up developing a custom "interactive" 
 ## Requirements
 
 - Node - `brew install node`
+- Git - `brew install git`
+- _Recommended:_ `git-secrets` - `brew install git-secrets`
 
 ## Installation
 
