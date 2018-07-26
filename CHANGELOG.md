@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ## [Unreleased]
 Nothing yet
 
+## [0.8.1] - 2018-07-26
+### Changed
+- Changes base sans-serif font to Montserrat from Gotham.
+
 ## [0.8.0] - 2018-07-26
 ### Added
 - All generators now offer to create a new repo with [`git-secrets`](https://github.com/awslabs/git-secrets) protection
@@ -247,7 +251,8 @@ Nothing yet
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.1...HEAD
+[0.8.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.7...v0.8.0
 [0.7.7]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.6...v0.7.7
 [0.7.6]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.5...v0.7.6
