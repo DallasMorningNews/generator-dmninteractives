@@ -5,7 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
-Nothing yet
+### Changed
+- Only include 400 and 700 weight Monsterrat
 
 ## [0.8.1] - 2018-07-26
 ### Changed
