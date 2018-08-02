@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
-## [Unreleased]
+## [0.8.2] - 2018-08-2
 ### Changed
-- Only include 400 and 700 weight Monsterrat
+- Only include 300 and 700 weight Monsterrat
 
 ## [0.8.1] - 2018-07-26
 ### Changed
@@ -252,7 +252,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.1...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.2...HEAD
+[0.8.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.7...v0.8.0
 [0.7.7]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.6...v0.7.7
