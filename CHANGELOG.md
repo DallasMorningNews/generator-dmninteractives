@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
+Nothing ... yet
+
+## [0.8.3] - 2018-08-21
 ### Fixed
 - Fixed an error where files that didn't match a ["route"](https://github.com/DallasMorningNews/generator-dmninteractives/blob/b84e0bbe16f70f7ef469fd1a010df26f9759aad6/generators/page/templates/gulp/tasks/aws.js#L38-L56) pattern in our AWS publishing stream would throw an error
 
@@ -256,7 +259,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.2...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.3...HEAD
+[0.8.3]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.1...v0.8.3
 [0.8.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.7.7...v0.8.0
