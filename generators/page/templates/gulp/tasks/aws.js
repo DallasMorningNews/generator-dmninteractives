@@ -52,6 +52,8 @@ const routes = {
       cacheTime: 60 * 5,
       sharedCacheTime: oneDayInMS,
     },
+    // Catch everything else in an empty route, or we'll get errors
+    '.*': {},
   },
 };
 
