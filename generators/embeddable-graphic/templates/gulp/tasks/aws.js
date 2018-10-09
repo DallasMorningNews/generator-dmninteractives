@@ -15,6 +15,7 @@ const cfSettings = {
   accessKeyId: awsJson.accessKeyId,
   secretAccessKey: awsJson.secretAccessKey,
   wait: false,
+  indexRootPath: true,
 };
 
 const oneDayInMS = 60 * 60 * 24;

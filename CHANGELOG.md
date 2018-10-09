@@ -10,6 +10,7 @@ Nothing ... yet
 ## [0.8.4] - 2018-10-09
 ### Fixed
 - Include `/images/` in URL for share image in meta.json
+- Also invalidate root paths (`project/` and `project/index.html`) in Cloudfront
 
 ## [0.8.3] - 2018-08-21
 ### Fixed
