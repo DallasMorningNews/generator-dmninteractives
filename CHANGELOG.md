@@ -10,7 +10,7 @@ Nothing ... yet
 ## [0.8.4] - 2018-10-09
 ### Fixed
 - Include `/images/` in URL for share image in meta.json
-- Also invalidate root paths (`project/` and `project/index.html`) in Cloudfront
+- Also invalidate root paths (`year/slug/`) in Cloudfront [#67](https://github.com/DallasMorningNews/generator-dmninteractives/issues/67)
 
 ## [0.8.3] - 2018-08-21
 ### Fixed
