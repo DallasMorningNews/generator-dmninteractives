@@ -15,6 +15,7 @@ const cfSettings = {
   accessKeyId: awsJson.accessKeyId,
   secretAccessKey: awsJson.secretAccessKey,
   wait: false,
+  indexRootPath: true,
 };
 
 const oneDayInMS = 60 * 60 * 24;
@@ -58,7 +59,7 @@ module.exports = () => {
     }))
     .pipe(awspublishRouter(routes))
     .pipe(publisher.publish({}, { force: false }))
-    .pipe(publisher.cache())
     .pipe(cloudfront(cfSettings))
+    .pipe(publisher.cache())
     .pipe(awspublish.reporter());
 };

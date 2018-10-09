@@ -218,7 +218,7 @@ module.exports = yeoman.Base.extend({
           timestamp.getFullYear()
         }/${
           this.appName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
-        }/${
+        }/images/${
           this.shareImage
         }`,
         imgWidth: '<Width - w/out "px">',
