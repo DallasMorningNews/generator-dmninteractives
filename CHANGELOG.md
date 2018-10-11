@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ## [Unreleased]
 Nothing ... yet
 
+## [0.8.5] - 2018-10-11
+### Added
+- Adds call to new 'slideshow.js' file in starterkit to page/config.json
+- Adds call to new 'charts.scss' and 'subscribe.scss' files in starterkit to page/config.json
+- Adds call to new 'styleguide.md' file in starterkit to page/config.json
+### Removed
+- Removed some calls to outdated scss files in page/config.json
+
+
 ## [0.8.4] - 2018-10-09
 ### Fixed
 - Include `/images/` in URL for share image in meta.json
@@ -264,7 +273,8 @@ Nothing ... yet
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.4...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.5...HEAD
+[0.8.5]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.4...v0.8.5
 [0.8.4]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.3...v0.8.4
 [0.8.3]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.2...v0.8.3
 [0.8.2]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.1...v0.8.2

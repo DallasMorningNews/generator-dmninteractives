@@ -49,16 +49,12 @@
                 "dest": { "path": "./src/scss/components/", "name": "_breakouts.scss" }
             },
             {
-                "source": "css/components/_drop-list.scss",
-                "dest": { "path": "./src/scss/components/", "name": "_drop-list.scss" }
+                "source": "css/components/_charts.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_charts.scss" }
             },
             {
                 "source": "css/components/_pullquotes.scss",
                 "dest": { "path": "./src/scss/components/", "name": "_pullquotes.scss" }
-            },
-            {
-                "source": "css/components/_relatedlinks.scss",
-                "dest": { "path": "./src/scss/components/", "name": "_relatedlinks.scss" }
             },
             {
                 "source": "css/components/_side-blocks.scss",
@@ -69,15 +65,13 @@
                 "dest": { "path": "./src/scss/components/", "name": "_slideshows.scss" }
             },
             {
-                "source": "css/components/_synopsis.scss",
-                "dest": { "path": "./src/scss/components/", "name": "_synopsis.scss" }
+                "source": "css/components/_subscribe.scss",
+                "dest": { "path": "./src/scss/components/", "name": "_subscribe.scss" }
             },
             {
                 "source": "css/components/_videos.scss",
                 "dest": { "path": "./src/scss/components/", "name": "_videos.scss" }
             },
-
-
             {
                 "source": "js/furniture.js",
                 "dest": { "path": "./src/js/", "name": "furniture.js" }
@@ -85,6 +79,14 @@
             {
                 "source": "js/customES6.js",
                 "dest": { "path": "./src/js/", "name": "scripts.js" }
+            },
+            {
+                "source": "js/slideshow.js",
+                "dest": { "path": "./src/js/", "name": "slideshow.js" }
+            },
+            {
+                "source": "style-guide/style-guide.md",
+                "dest": { "path": "./src/style-guide/", "name": "style-guide.md" }
             }
         ]
     }
