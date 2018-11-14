@@ -20,6 +20,7 @@
     "gulp-confirm": "^1.0.4",
     "gulp-image-resize": "^0.12.0",
     "gulp-imagemin": "^3.1.1",
+    "gulp-newer": "^1.4.0",
     "gulp-nunjucks-render": "^1.0.0",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",

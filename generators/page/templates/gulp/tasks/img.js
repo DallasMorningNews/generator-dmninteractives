@@ -43,6 +43,8 @@ const imageExportTypes = [
   { globs: globs.allOtherImages },
 ];
 
+const imgDestination = './dist/images';
+
 
 module.exports = () => {
   const exports = imageExportTypes.map((exportType) => {
@@ -54,11 +56,15 @@ module.exports = () => {
 
     let gulpTask = gulp.src(exportType.globs)
 
+    // gulpTask = gulpTask.newer()
+
     if (isResized) {
       const resizeOpts = { imageMagick: true, upscale: false, width: exportType.width };
 
       gulpTask = gulpTask.pipe(imageresize(resizeOpts));
     }
+
+    gulpTask = gulpTask.pipe(newer(imgDestination));
 
     if (isMinified) {
       gulpTask = gulpTask.pipe(
@@ -90,7 +96,7 @@ module.exports = () => {
       }
     }
 
-    gulpTask = gulpTask.pipe(gulp.dest('./dist/images'));
+    gulpTask = gulpTask.pipe(gulp.dest(imgDestination));
 
     return gulpTask;
   });
