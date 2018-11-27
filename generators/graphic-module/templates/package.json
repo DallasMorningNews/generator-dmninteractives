@@ -13,7 +13,7 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.17.5",
     "browserify": "^13.1.0",
-    "event-stream": "^3.3.4",
+    "event-stream": "<=3.3.4",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
