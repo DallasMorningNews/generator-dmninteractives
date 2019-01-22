@@ -23,7 +23,7 @@
     "mkdirp": "^0.5.1",
     "octonode": "^0.9.3",
     "semver": "^5.5.0",
-    "underscore.string": "^3.3.4",
+    "underscore.string": "^3.3.5",
     "valid-url": "^1.0.9",
     "yeoman-generator": "^0.19.2"
   },
