@@ -10,6 +10,7 @@ Nothing ... yet
 ## [0.8.7] - 2019-01-22
 ### Changed
 - Pin `event-stream` dependency to 3.3.4 in generated projects due to [security vulnerability](https://github.com/dominictarr/event-stream/issues/116)
+- Bump `underscore-string`, per recommendation from `npm audit`
 
 ## [0.8.6] - 2018-11-27
 ### Changed
