@@ -48,7 +48,7 @@ const routes = {
       cacheTime: oneDayInMS * 2,
       sharedCacheTime: oneDayInMS * 30,
     },
-    // Cache images 5 minutes on user's computer, one month in CloudFront
+    // Cache HTML/CSS/JS 5 minutes on user's computer, one month in CloudFront
     '^.*\\.(html|js|css)': {
       cacheTime: 60 * 5,
       sharedCacheTime: oneDayInMS,
