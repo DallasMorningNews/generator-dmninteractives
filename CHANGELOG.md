@@ -5,7 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.0 forward.
 
 ## [Unreleased]
-Nothing ... yet
+### Fixed
+- Version bump [lodash](https://lodash.com/) to `^4.17.11` to mitigate [CVE-2018-16487](https://nvd.nist.gov/vuln/detail/CVE-2018-16487)
 
 ## [0.8.7] - 2019-01-22
 ### Changed
