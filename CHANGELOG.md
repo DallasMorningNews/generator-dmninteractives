@@ -287,7 +287,8 @@ Nothing ... yet
 ### Added
 - Initial working versions of files.
 
-[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.7...HEAD
+[Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.8...HEAD
+[0.8.8]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.7...v0.8.8
 [0.8.7]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.6...v0.8.7
 [0.8.6]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.5...v0.8.6
 [0.8.5]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.4...v0.8.5
