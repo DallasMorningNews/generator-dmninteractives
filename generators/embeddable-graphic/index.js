@@ -37,7 +37,7 @@ module.exports = yeoman.Base.extend({
         value: 'https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic',
       }, {
         name: 'Montserrat',
-        value: 'https://fonts.googleapis.com/css?family=Montserrat:300,700',
+        value: 'https://fonts.googleapis.com/css?family=Montserrat:400,700',
         checked: true,
       }, {
         name: 'FontAwesome',

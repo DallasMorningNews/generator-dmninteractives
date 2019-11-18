@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Fixed
 - Version bump [lodash](https://lodash.com/) to `^4.17.11` to mitigate [CVE-2018-16487](https://nvd.nist.gov/vuln/detail/CVE-2018-16487)
 
+## [0.8.8] - 2019-11-18
+### Changed
+- Changed default Montserrat weight for interactive embeds from 300 to 400
+- Bump esLint to @4 for interactive pages
+
 ## [0.8.7] - 2019-01-22
 ### Changed
 - Pin `event-stream` dependency to 3.3.4 in generated projects due to [security vulnerability](https://github.com/dominictarr/event-stream/issues/116)
@@ -284,7 +289,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 - Initial working versions of files.
 
 [Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.7...HEAD
-[0.8.6]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.6...v0.8.7
+[0.8.7]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.6...v0.8.7
 [0.8.6]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.5...v0.8.6
 [0.8.5]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.4...v0.8.5
 [0.8.4]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.3...v0.8.4

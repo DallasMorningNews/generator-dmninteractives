@@ -75,7 +75,7 @@ module.exports = yeoman.Base.extend({
     if (this.lintProfile === this.CHOICE_NO_ESLINT) return;
 
     const npmDeps = [
-      'eslint@3',
+      'eslint@4',
       'babel-eslint',
     ];
 
