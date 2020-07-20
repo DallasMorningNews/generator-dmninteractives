@@ -57,6 +57,10 @@
                 "dest": { "path": "./src/scss/components/", "name": "_pullquotes.scss" }
             },
             {
+              "source": "css/components/_reporter-bios.scss",
+              "dest": { "path": "./src/scss/components/", "name": "_reporter-bios.scss" }
+          },
+            {
                 "source": "css/components/_side-blocks.scss",
                 "dest": { "path": "./src/scss/components/", "name": "_side-blocks.scss" }
             },

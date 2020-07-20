@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 ### Fixed
 - Version bump [lodash](https://lodash.com/) to `^4.17.11` to mitigate [CVE-2018-16487](https://nvd.nist.gov/vuln/detail/CVE-2018-16487)
 
+## [0.8.9] - 2020-07-20
+### Changed
+- Added reporter-bios.scss to config.json
+
 ## [0.8.8] - 2019-11-18
 ### Changed
 - Changed default Montserrat weight for interactive embeds from 300 to 400
@@ -289,6 +293,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/) from v0.5.
 - Initial working versions of files.
 
 [Unreleased]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.8...HEAD
+[0.8.9]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.8...v0.8.9
 [0.8.8]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.7...v0.8.8
 [0.8.7]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.6...v0.8.7
 [0.8.6]: https://github.com/DallasMorningNews/generator-dmninteractives/compare/v0.8.5...v0.8.6
